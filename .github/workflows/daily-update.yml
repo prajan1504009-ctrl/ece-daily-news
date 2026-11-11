@@ -1,0 +1,35 @@
+name: ECE Daily News 5PM IST Cloud Updater
+
+on:
+  schedule:
+    # Runs at 11:30 UTC daily = 5:00 PM IST (Indian Standard Time)
+    - cron: '30 11 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run ECE Daily News Aggregator
+        run: |
+          python update_news.py --force
+
+      - name: Commit and Push Updated News
+        run: |
+          git config --global user.name "ECE Daily News Bot"
+          git config --global user.email "bot@ecedailynews.local"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update ECE Daily News [skip ci]" && git push)
