@@ -20,3 +20,41 @@ Live items fetched across categories:
   - INDIA: 4 items
   - WORLDWIDE: 2 items
 [SUCCESS] ECE Daily News updated at 2026-11-11T19:11:16.714084 (8 articles)
+Bundled index.html successfully! Size: 90405
+============================================================
+ECE Daily News Aggregator & Updater
+Execution Time: 2026-11-12 17:00:04
+============================================================
+Querying latest live feeds...
+Live items fetched across categories:
+  - CHENNAI: 4 items
+  - TAMILNADU: 4 items
+  - INDIA: 4 items
+  - WORLDWIDE: 2 items
+[SUCCESS] ECE Daily News updated at 2026-11-12T17:00:04.082396 (8 articles)
+Bundled index.html successfully! Size: 89755 bytes (Thursday, 12 November 2026)
+ZipArchiveHelper : The process cannot access the file 
+'C:\Users\wolfy\.gemini\antigravity\scratch\ece-daily-news\data\update_log.txt' because it is being used by another 
+process.
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:707 
+char:30
++ ... sArchived = ZipArchiveHelper $subDirFiles.ToArray() $destinationPath  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\wolfy\...\update_log.txt:String) [Write-Error], IOException
+    + FullyQualifiedErrorId : CompressArchiveUnauthorizedAccessError,ZipArchiveHelper
+ 
+New-Object : Exception calling ".ctor" with "1" argument(s): "Stream was not readable."
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:818 
+char:38
++ ...     $srcStream = New-Object System.IO.BinaryReader $currentFileStream
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+ 
+============================================================
+ECE Daily News Aggregator & Updater
+Execution Time: 2026-11-12 18:46:43
+============================================================
+[SUCCESS] ECE Daily News updated at 2026-11-12T18:46:43.641875 (8 articles)

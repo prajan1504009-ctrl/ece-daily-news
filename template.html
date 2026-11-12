@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECE Daily News • Worldwide | India | Tamil Nadu | Chennai</title>
+  <meta name="description" content="Daily interactive intelligence briefing on Electronics & Communication Engineering (ECE) spanning Worldwide, India, Tamil Nadu, and Chennai with bilingual Tamil and English coverage.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyan: { 400: '#00f0ff', 500: '#00d2df' },
+            purple: { 400: '#c084fc', 500: '#a855f7' },
+            amber: { 400: '#fbbf24', 500: '#f59e0b' },
+            emerald: { 400: '#34d399', 500: '#10b981' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom CSS -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body class="bg-[#070b13] text-slate-100 min-h-screen relative antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- Interactive PCB Circuit Canvas Background -->
+  <canvas id="circuit-canvas"></canvas>
+
+  <!-- Main Container -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- Top Breaking News Marquee Ticker -->
+    <div class="bg-slate-950/90 border-b border-cyan-900/40 py-2 px-4 text-xs font-mono flex items-center overflow-hidden no-print backdrop-blur-md">
+      <div class="flex items-center gap-2 text-cyan-400 font-bold uppercase tracking-wider shrink-0 mr-4 pl-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>BREAKING ECE:</span>
+      </div>
+      <div class="overflow-hidden whitespace-nowrap w-full">
+        <div class="inline-block animate-marquee text-slate-300">
+          <span class="mx-4 text-cyan-300">⚡ Intel 18A sub-2nm node powers on Panther Lake with RibbonFET & PowerVia</span>
+          <span class="mx-4 text-emerald-400">⚡ IIT Madras ECE unveils 140-220 GHz 6G Sub-THz wireless testbed</span>
+          <span class="mx-4 text-amber-400">⚡ Tata Electronics & Intel form packaging alliance as Dholera 300mm Fab progresses</span>
+          <span class="mx-4 text-cyan-300">⚡ Anna University CEG ECE team develops ultra-low-power MEMS sensor for EV batteries</span>
+          <span class="mx-4 text-purple-400">⚡ ASML ships High-NA EUV 0.55 NA scanner for 14-Angstrom (1.4nm) pilot fabs</span>
+          <span class="mx-4 text-emerald-400">⚡ Foxconn & Bharat FIH expand Hosur-Sriperumbudur corridor with telecom SMT lines</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation & Branding Header -->
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+        
+        <!-- Brand Title & Edition -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 p-[1.5px] shadow-lg shadow-cyan-500/20">
+            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-bold text-lg text-cyan-400">
+              ⚡
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-xl sm:text-2xl font-black tracking-tight wafer-shimmer">
+                ECE DAILY NEWS
+              </h1>
+              <span id="edition-title" class="hidden sm:inline-block text-[11px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                Vol. 2026 • Daily
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 font-medium">
+              Worldwide • India • Tamil Nadu • Chennai | <span class="tamil-text text-cyan-300">எலக்ட்ரானிக்ஸ் தினசரி</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Automation Status & Countdown Clock -->
+        <div class="hidden md:flex items-center gap-4 bg-slate-900/80 px-3.5 py-1.5 rounded-xl border border-slate-800">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div class="text-[11px]">
+              <span class="text-slate-400">Next Daily Update:</span>
+              <span class="text-cyan-300 font-bold ml-1">5:00 PM IST</span>
+            </div>
+          </div>
+          <div class="text-[11px] font-mono bg-slate-950 px-2.5 py-1 rounded border border-cyan-900/50 text-cyan-400" id="ist-countdown-timer">
+            --h --m --s
+          </div>
+        </div>
+
+        <!-- Controls: Language Toggle, Print & Refresh -->
+        <div class="flex items-center gap-2.5">
+          <!-- Bilingual Switcher Button -->
+          <button id="lang-toggle-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500/50 transition-all text-xs font-medium" title="Switch English / தமிழ்">
+            <span class="text-xs font-mono bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30">ENG</span>
+            <span class="text-xs opacity-60">தமிழ்</span>
+          </button>
+
+          <!-- Share to Phone / Friends Button -->
+          <button onclick="openShareModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/20 text-xs font-semibold no-print transition-all" title="Share with friends or view on phone">
+            <span>📱</span>
+            <span class="hidden sm:inline">Phone & Share</span>
+          </button>
+
+          <!-- Print / PDF Digest -->
+          <button onclick="window.print()" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200 text-xs no-print" title="Print / Save PDF Digest">
+            🖨️
+          </button>
+
+          <!-- Refresh Button -->
+          <button onclick="loadNewsData()" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-semibold shadow-md shadow-cyan-600/20 flex items-center gap-1.5 no-print">
+            <span>↻</span>
+            <span class="hidden sm:inline">Refresh</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Subheader with Date Display -->
+    <div class="bg-slate-900/40 border-b border-slate-800/60 py-2.5 px-4 text-xs font-mono text-slate-400 text-center">
+      <span id="header-date-en" class="font-semibold text-slate-300">Thursday, 12 November 2026</span>
+      <span class="mx-2 text-slate-600">•</span>
+      <span id="header-date-ta" class="tamil-text text-cyan-400">வியாழக்கிழமை, 12 நவம்பர் 2026</span>
+      <span class="mx-2 text-slate-600">•</span>
+      <span class="text-slate-400">Total Stories: <strong id="total-articles-count" class="text-cyan-300 font-bold">8</strong></span>
+    </div>
+
+    <!-- Hero / Metrics Radar Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2 w-full no-print">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+        
+        <!-- Node Tracker -->
+        <div class="glass-panel p-3.5 rounded-xl border border-slate-800/80">
+          <div class="text-[11px] font-mono text-purple-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+            <span>Silicon Node Race</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+          </div>
+          <div class="text-xl font-bold font-mono text-slate-100">Intel 18A / 1.4nm</div>
+          <div class="text-[11px] text-slate-400 mt-1">RibbonFET & High-NA EUV</div>
+        </div>
+
+        <!-- Frequency Tracker -->
+        <div class="glass-panel p-3.5 rounded-xl border border-slate-800/80">
+          <div class="text-[11px] font-mono text-emerald-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+            <span>Telecom & RF Radar</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          </div>
+          <div class="text-xl font-bold font-mono text-slate-100">220 GHz / 80G</div>
+          <div class="text-[11px] text-slate-400 mt-1">IIT Madras 6G RFIC Testbed</div>
+        </div>
+
+        <!-- India Mission Tracker -->
+        <div class="glass-panel p-3.5 rounded-xl border border-slate-800/80">
+          <div class="text-[11px] font-mono text-amber-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+            <span>Semicon India</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          </div>
+          <div class="text-xl font-bold font-mono text-slate-100">Tata & Intel</div>
+          <div class="text-[11px] text-slate-400 mt-1">Dholera Fab Cleanroom Phase</div>
+        </div>
+
+        <!-- Chennai Hub Tracker -->
+        <div class="glass-panel p-3.5 rounded-xl border border-slate-800/80">
+          <div class="text-[11px] font-mono text-cyan-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+            <span>Chennai ECE Corridor</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          </div>
+          <div class="text-xl font-bold font-mono text-slate-100">MEMS & SMT Hub</div>
+          <div class="text-[11px] text-slate-400 mt-1">Anna Univ & Sriperumbudur</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Filter & Search Toolbar -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full no-print">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-950/60 p-2.5 rounded-2xl border border-slate-800/90 backdrop-blur-md">
+        
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
+          <button data-filter="all" class="filter-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 transition-all">
+            All News (அனைத்தும்)
+          </button>
+          <button data-filter="chennai" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-emerald-300 hover:border-emerald-500/40 transition-all">
+            🏛️ Chennai
+          </button>
+          <button data-filter="tamilnadu" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-cyan-300 hover:border-cyan-500/40 transition-all">
+            📍 Tamil Nadu
+          </button>
+          <button data-filter="india" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-amber-300 hover:border-amber-500/40 transition-all">
+            🇮🇳 India
+          </button>
+          <button data-filter="worldwide" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-purple-300 hover:border-purple-500/40 transition-all">
+            🌐 Worldwide
+          </button>
+          <button data-filter="tamil_only" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-cyan-300 hover:border-cyan-500/40 transition-all tamil-text">
+            🔤 தமிழ் மட்டும்
+          </button>
+          <button data-filter="saved" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-amber-300 hover:border-amber-500/40 transition-all">
+            ★ Bookmarks
+          </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-72">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500 text-xs">
+            🔍
+          </span>
+          <input type="text" id="search-input" placeholder="Search Intel 18A, 6G, MEMS, IITM..." class="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Articles Grid Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-1 w-full">
+      <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </main>
+
+    <!-- Interactive Deep Dive Modal Overlay -->
+    <div id="story-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div class="glass-panel w-full max-w-3xl rounded-2xl p-6 relative border border-cyan-500/30 max-h-[90vh] overflow-y-auto">
+        <button id="close-modal-btn" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800/90 text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center font-bold text-lg transition-colors">
+          ✕
+        </button>
+        <div id="modal-body">
+          <!-- Populated by openStoryModal() in app.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone & Share Modal Overlay -->
+    <div id="share-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div class="glass-panel w-full max-w-xl rounded-2xl p-6 relative border border-emerald-500/40">
+        <button onclick="closeShareModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center font-bold text-lg">
+          ✕
+        </button>
+        
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 mx-auto mb-2 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-2xl">
+            📱
+          </div>
+          <h3 class="text-xl font-bold text-slate-100">View on Phone & Share with Friends</h3>
+          <p class="text-xs text-slate-400 mt-1">Open this interactive ECE portal on any smartphone (Android or iPhone) or share with classmates!</p>
+        </div>
+
+        <!-- Phone QR Code Card -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-center gap-5 mb-5">
+          <div id="qrcode-container" class="bg-white p-2.5 rounded-xl shrink-0 shadow-lg shadow-black/50">
+            <!-- QR Code injected here -->
+          </div>
+          <div class="text-center sm:text-left">
+            <h4 class="text-sm font-bold text-emerald-400 mb-1 flex items-center justify-center sm:justify-start gap-1.5">
+              <span>📷 Scan with Phone Camera</span>
+            </h4>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+              Open directly on your phone: <strong class="text-cyan-400">https://daily-ece-news.netlify.app</strong>
+            </p>
+            <div class="flex items-center gap-2">
+              <input id="share-url-input" type="text" readonly value="https://daily-ece-news.netlify.app" class="text-xs font-mono bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-cyan-300 w-full select-all">
+              <button onclick="copyShareUrl()" class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shrink-0">
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Share Actions -->
+        <div class="grid grid-cols-2 gap-3 mb-5">
+          <a id="whatsapp-share-btn" href="https://api.whatsapp.com/send?text=https%3A%2F%2Fdaily-ece-news.netlify.app" target="_blank" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 text-xs font-semibold transition-all">
+            <span>💬 Share via WhatsApp</span>
+          </a>
+          <button onclick="triggerWebShare()" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/30 border border-cyan-500/50 text-cyan-300 text-xs font-semibold transition-all">
+            <span>📤 Native Share</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950/90 py-8 px-4 text-center text-xs text-slate-500 mt-12 no-print">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="font-bold text-slate-400">ECE Daily Chronicle</span> • Automated Daily Intelligence at <span class="text-cyan-400 font-semibold">5:00 PM IST</span>
+        </div>
+        <div class="tamil-text text-slate-400">
+          சென்னை • தமிழ்நாடு • இந்தியா • சர்வதேசம்
+        </div>
+        <div class="text-[11px] font-mono text-slate-600">
+          Built for Electronics & Communication Engineers
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="data/news_data.js"></script>
+  <script src="assets/illustrations.js"></script>
+  <script src="assets/circuit.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

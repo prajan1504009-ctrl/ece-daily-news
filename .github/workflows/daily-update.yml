@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   update-and-deploy:
@@ -23,13 +21,26 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run ECE Daily News Aggregator
-        run: |
-          python update_news.py --force
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Commit and Push Updated News
+      - name: Run ECE Daily News Aggregator & Bundler
+        run: |
+          python update_news.py
+          python bundle_site.py
+
+      - name: Commit and Push Updated News to GitHub
         run: |
           git config --global user.name "ECE Daily News Bot"
           git config --global user.email "bot@ecedailynews.local"
-          git add data/
+          git add data/ index.html
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update ECE Daily News [skip ci]" && git push)
+
+      - name: Deploy Live to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN || 'nfp_kKVMfui7AtBv48fbMvjzqhFAKMsse4Htb569' }}
+          NETLIFY_SITE_ID: "c9eb40d9-6123-4002-b916-1808d7c7a5ff"
+        run: |
+          npx netlify deploy --site $NETLIFY_SITE_ID --dir . --prod --auth $NETLIFY_AUTH_TOKEN

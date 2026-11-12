@@ -459,11 +459,11 @@ function closeModal() {
 // ----------------------------------------------------
 
 function getShareableUrl() {
-  if (window.location.protocol.startsWith('http')) {
+  if (window.location.protocol.startsWith('http') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
     return window.location.href;
   }
-  // If running locally via file://, give the local Wi-Fi IP URL on port 8080
-  return 'http://192.168.29.37:8080';
+  // Permanent Netlify URL
+  return 'https://daily-ece-news.netlify.app';
 }
 
 function openShareModal() {

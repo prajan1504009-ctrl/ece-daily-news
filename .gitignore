@@ -1,0 +1,5 @@
+.env
+.netlify/
+*.lnk
+data/update_log.txt
+node_modules/

@@ -25,7 +25,182 @@
   </script>
 
   <!-- Google Fonts & Custom CSS -->
-  <link rel="stylesheet" href="assets/style.css">
+  <style>
+/* Custom Styling for ECE Daily News Portal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Mukta+Malar:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --neon-cyan: #00f0ff;
+  --neon-purple: #a855f7;
+  --neon-amber: #f59e0b;
+  --neon-emerald: #10b981;
+  --neon-pink: #ec4899;
+  --bg-dark: #070b13;
+  --card-bg: rgba(15, 23, 42, 0.75);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-dark);
+  color: #f1f5f9;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.tamil-text {
+  font-family: 'Mukta Malar', 'Noto Sans Tamil', sans-serif;
+  line-height: 1.6;
+}
+
+.font-mono-tech {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-hover {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 16px 40px -10px rgba(0, 240, 255, 0.15), 0 0 20px rgba(0, 240, 255, 0.1);
+}
+
+/* Glowing Neon Text & Borders */
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.6), 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.6), 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+.border-glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+}
+
+/* Silicon Wafer Rainbow Shimmer Gradient */
+.wafer-shimmer {
+  background: linear-gradient(135deg, #00f0ff 0%, #a855f7 35%, #ec4899 65%, #f59e0b 100%);
+  background-size: 300% 300%;
+  animation: waferShimmer 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes waferShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Marquee Animation */
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Animated Pulse Rings */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Circuit Canvas Background */
+#circuit-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* Audio wave animation */
+.audio-bar {
+  display: inline-block;
+  width: 3px;
+  background-color: #00f0ff;
+  border-radius: 2px;
+  margin: 0 1px;
+  animation: soundWave 1.2s ease-in-out infinite alternate;
+}
+
+.audio-bar:nth-child(2) { animation-delay: 0.2s; height: 16px; }
+.audio-bar:nth-child(3) { animation-delay: 0.4s; height: 12px; }
+.audio-bar:nth-child(4) { animation-delay: 0.1s; height: 20px; }
+.audio-bar:nth-child(5) { animation-delay: 0.3s; height: 8px; }
+
+@keyframes soundWave {
+  0% { height: 4px; }
+  100% { height: 22px; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
+
+/* Print Optimization */
+@media print {
+  #circuit-canvas, .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .glass-panel {
+    background: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+  }
+}
+
+</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body class="bg-[#070b13] text-slate-100 min-h-screen relative antialiased selection:bg-cyan-500 selection:text-black">
@@ -44,12 +219,12 @@
       </div>
       <div class="overflow-hidden whitespace-nowrap w-full">
         <div class="inline-block animate-marquee text-slate-300">
-          <span class="mx-4 text-cyan-300">⚡ TSMC 2nm N2 GAAFET clears 1,000h qualification for 2026/27 mass production</span>
-          <span class="mx-4 text-emerald-400">⚡ IIT Madras CPPICS unveils 1.6 Tbps Silicon Photonics optical transceiver</span>
-          <span class="mx-4 text-amber-400">⚡ Semicon 2.0 scaled to ₹1.27 Lakh Crore with domestic Chip IP & Packaging priority</span>
-          <span class="mx-4 text-cyan-300">⚡ Chennai CAST Taramani cleanroom operational for GaN/SiC EV power semiconductor chips</span>
-          <span class="mx-4 text-purple-400">⚡ IEEE 802.15.3d validates 300 GHz Sub-THz wireless links over 100 Gbps</span>
-          <span class="mx-4 text-emerald-400">⚡ Pegatron Chennai facility scales Open-RAN 5G small cells for global telecom export</span>
+          <span class="mx-4 text-cyan-300">⚡ Intel 18A sub-2nm node powers on Panther Lake with RibbonFET & PowerVia</span>
+          <span class="mx-4 text-emerald-400">⚡ IIT Madras ECE unveils 140-220 GHz 6G Sub-THz wireless testbed</span>
+          <span class="mx-4 text-amber-400">⚡ Tata Electronics & Intel form packaging alliance as Dholera 300mm Fab progresses</span>
+          <span class="mx-4 text-cyan-300">⚡ Anna University CEG ECE team develops ultra-low-power MEMS sensor for EV batteries</span>
+          <span class="mx-4 text-purple-400">⚡ ASML ships High-NA EUV 0.55 NA scanner for 14-Angstrom (1.4nm) pilot fabs</span>
+          <span class="mx-4 text-emerald-400">⚡ Foxconn & Bharat FIH expand Hosur-Sriperumbudur corridor with telecom SMT lines</span>
         </div>
       </div>
     </div>
@@ -124,9 +299,9 @@
 
     <!-- Subheader with Date Display -->
     <div class="bg-slate-900/40 border-b border-slate-800/60 py-2.5 px-4 text-xs font-mono text-slate-400 text-center">
-      <span id="header-date-en" class="font-semibold text-slate-300">Wednesday, 11 November 2026</span>
+      <span id="header-date-en" class="font-semibold text-slate-300">Thursday, 12 November 2026</span>
       <span class="mx-2 text-slate-600">•</span>
-      <span id="header-date-ta" class="tamil-text text-cyan-400">புதன்கிழமை, 11 நவம்பர் 2026</span>
+      <span id="header-date-ta" class="tamil-text text-cyan-400">வியாழக்கிழமை, 12 நவம்பர் 2026</span>
       <span class="mx-2 text-slate-600">•</span>
       <span class="text-slate-400">Total Stories: <strong id="total-articles-count" class="text-cyan-300 font-bold">8</strong></span>
     </div>
@@ -141,8 +316,8 @@
             <span>Silicon Node Race</span>
             <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
           </div>
-          <div class="text-xl font-bold font-mono text-slate-100">2nm GAAFET</div>
-          <div class="text-[11px] text-slate-400 mt-1">TSMC N2 HTOL Pass • Mass Scale</div>
+          <div class="text-xl font-bold font-mono text-slate-100">Intel 18A / 1.4nm</div>
+          <div class="text-[11px] text-slate-400 mt-1">RibbonFET & High-NA EUV</div>
         </div>
 
         <!-- Frequency Tracker -->
@@ -151,8 +326,8 @@
             <span>Telecom & RF Radar</span>
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
           </div>
-          <div class="text-xl font-bold font-mono text-slate-100">300 GHz / 100G</div>
-          <div class="text-[11px] text-slate-400 mt-1">IEEE 802.15.3d 6G Sub-THz</div>
+          <div class="text-xl font-bold font-mono text-slate-100">220 GHz / 80G</div>
+          <div class="text-[11px] text-slate-400 mt-1">IIT Madras 6G RFIC Testbed</div>
         </div>
 
         <!-- India Mission Tracker -->
@@ -161,8 +336,8 @@
             <span>Semicon India</span>
             <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
           </div>
-          <div class="text-xl font-bold font-mono text-slate-100">₹1,27,500 Cr</div>
-          <div class="text-[11px] text-slate-400 mt-1">Semicon 2.0 • Tata & Micron</div>
+          <div class="text-xl font-bold font-mono text-slate-100">Tata & Intel</div>
+          <div class="text-[11px] text-slate-400 mt-1">Dholera Fab Cleanroom Phase</div>
         </div>
 
         <!-- Chennai Hub Tracker -->
@@ -171,8 +346,8 @@
             <span>Chennai ECE Corridor</span>
             <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
           </div>
-          <div class="text-xl font-bold font-mono text-slate-100">CAST & 1.6T CPO</div>
-          <div class="text-[11px] text-slate-400 mt-1">IITM Photonics & Taramani Fab</div>
+          <div class="text-xl font-bold font-mono text-slate-100">MEMS & SMT Hub</div>
+          <div class="text-[11px] text-slate-400 mt-1">Anna Univ & Sriperumbudur</div>
         </div>
 
       </div>
@@ -212,7 +387,7 @@
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500 text-xs">
             🔍
           </span>
-          <input type="text" id="search-input" placeholder="Search VLSI, 6G, Fab, IITM..." class="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+          <input type="text" id="search-input" placeholder="Search Intel 18A, 6G, MEMS, IITM..." class="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
         </div>
 
       </div>
@@ -262,10 +437,10 @@
               <span>📷 Scan with Phone Camera</span>
             </h4>
             <p class="text-xs text-slate-300 leading-relaxed mb-3">
-              Connect your phone to the same Wi-Fi / hotspot as this computer, then point your camera at the QR code to open the site instantly.
+              Open directly on your phone: <strong class="text-cyan-400">https://daily-ece-news.netlify.app</strong>
             </p>
             <div class="flex items-center gap-2">
-              <input id="share-url-input" type="text" readonly class="text-xs font-mono bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-cyan-300 w-full select-all">
+              <input id="share-url-input" type="text" readonly value="https://daily-ece-news.netlify.app" class="text-xs font-mono bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-cyan-300 w-full select-all">
               <button onclick="copyShareUrl()" class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shrink-0">
                 Copy
               </button>
@@ -275,20 +450,12 @@
 
         <!-- Direct Share Actions -->
         <div class="grid grid-cols-2 gap-3 mb-5">
-          <a id="whatsapp-share-btn" href="#" target="_blank" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 text-xs font-semibold transition-all">
+          <a id="whatsapp-share-btn" href="https://api.whatsapp.com/send?text=https%3A%2F%2Fdaily-ece-news.netlify.app" target="_blank" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 text-xs font-semibold transition-all">
             <span>💬 Share via WhatsApp</span>
           </a>
           <button onclick="triggerWebShare()" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/30 border border-cyan-500/50 text-cyan-300 text-xs font-semibold transition-all">
             <span>📤 Native Share</span>
           </button>
-        </div>
-
-        <!-- Free Global Hosting Guide -->
-        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-[11px] text-slate-400">
-          <span class="text-amber-400 font-bold">💡 Want friends anywhere in the world to open it 24/7?</span>
-          <p class="mt-1">
-            You can publish this static site in 1 click to <strong class="text-slate-200">GitHub Pages</strong>, <strong class="text-slate-200">Vercel</strong>, or <strong class="text-slate-200">Netlify</strong> completely free!
-          </p>
         </div>
       </div>
     </div>
@@ -312,9 +479,1451 @@
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="data/news_data.js"></script>
-  <script src="assets/illustrations.js"></script>
-  <script src="assets/circuit.js"></script>
-  <script src="assets/app.js"></script>
+  <script>
+window.INITIAL_NEWS_DATA = {
+  "last_updated": "2026-11-12T18:46:43.641875",
+  "formatted_date": "Thursday, 12 November 2026",
+  "tamil_date": "வியாழக்கிழமை, 12 நவம்பர் 2026",
+  "next_scheduled_update": "2026-11-13T17:00:00",
+  "update_time_ist": "5:00 PM IST",
+  "edition": "Vol. 2026 • Issue 316",
+  "stats": {
+    "total_articles": 8,
+    "worldwide_count": 2,
+    "india_count": 2,
+    "tamilnadu_count": 2,
+    "chennai_count": 2
+  },
+  "articles": [
+    {
+      "id": "ece-chn-101",
+      "category": "chennai",
+      "category_label": "Chennai ECE Spotlight",
+      "category_tamil": "சென்னை ECE செய்திகள்",
+      "category_badge_color": "emerald",
+      "title": "IIT Madras ECE Department Unveils Indigenous RFIC & 6G Sub-THz Testbed at Research Park",
+      "title_tamil": "ஐஐடி மெட்ராஸ் ECE துறை: உள்நாட்டு RFIC சிப் மற்றும் 6G சப்-டெராஹெர்ட்ஸ் சோதனை தளம் தொடக்கம்!",
+      "summary": "The Department of Electrical Engineering at IIT Madras has inaugurated an end-to-end 6G sub-THz wireless testbed operating at 140 GHz to 220 GHz. Powered by indigenous Radio Frequency Integrated Circuits (RFICs) designed by IITM faculty and incubated startups, the platform achieved ultra-low-latency 80 Gbps wireless beamforming over campus links.",
+      "summary_tamil": "ஐஐடி மெட்ராஸ் எலக்ட்ரானிக்ஸ் துறை 140 GHz முதல் 220 GHz வரையிலான அதிநவீன 6G வயர்லெஸ் சோதனை மையத்தை அமைத்துள்ளது. இதில் உள்நாட்டிலேயே வடிவமைக்கப்பட்ட RFIC சில்லுகள் மூலம் வினாடிக்கு 80 Gbps வேகத்தில் கம்பியில்லா தரவு பரிமாற்றம் சாதிக்கப்பட்டுள்ளது.",
+      "timestamp": "2026-11-12 16:45 IST",
+      "tags": [
+        "6G Wireless",
+        "IIT Madras",
+        "RFIC Design",
+        "Sub-THz",
+        "Telecom Hardware"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "sub_thz",
+      "key_highlights": [
+        "Indigenous BiCMOS RF transceiver operating across D-band (130-175 GHz) with phased array antennas",
+        "Supports 10x lower latency for autonomous vehicle telemetry and robotic telemedicine networks",
+        "Direct collaboration with Department of Telecommunications (DoT) and Bharat 6G Alliance",
+        "Open for testing to Indian semiconductor startups and M.Tech/Ph.D. research scholars"
+      ],
+      "key_highlights_tamil": [
+        "டி-பேண்ட் (130-175 GHz) அலைவரிசையில் செயல்படும் உள்நாட்டு BiCMOS RF டிரான்ஸ்ஸீவர் சிப்",
+        "தானியங்கி கார்கள் மற்றும் ரோபோட்டிக் மருத்துவத்திற்கு 10 மடங்கு குறைவான தாமத சிக்னல்",
+        "மத்திய தொலைத்தொடர்பு துறை மற்றும் பாரத் 6G அலையன்ஸ் உடனான நேரடி கூட்டு",
+        "இந்திய குறைக்கடத்தி ஸ்டார்ட்அப்கள் மற்றும் தமிழக ஆராய்ச்சி மாணவர்களுக்கு திறந்தவெளி அணுகல்"
+      ],
+      "source": "IIT Madras Telecom & RF Research Division",
+      "author": "Prof. V. Kamakoti & RF Systems Group",
+      "read_time": "3 min read"
+    },
+    {
+      "id": "ece-chn-102",
+      "category": "chennai",
+      "category_label": "Chennai ECE Spotlight",
+      "category_tamil": "சென்னை ECE செய்திகள்",
+      "category_badge_color": "emerald",
+      "title": "Anna University CEG ECE Lab Develops Ultra-Low-Power MEMS Sensor Array for EV Battery Diagnostics",
+      "title_tamil": "அண்ணா பல்கலைக்கழகம் CEG: மின்சார வாகன பேட்டரிகளுக்கான அதிநவீன MEMS சென்சார் சிப் கண்டுபிடிப்பு!",
+      "summary": "ECE researchers at the College of Engineering, Guindy (CEG), Anna University, have patented an integrated micro-electro-mechanical systems (MEMS) sensor array that monitors localized thermal impedance and lithium-dendrite growth inside electric vehicle battery packs, preventing thermal runaway in real time.",
+      "summary_tamil": "அண்ணா பல்கலைக்கழக கிண்டி பொறியியல் கல்லூரி (CEG) ECE ஆராய்ச்சியாளர்கள் மின்சார வாகன பேட்டரிகளின் வெப்பநிலையை முன்கூட்டியே கணித்து தீ விபத்துகளைத் தடுக்கும் நுண்ணிய MEMS சென்சார் சிப்பை கண்டுபிடித்து காப்புரிமை பெற்றுள்ளனர்.",
+      "timestamp": "2026-11-12 15:30 IST",
+      "tags": [
+        "MEMS Sensors",
+        "Anna University CEG",
+        "EV Electronics",
+        "Embedded Systems",
+        "CleanTech"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "cleanroom",
+      "key_highlights": [
+        "Operates under 50 microwatts power budget using ambient thermal energy scavenging",
+        "Sub-millimeter MEMS pressure and temperature transducers fabricated on silicon wafers",
+        "Direct interface with CAN-bus automotive microcontrollers for instantaneous shutoff triggers",
+        "Shortlisted by leading Chennai-based EV manufacturers for commercial in-pack integration"
+      ],
+      "key_highlights_tamil": [
+        "வெறும் 50 மைக்ரோவாட் மின்சாரத்தில் இயங்கும் ஆற்றல் சேகரிப்பு சென்சார் கட்டமைப்பு",
+        "சிலிக்கான் வேஃபரில் தயாரிக்கப்பட்ட மில்லிமீட்டருக்கும் குறைவான நுண் அழுத்த மற்றும் வெப்ப உணர்விகள்",
+        "ஆட்டோமோட்டிவ் CAN-பஸ் கன்ட்ரோலருடன் நேரடியாக இணைந்து உடனடியாக பேட்டரியை பாதுகாக்கும் வசதி",
+        "சென்னையைச் சேர்ந்த முன்னணி மின்சார வாகன நிறுவனங்களின் வணிகப் பயன்பாட்டிற்கு தேர்வு"
+      ],
+      "source": "Anna University Dept. of ECE Research Bulletin",
+      "author": "Dr. S. Meenakshi, Microelectronics Division",
+      "read_time": "3 min read"
+    },
+    {
+      "id": "ece-tn-101",
+      "category": "tamilnadu",
+      "category_label": "Tamil Nadu ECE Horizon",
+      "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
+      "category_badge_color": "cyan",
+      "title": "Foxconn & Bharat FIH Expand Hosur-Sriperumbudur Hub with Next-Gen High-Density Telecom SMT Lines",
+      "title_tamil": "பாக்ஸ்கான் & பாரத் FIH: ஓசூர்-ஸ்ரீபெரும்புதூரில் அதிநவீன டெலிகாம் எலக்ட்ரானிக்ஸ் தயாரிப்பு விரிவாக்கம்!",
+      "summary": "Expanding Tamil Nadu's hardware leadership, Foxconn subsidiary Bharat FIH has deployed 14 high-precision Surface Mount Technology (SMT) automated lines in Hosur and Sriperumbudur, dedicated to assembling 5G enterprise routers, satellite user terminals, and high-frequency RF printed circuit board assemblies (PCBAs).",
+      "summary_tamil": "தமிழ்நாட்டின் மின்னணு உற்பத்தியை அடுத்த கட்டத்திற்கு கொண்டு செல்லும் வகையில், பாக்ஸ்கான் நிறுவனம் ஓசூர் மற்றும் ஸ்ரீபெரும்புதூரில் 14 தானியங்கி SMT உற்பத்தி வரிகளை அமைத்து, 5G ரூட்டர்கள் மற்றும் செயற்கைக்கோள் தகவல் தொடர்பு சாதனங்களை தயாரிக்கத் தொடங்கியுள்ளது.",
+      "timestamp": "2026-11-12 14:15 IST",
+      "tags": [
+        "Electronics Manufacturing",
+        "Hosur Hub",
+        "SMT Technology",
+        "PCBA",
+        "Tamil Nadu EMS"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "telecom",
+      "key_highlights": [
+        "Supports ultra-fine 01005 passives and 0.3mm micro-BGA semiconductor placement accuracy",
+        "Creates over 2,500 core ECE manufacturing and automated optical inspection (AOI) engineering roles",
+        "Certified for aerospace and ruggedized industrial IoT communication modules",
+        "Bolsters Tamil Nadu's target of reaching $100 Billion in electronics hardware exports by 2030"
+      ],
+      "key_highlights_tamil": [
+        "0.3 மிமீ அளவுள்ள மைக்ரோ-BGA குறைக்கடத்தி சிப்களை அதிதுல்லியமாக பொருத்தும் SMT தொழில்நுட்பம்",
+        "2,500க்கும் மேற்பட்ட ECE பொறியாளர்கள் மற்றும் தரக்கட்டுப்பாட்டு ஆய்வாளர்களுக்கு புதிய வேலைவாய்ப்பு",
+        "விண்வெளி மற்றும் தொழில்முறை IoT தகவல் தொடர்பு கருவிகளுக்கான சர்வதேச தரச்சான்றிதழ்",
+        "2030க்குள் 100 பில்லியன் டாலர் எலக்ட்ரானிக்ஸ் ஏற்றுமதி என்ற தமிழக அரசின் இலக்கிற்கு வலுவூட்டல்"
+      ],
+      "source": "Tamil Nadu Guidance Bureau & EMS Monitor",
+      "author": "Industrial Electronics Bureau",
+      "read_time": "4 min read"
+    },
+    {
+      "id": "ece-tn-102",
+      "category": "tamilnadu",
+      "category_label": "Tamil Nadu ECE Horizon",
+      "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
+      "category_badge_color": "cyan",
+      "title": "Tamil Nadu Semiconductor Mission Approves ₹180-Crore Compound Semiconductor R&D Fab in Trichy Corridor",
+      "title_tamil": "திருச்சி-தஞ்சை தடத்தில் ₹180 கோடியில் கூட்டு குறைக்கடத்தி (GaN/GaAs) ஆராய்ச்சி மையம் ஒப்புதல்!",
+      "summary": "Under the Tamil Nadu Semiconductor Mission 2030, the State Cabinet has cleared a ₹180-crore compound semiconductor incubation foundry near NIT Trichy. The facility will fabricate Gallium Nitride (GaN) and Gallium Arsenide (GaAs) monolithic microwave integrated circuits (MMICs) for defense radars and 5G power amplifiers.",
+      "summary_tamil": "தமிழக அரசின் குறைக்கடத்தி மிஷன் கீழ், திருச்சி NIT அருகே ₹180 கோடியில் காலியம் நைட்ரைடு (GaN) மற்றும் காலியம் ஆர்சனைடு (GaAs) சிப் தயாரிக்கும் சிறப்பு ஆராய்ச்சி மையத்திற்கு தமிழக அமைச்சரவை ஒப்புதல் வழங்கியுள்ளது.",
+      "timestamp": "2026-11-12 13:00 IST",
+      "tags": [
+        "Compound Semiconductors",
+        "GaN MMIC",
+        "NIT Trichy",
+        "Defense Radar",
+        "Tamil Nadu"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "chip",
+      "key_highlights": [
+        "Focus on high-breakdown voltage GaN-on-SiC devices for 5G base station RF power stages",
+        "Houses high-vacuum electron-beam evaporation and reactive-ion etching (RIE) tools",
+        "Joint research consortium established with NIT Trichy, Bharathidasan University, and DRDO",
+        "Provides subsidized prototyping runs for South Indian aerospace & RF startups"
+      ],
+      "key_highlights_tamil": [
+        "5G செல்போன் டவர்களுக்கான காலியம் நைட்ரைடு (GaN-on-SiC) பவர் பெருக்கிகள் தயாரிப்பு",
+        "அதிநவீன ரியாக்டிவ்-அயன் எச்சிங் (RIE) மற்றும் எலக்ட்ரான்-பீம் வேஃபர் பூச்சு கருவிகள்",
+        "என்ஐடி திருச்சி மற்றும் பாதுகாப்பு ஆராய்ச்சி நிறுவனம் (DRDO) இணைந்து செயல்படுத்தும் திட்டம்",
+        "தென்னிந்திய விண்வெளி மற்றும் எலக்ட்ரானிக்ஸ் ஸ்டார்ட்அப்களுக்கு குறைந்த செலவில் முன்மாதிரி சிப்கள்"
+      ],
+      "source": "State Semiconductor Directorate, Chennai",
+      "author": "Policy & Technology Bureau",
+      "read_time": "3 min read"
+    },
+    {
+      "id": "ece-ind-101",
+      "category": "india",
+      "category_label": "India National ECE",
+      "category_tamil": "இந்தியா தேசிய ECE செய்திகள்",
+      "category_badge_color": "amber",
+      "title": "Tata Electronics & Intel Form Strategic Packaging Alliance; Dholera 300mm Fab Foundation Nears Completion",
+      "title_tamil": "டாடா எலக்ட்ரானிக்ஸ் & இன்டெல் கூட்டு: டோலேரா 300 மிமீ மெகா ஃபேப் கட்டுமானத்தில் புதிய மைல்கல்!",
+      "summary": "Tata Electronics has announced a strategic semiconductor technical collaboration exploring advanced packaging paradigms and ecosystem sourcing alongside Intel. Meanwhile, civil construction of India's flagship ₹91,000-crore 300mm pure-play foundry in Dholera, Gujarat, entered its cleanroom mechanical fit-out phase with PSMC.",
+      "summary_tamil": "டாடா எலக்ட்ரானிக்ஸ் நிறுவனம் இன்டெல் நிறுவனத்துடன் மேம்பட்ட சிப் பேக்கேஜிங் தொழில்நுட்ப கூட்டணிக்கான பேச்சுவார்த்தையை முன்னெடுத்துள்ளது. அதே சமயம் குஜராத்தின் டோலேராவில் அமையும் ₹91,000 கோடி மதிப்பிலான இந்தியாவின் முதல் 300 மிமீ மெகா ஃபேப் க்ளீன்ரூம் கட்டுமானப் பணிகள் இறுதிக்கட்டத்தை எட்டியுள்ளன.",
+      "timestamp": "2026-11-12 11:30 IST",
+      "tags": [
+        "Tata Electronics",
+        "Intel Alliance",
+        "Dholera Fab",
+        "India Semiconductor Mission",
+        "VLSI"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "circuit_flag",
+      "key_highlights": [
+        "Cleanroom Class 1/10 flooring installation underway for 28nm, 40nm, and 90nm lithography bays",
+        "Over 150 ASML, Lam Research, and Applied Materials semiconductor processing tools slated for Q1 2027 delivery",
+        "Assam OSAT facility successfully initiates pilot test runs on automotive microcontroller packaging",
+        "Direct national recruitment drive launched for 1,800 fresh ECE VLSI and process integration engineers"
+      ],
+      "key_highlights_tamil": [
+        "28nm, 40nm மற்றும் 90nm சிப் தயாரிப்பிற்கான கிளாஸ் 1/10 அல்ட்ரா-க்ளீன்ரூம் தளங்கள் அமைப்பு",
+        "150க்கும் மேற்பட்ட ASML மற்றும் அப்ளைடு மெட்டீரியல்ஸ் நவீன ஃபேப்ரிகேஷன் கருவிகள் வரவு",
+        "அசாம் பேக்கேஜிங் ஆலையில் ஆட்டோமோட்டிவ் மைக்ரோகண்ட்ரோலர்களுக்கான முன்மாதிரி சோதனை வெற்றி",
+        "1,800 இந்திய ECE மற்றும் VLSI பட்டதாரிகளுக்கு நேரடி வேலைவாய்ப்பு முகாம் அறிவிப்பு"
+      ],
+      "source": "India Semiconductor Mission (ISM) & Tata Communications",
+      "author": "National Industrial Bureau, New Delhi",
+      "read_time": "4 min read"
+    },
+    {
+      "id": "ece-ind-102",
+      "category": "india",
+      "category_label": "India National ECE",
+      "category_tamil": "இந்தியா தேசிய ECE செய்திகள்",
+      "category_badge_color": "amber",
+      "title": "C-DoT & MeitY Roll Out 100% Indigenous 5G Standalone (SA) Core and Open-RAN Stack to Defense Networks",
+      "title_tamil": "மத்திய அரசு & C-DoT சாதனை: நாட்டின் பாதுகாப்பிற்கு 100% உள்நாட்டு 5G SA கோர் மற்றும் O-RAN மென்பொருள்!",
+      "summary": "The Centre for Development of Telematics (C-DoT) has deployed India's first fully indigenous 5G Standalone (SA) Core and Open-RAN network software stack across critical border communication hubs. The hardware-agnostic platform eliminates reliance on foreign proprietary telecom stacks.",
+      "summary_tamil": "மத்திய தொலைத்தொடர்பு ஆராய்ச்சி அமைப்பான சி-டாட் (C-DoT), முழுக்க முழுக்க இந்தியாவில் உருவாக்கப்பட்ட 5G ஸ்டாண்ட்அலோன் நெட்வொர்க் கட்டமைப்பை ராணுவ எல்லை பாதுகாப்பு தொலைத்தொடர்பில் வெற்றிகரமாக இணைத்துள்ளது.",
+      "timestamp": "2026-11-12 10:15 IST",
+      "tags": [
+        "C-DoT",
+        "Indigenous 5G",
+        "Open-RAN",
+        "Defense Tech",
+        "Telecom Core"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "quantum_space",
+      "key_highlights": [
+        "3GPP Release 17 compliant cloud-native Service-Based Architecture (SBA) designed in India",
+        "Custom cryptographic hardware security modules (HSM) thwart electronic eavesdropping",
+        "Supports sub-millisecond beam-steered emergency response channels for armed forces",
+        "Slated for nationwide commercial rollout with BSNL 5G networks in 2027"
+      ],
+      "key_highlights_tamil": [
+        "சர்வதேச 3GPP ரிலீஸ் 17 தரநிலைகளுடன் இந்தியாவில் வடிவமைக்கப்பட்ட கிளவுட்-நேட்டிவ் 5G மென்பொருள்",
+        "ஒட்டுக் கேட்பதை முற்றிலுமாக தடுக்கும் உள்நாட்டு வன்பொருள் பாதுகாப்பு சிப்கள் (HSM)",
+        "ராணுவத்திற்கு மில்லி-வினாடி வேகத்தில் துல்லியமான சிக்னல் வழங்கும் பீம்-ஸ்டீயரிங் தொழில்நுட்பம்",
+        "அடுத்த கட்டமாக பிஎஸ்என்எல் (BSNL) 5G நெட்வொர்க்கில் நாடு முழுவதும் பயன்பாட்டிற்கு வரவுள்ளது"
+      ],
+      "source": "Department of Telecommunications (DoT) Press Dispatch",
+      "author": "Defense Communications Bureau",
+      "read_time": "3 min read"
+    },
+    {
+      "id": "ece-ww-101",
+      "category": "worldwide",
+      "category_label": "Worldwide ECE Frontier",
+      "category_tamil": "சர்வதேச ECE செய்திகள்",
+      "category_badge_color": "purple",
+      "title": "Intel 18A Node Successfully Powers on Panther Lake Architecture with RibbonFET GAA & PowerVia",
+      "title_tamil": "இன்டெல் 18A (Intel 18A) நானோ சிப் வெற்றி: ரிப்பன்பெட் & பவர்வியா தொழில்நுட்பத்தில் Panther Lake இயக்கம்!",
+      "summary": "Intel Corporation has confirmed that Panther Lake, its lead client processor family fabricated on the cutting-edge Intel 18A (sub-2nm class) process node, has booted Windows and passed full silicon system power-on validation. Featuring RibbonFET Gate-All-Around transistors and PowerVia backside power routing, yield metrics are tracking ahead of expectations.",
+      "summary_tamil": "இன்டெல் நிறுவனம் தனது 18A (2 நானோமீட்டருக்கும் குறைவான) தயாரிப்பு நோடில் உருவாக்கப்பட்ட Panther Lake AI செயலியை வெற்றிகரமாக இயக்கி சோதித்துள்ளது. இதில் உள்ள RibbonFET மற்றும் சிப்பின் பின்புறம் மின்சாரம் வழங்கும் PowerVia தொழில்நுட்பம் பெரும் செயல்திறன் முன்னேற்றத்தை தந்துள்ளது.",
+      "timestamp": "2026-11-12 09:30 IST",
+      "tags": [
+        "Intel 18A",
+        "RibbonFET",
+        "PowerVia",
+        "Panther Lake",
+        "Semiconductor Physics"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "gaafet",
+      "key_highlights": [
+        "Intel 18A implements 4-stacked horizontal RibbonFET channels surrounded by high-k dielectric",
+        "PowerVia separates signal wires on top from power rails on the backside, eliminating signal droop",
+        "Delivers 15% IPC performance enhancement and 30% reduction in chiplet power consumption",
+        "Targets commercial client PC shipments and enterprise AI workstations in 2026/27"
+      ],
+      "key_highlights_tamil": [
+        "நான்கு அடுக்குகளாக அமைக்கப்பட்ட RibbonFET நானோஷீட் மற்றும் உயர்-கே மின்காப்பு பூச்சு",
+        "PowerVia மூலம் சிக்னல் கம்பிகள் மேலேயும், மின்சார கம்பிகள் சிப்பின் அடியிலும் பிரிக்கப்பட்டு மின்கசிவு தடுப்பு",
+        "15% கூடுதல் பிராசசிங் வேகம் மற்றும் 30% குறைவான மின்தேவை கொண்ட புதிய AI சிப்",
+        "2026/27ல் சர்வதேச கணினிகள் மற்றும் AI பணிநிலையங்களில் வணிக பயன்பாட்டிற்கு வரவுள்ளது"
+      ],
+      "source": "Intel Foundry Technical Symposium & Microprocessor Report",
+      "author": "Dr. Ann Kelleher, Technology Development",
+      "read_time": "4 min read"
+    },
+    {
+      "id": "ece-ww-102",
+      "category": "worldwide",
+      "category_label": "Worldwide ECE Frontier",
+      "category_tamil": "சர்வதேச ECE செய்திகள்",
+      "category_badge_color": "purple",
+      "title": "ASML Ships Next-Gen High-NA EUV Scanner (0.55 NA) for 14-Angstrom (1.4nm) Wafer Pilot Lines",
+      "title_tamil": "ASML நிறுவனம் சாதனை: 1.4 நானோமீட்டர் சிப் தயாரிப்பிற்கான 'ஹை-NA EUV' லேசர் கருவி விநியோகம்!",
+      "summary": "Semiconductor lithography giant ASML has completed delivery of its commercial High-NA (Numerical Aperture 0.55) extreme ultraviolet scanner system, the TWINSCAN EXE:5200. Enabling sub-8nm pitch single-exposure printing, the revolutionary optics eliminate quadruple patterning, charting the path toward 14-Angstrom (1.4nm) and 10-Angstrom silicon chips.",
+      "summary_tamil": "நெதர்லாந்தின் ASML நிறுவனம் அடுத்த தலைமுறை 1.4 நானோமீட்டர் (14Å) சில்லுகளை அச்சிடும் திறன் கொண்ட உலகின் மிகச்சக்திவாய்ந்த ஹை-NA EUV லேசர் லித்தோகிராபி கருவியை (TWINSCAN EXE:5200) முன்னணி குறைக்கடத்தி ஆலைகளுக்கு விநியோகித்துள்ளது.",
+      "timestamp": "2026-11-12 08:15 IST",
+      "tags": [
+        "ASML High-NA EUV",
+        "1.4nm Angstrom Era",
+        "Photolithography",
+        "Semiconductor Tools",
+        "VLSI"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "photonics",
+      "key_highlights": [
+        "Numerical aperture increased from 0.33 to 0.55 using anamorphic Zeiss optical mirrors",
+        "Resolves transistor features down to 8 nanometers with a single laser exposure pass",
+        "Reduces cycle times by 35% compared to complex EUV multi-patterning methods",
+        "Deployed at TSMC, Intel, and Samsung pilot fabs for Angstrom-era volume scaling"
+      ],
+      "key_highlights_tamil": [
+        "ஜெய்ச் (Zeiss) சிறப்பு முகம் கொண்ட கண்ணாடிகள் மூலம் நியூமெரிக்கல் அப்பர்ச்சர் 0.55 ஆக அதிகரிப்பு",
+        "ஒற்றை லேசர் கதிர்வீச்சு மூலம் 8 நானோமீட்டர் நுண் டிரான்சிஸ்டர் அமைப்புகளை அச்சிடும் துல்லியம்",
+        "பழைய முறைகளை விட 35% குறைந்த நேரத்தில் சிலிக்கான் வேஃபர் தயாரிப்பு சுழற்சி",
+        "டிஎஸ்எம்சி, இன்டெல் மற்றும் சாம்சங் ஆராய்ச்சி ஆலைகளில் 1.4nm சிப் தயாரிப்பிற்கு பொருத்தம்"
+      ],
+      "source": "Semiconductor Engineering Review & ASML Veldhoven",
+      "author": "Optics & Lithography Working Group",
+      "read_time": "3 min read"
+    }
+  ]
+};
+/**
+ * Colorful Vector Illustration Generators for ECE Domains
+ * Renders high-fidelity, vibrant SVG artwork for semiconductors, 6G, photonics, and quantum hardware.
+ */
+const ECEIllustrations = {
+  photonics: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="optBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#090d16" />
+          <stop offset="50%" stop-color="#111827" />
+          <stop offset="100%" stop-color="#1e1035" />
+        </linearGradient>
+        <linearGradient id="laserBeam" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9" />
+          <stop offset="40%" stop-color="#a855f7" stop-opacity="1" />
+          <stop offset="80%" stop-color="#ec4899" stop-opacity="1" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="1" />
+        </linearGradient>
+        <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+          <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+        </radialGradient>
+        <filter id="glowPhotons" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <rect width="600" height="340" fill="url(#optBg)" />
+      
+      <!-- Silicon Substrate Grid -->
+      <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+        <line x1="50" y1="50" x2="550" y2="50" /><line x1="50" y1="120" x2="550" y2="120" />
+        <line x1="50" y1="190" x2="550" y2="190" /><line x1="50" y1="260" x2="550" y2="260" />
+        <line x1="120" y1="30" x2="120" y2="310" /><line x1="260" y1="30" x2="260" y2="310" />
+        <line x1="400" y1="30" x2="400" y2="310" /><line x1="520" y1="30" x2="520" y2="310" />
+      </g>
+
+      <!-- Optical Waveguide Paths -->
+      <path d="M 60 170 L 220 170 Q 250 170 260 140 Q 270 110 300 110 L 460 110" fill="none" stroke="#1e293b" stroke-width="12" stroke-linecap="round" />
+      <path d="M 60 170 L 220 170 Q 250 170 260 140 Q 270 110 300 110 L 460 110" fill="none" stroke="url(#laserBeam)" stroke-width="4" filter="url(#glowPhotons)" />
+      
+      <!-- Micro-ring Resonator -->
+      <circle cx="340" cy="180" r="45" fill="none" stroke="#1e293b" stroke-width="10" />
+      <circle cx="340" cy="180" r="45" fill="none" stroke="#ec4899" stroke-width="3.5" filter="url(#glowPhotons)" stroke-dasharray="10 4" />
+      <circle cx="340" cy="180" r="30" fill="url(#ringGlow)" />
+      
+      <!-- Photonic Transceiver Die -->
+      <rect x="440" y="80" width="100" height="180" rx="8" fill="#0f172a" stroke="#00f0ff" stroke-width="2" />
+      <text x="490" y="150" fill="#00f0ff" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">1.6 Tbps</text>
+      <text x="490" y="170" fill="#94a3b8" font-family="monospace" font-size="9" text-anchor="middle">CPO ENGINE</text>
+
+      <!-- Laser Emitter Module -->
+      <rect x="40" y="145" width="50" height="50" rx="6" fill="#1e1b4b" stroke="#a855f7" stroke-width="2" />
+      <circle cx="65" cy="170" r="8" fill="#ffffff" filter="url(#glowPhotons)" />
+      
+      <!-- Traveling Photons -->
+      <circle cx="150" cy="170" r="5" fill="#00f0ff" filter="url(#glowPhotons)" />
+      <circle cx="210" cy="170" r="5" fill="#a855f7" filter="url(#glowPhotons)" />
+      <circle cx="390" cy="110" r="5" fill="#ec4899" filter="url(#glowPhotons)" />
+      
+      <!-- Spectrum Band Indicator -->
+      <rect x="30" y="275" width="220" height="35" rx="6" fill="rgba(15,23,42,0.85)" stroke="#334155" />
+      <text x="42" y="297" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="bold">λ = 1310 nm / 1550 nm O-Band</text>
+    </svg>
+  `,
+
+  telecom: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="telBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#06121e" />
+          <stop offset="100%" stop-color="#0d2b3a" />
+        </linearGradient>
+        <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#10b981" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.1" />
+        </linearGradient>
+        <filter id="telGlow">
+          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+      </defs>
+      <rect width="600" height="340" fill="url(#telBg)" />
+
+      <!-- Radiating RF Beam Waves -->
+      <path d="M 120 220 Q 300 80 520 120 L 540 240 Q 300 160 120 220 Z" fill="url(#beamGradient)" />
+      
+      <!-- Concentric Phased Array Wavefronts -->
+      <circle cx="120" cy="220" r="70" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6" />
+      <circle cx="120" cy="220" r="130" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.4" />
+      <circle cx="120" cy="220" r="200" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="10 8" opacity="0.3" />
+      <circle cx="120" cy="220" r="280" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="12 10" opacity="0.2" />
+
+      <!-- 5G / 6G Small Cell Antenna Tower -->
+      <g transform="translate(80, 100)">
+        <polygon points="40,20 10,140 70,140" fill="#0f172a" stroke="#10b981" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="0" stroke="#00f0ff" stroke-width="4" />
+        <!-- Antenna Elements Array -->
+        <rect x="25" y="10" width="30" height="20" rx="3" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+        <circle cx="40" cy="0" r="6" fill="#10b981" filter="url(#telGlow)" />
+        <line x1="20" y1="60" x2="60" y2="60" stroke="#334155" stroke-width="2" />
+        <line x1="15" y1="100" x2="65" y2="100" stroke="#334155" stroke-width="2" />
+      </g>
+
+      <!-- Constellation Diagram (QAM-64) -->
+      <g transform="translate(420, 40)">
+        <rect width="140" height="140" rx="8" fill="rgba(15,23,42,0.9)" stroke="#10b981" stroke-width="1.5" />
+        <line x1="70" y1="15" x2="70" y2="125" stroke="#334155" stroke-width="1" />
+        <line x1="15" y1="70" x2="125" y2="70" stroke="#334155" stroke-width="1" />
+        <!-- Constellation Points -->
+        <circle cx="45" cy="45" r="3" fill="#00f0ff" filter="url(#telGlow)" />
+        <circle cx="95" cy="45" r="3" fill="#00f0ff" filter="url(#telGlow)" />
+        <circle cx="45" cy="95" r="3" fill="#00f0ff" filter="url(#telGlow)" />
+        <circle cx="95" cy="95" r="3" fill="#00f0ff" filter="url(#telGlow)" />
+        <circle cx="30" cy="30" r="2" fill="#10b981" /><circle cx="60" cy="30" r="2" fill="#10b981" />
+        <circle cx="80" cy="30" r="2" fill="#10b981" /><circle cx="110" cy="30" r="2" fill="#10b981" />
+        <text x="70" y="135" fill="#10b981" font-family="monospace" font-size="9" text-anchor="middle">256-QAM BEAMFORMING</text>
+      </g>
+
+      <!-- O-RAN Specification Badge -->
+      <rect x="350" y="270" width="210" height="40" rx="6" fill="rgba(15,23,42,0.9)" stroke="#00f0ff" stroke-width="1" />
+      <text x="365" y="295" fill="#34d399" font-family="sans-serif" font-size="12" font-weight="bold">O-RAN mmWave 28 GHz</text>
+    </svg>
+  `,
+
+  cleanroom: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="crBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0b1329" />
+          <stop offset="100%" stop-color="#04223d" />
+        </linearGradient>
+        <radialGradient id="waferGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e0f2fe" />
+          <stop offset="35%" stop-color="#38bdf8" />
+          <stop offset="65%" stop-color="#818cf8" />
+          <stop offset="90%" stop-color="#c084fc" />
+          <stop offset="100%" stop-color="#0284c7" />
+        </radialGradient>
+        <linearGradient id="euvLaser" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#c084fc" stop-opacity="1" />
+          <stop offset="50%" stop-color="#a855f7" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.9" />
+        </linearGradient>
+        <filter id="cleanGlow">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+      </defs>
+      <rect width="600" height="340" fill="url(#crBg)" />
+
+      <!-- ISO Class 1 Cleanroom Flow Vectors -->
+      <g stroke="rgba(56, 189, 248, 0.15)" stroke-width="1.5">
+        <line x1="80" y1="20" x2="80" y2="100" stroke-dasharray="6 6" />
+        <line x1="160" y1="20" x2="160" y2="100" stroke-dasharray="6 6" />
+        <line x1="240" y1="20" x2="240" y2="100" stroke-dasharray="6 6" />
+        <line x1="360" y1="20" x2="360" y2="100" stroke-dasharray="6 6" />
+        <line x1="480" y1="20" x2="480" y2="100" stroke-dasharray="6 6" />
+      </g>
+
+      <!-- 300mm Silicon Wafer with Iridescent Die Grid -->
+      <g transform="translate(180, 110)">
+        <ellipse cx="120" cy="110" rx="140" ry="85" fill="url(#waferGrad)" stroke="#38bdf8" stroke-width="2" />
+        <!-- Wafer Flat Notch -->
+        <path d="M 110 25 L 130 25" stroke="#0f172a" stroke-width="4" />
+        
+        <!-- Die Patterns on Wafer -->
+        <g stroke="rgba(15, 23, 42, 0.45)" stroke-width="1">
+          <line x1="30" y1="90" x2="210" y2="90" /><line x1="20" y1="110" x2="220" y2="110" /><line x1="40" y1="130" x2="200" y2="130" />
+          <line x1="70" y1="50" x2="70" y2="170" /><line x1="100" y1="40" x2="100" y2="180" />
+          <line x1="130" y1="40" x2="130" y2="180" /><line x1="160" y1="50" x2="160" y2="170" />
+        </g>
+      </g>
+
+      <!-- EUV / DUV Lithography Objective Lens & Beam -->
+      <polygon points="280,20 320,20 310,150 290,150" fill="url(#euvLaser)" filter="url(#cleanGlow)" />
+      <ellipse cx="300" cy="155" rx="18" ry="6" fill="#ffffff" filter="url(#cleanGlow)" />
+      
+      <!-- Stepper Objective Lens Housing -->
+      <rect x="260" y="10" width="80" height="35" rx="4" fill="#1e293b" stroke="#00f0ff" stroke-width="1.5" />
+      <text x="300" y="32" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">EUV 13.5nm</text>
+
+      <!-- Spec Banner -->
+      <rect x="40" y="270" width="220" height="42" rx="6" fill="rgba(15,23,42,0.9)" stroke="#38bdf8" stroke-width="1" />
+      <text x="55" y="295" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="bold">Class 100 Cleanroom • CAST</text>
+    </svg>
+  `,
+
+  chip: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="chipBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0c0a1a" />
+          <stop offset="100%" stop-color="#1e1438" />
+        </linearGradient>
+        <linearGradient id="dieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1e293b" />
+          <stop offset="100%" stop-color="#0f172a" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="340" fill="url(#chipBg)" />
+
+      <!-- Outer IC Package Pins -->
+      <g stroke="#f59e0b" stroke-width="4" stroke-linecap="round">
+        <line x1="160" y1="50" x2="160" y2="70" /><line x1="200" y1="50" x2="200" y2="70" /><line x1="240" y1="50" x2="240" y2="70" />
+        <line x1="280" y1="50" x2="280" y2="70" /><line x1="320" y1="50" x2="320" y2="70" /><line x1="360" y1="50" x2="360" y2="70" />
+        <line x1="400" y1="50" x2="400" y2="70" /><line x1="440" y1="50" x2="440" y2="70" />
+        <!-- Bottom pins -->
+        <line x1="160" y1="270" x2="160" y2="290" /><line x1="200" y1="270" x2="200" y2="290" /><line x1="240" y1="270" x2="240" y2="290" />
+        <line x1="280" y1="270" x2="280" y2="290" /><line x1="320" y1="270" x2="320" y2="290" /><line x1="360" y1="270" x2="360" y2="290" />
+        <line x1="400" y1="270" x2="400" y2="290" /><line x1="440" y1="270" x2="440" y2="290" />
+      </g>
+
+      <!-- Silicon Die Package -->
+      <rect x="130" y="70" width="340" height="200" rx="10" fill="url(#dieGrad)" stroke="#f59e0b" stroke-width="2" />
+      
+      <!-- Core Architecture Blocks -->
+      <rect x="155" y="95" width="130" height="70" rx="4" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.5" />
+      <text x="220" y="130" fill="#a5b4fc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">RISC-V RV64GC</text>
+      <text x="220" y="150" fill="#64748b" font-family="sans-serif" font-size="9" text-anchor="middle">Out-of-Order Core</text>
+
+      <rect x="155" y="175" width="130" height="70" rx="4" fill="#064e3b" stroke="#34d399" stroke-width="1.5" />
+      <text x="220" y="210" fill="#6ee7b7" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">ASIL-D LOCKSTEP</text>
+      <text x="220" y="230" fill="#64748b" font-family="sans-serif" font-size="9" text-anchor="middle">Automotive Safety</text>
+
+      <rect x="315" y="95" width="130" height="150" rx="4" fill="#3b0764" stroke="#d8b4fe" stroke-width="1.5" />
+      <text x="380" y="140" fill="#e9d5ff" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">NPU MATRIX</text>
+      <text x="380" y="160" fill="#c084fc" font-family="monospace" font-size="10" text-anchor="middle">16 TOPS Edge AI</text>
+      <circle cx="380" cy="195" r="18" fill="none" stroke="#e9d5ff" stroke-width="1" stroke-dasharray="4 2" />
+      <text x="380" y="200" fill="#e9d5ff" font-family="monospace" font-size="10" text-anchor="middle">SRAM</text>
+    </svg>
+  `,
+
+  circuit_flag: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="inBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0a101f" />
+          <stop offset="100%" stop-color="#141c2e" />
+        </linearGradient>
+        <linearGradient id="triGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ff9933" />
+          <stop offset="50%" stop-color="#ffffff" />
+          <stop offset="100%" stop-color="#138808" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="340" fill="url(#inBg)" />
+
+      <!-- Tricolor Circuit Traces -->
+      <path d="M 40 80 L 160 80 L 220 140 L 400 140" fill="none" stroke="#ff9933" stroke-width="4" />
+      <circle cx="40" cy="80" r="7" fill="#ff9933" />
+      <path d="M 40 170 L 180 170 L 240 170 L 400 170" fill="none" stroke="#ffffff" stroke-width="4" />
+      <circle cx="40" cy="170" r="7" fill="#ffffff" />
+      <path d="M 40 260 L 160 260 L 220 200 L 400 200" fill="none" stroke="#138808" stroke-width="4" />
+      <circle cx="40" cy="260" r="7" fill="#138808" />
+
+      <!-- India Semiconductor Mission Mega Fab Emblem -->
+      <g transform="translate(420, 90)">
+        <rect width="140" height="160" rx="8" fill="#0f172a" stroke="url(#triGrad)" stroke-width="3" />
+        <!-- Ashoka Chakra Microchip Core -->
+        <circle cx="70" cy="65" r="32" fill="none" stroke="#38bdf8" stroke-width="2" />
+        <circle cx="70" cy="65" r="6" fill="#38bdf8" />
+        <!-- 24 Spokes (simplified) -->
+        <line x1="70" y1="35" x2="70" y2="95" stroke="#38bdf8" stroke-width="1.5" />
+        <line x1="40" y1="65" x2="100" y2="65" stroke="#38bdf8" stroke-width="1.5" />
+        <line x1="48" y1="43" x2="92" y2="87" stroke="#38bdf8" stroke-width="1.5" />
+        <line x1="48" y1="87" x2="92" y2="43" stroke="#38bdf8" stroke-width="1.5" />
+
+        <text x="70" y="125" fill="#f8fafc" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">SEMICON 2.0</text>
+        <text x="70" y="145" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">₹1,27,500 CR</text>
+      </g>
+    </svg>
+  `,
+
+  quantum_space: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="spBg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#020617" />
+          <stop offset="60%" stop-color="#0f172a" />
+          <stop offset="100%" stop-color="#0369a1" />
+        </linearGradient>
+        <linearGradient id="qkdBeam" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ec4899" stop-opacity="0.9" />
+          <stop offset="50%" stop-color="#a855f7" stop-opacity="0.7" />
+          <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.9" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="340" fill="url(#spBg)" />
+
+      <!-- Earth Atmosphere Curve -->
+      <ellipse cx="300" cy="420" rx="380" ry="140" fill="#0284c7" opacity="0.4" />
+      <ellipse cx="300" cy="440" rx="350" ry="120" fill="#0f172a" />
+
+      <!-- ISRO Quantum Satellite -->
+      <g transform="translate(240, 40)">
+        <!-- Solar Panels -->
+        <rect x="-80" y="15" width="70" height="35" rx="3" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
+        <rect x="70" y="15" width="70" height="35" rx="3" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.5" />
+        <!-- Satellite Body -->
+        <rect x="0" y="5" width="60" height="55" rx="6" fill="#cbd5e1" stroke="#f59e0b" stroke-width="2" />
+        <!-- Transmitter Lens -->
+        <circle cx="30" cy="55" r="10" fill="#ec4899" />
+      </g>
+
+      <!-- Entangled Photon Beam -->
+      <polygon points="266,95 274,95 315,275 285,275" fill="url(#qkdBeam)" opacity="0.75" />
+      
+      <!-- Ground Optical Receiver Station -->
+      <g transform="translate(270, 260)">
+        <path d="M 10 30 Q 30 5 50 30 Z" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+        <line x1="30" y1="5" x2="30" y2="0" stroke="#00f0ff" stroke-width="3" />
+        <circle cx="30" cy="0" r="4" fill="#00f0ff" />
+      </g>
+
+      <!-- Quantum Entanglement Label -->
+      <rect x="370" y="160" width="190" height="40" rx="6" fill="rgba(15,23,42,0.9)" stroke="#ec4899" stroke-width="1" />
+      <text x="382" y="185" fill="#f472b6" font-family="monospace" font-size="11" font-weight="bold">|ψ⟩ = (|00⟩ + |11⟩)/√2</text>
+    </svg>
+  `,
+
+  gaafet: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gaaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0b0f19" />
+          <stop offset="100%" stop-color="#1f1135" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="340" fill="url(#gaaBg)" />
+
+      <!-- Source and Drain Pillars -->
+      <rect x="100" y="90" width="70" height="160" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+      <text x="135" y="175" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">SOURCE</text>
+
+      <rect x="430" y="90" width="70" height="160" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+      <text x="465" y="175" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">DRAIN</text>
+
+      <!-- 3 Vertically Stacked Nanosheet Channels -->
+      <rect x="170" y="110" width="260" height="22" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+      <rect x="170" y="160" width="260" height="22" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+      <rect x="170" y="210" width="260" height="22" rx="3" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+
+      <!-- All-Around Gate Dielectric Wrap (Translucent High-k Metal Gate) -->
+      <rect x="250" y="70" width="100" height="200" rx="8" fill="rgba(168, 85, 247, 0.45)" stroke="#c084fc" stroke-width="2.5" />
+      <text x="300" y="60" fill="#e9d5ff" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">2nm GAAFET GATE</text>
+
+      <!-- Electron Current Flow Arrows -->
+      <g stroke="#00f0ff" stroke-width="2" stroke-linecap="round">
+        <line x1="200" y1="121" x2="225" y2="121" /><polyline points="220,117 226,121 220,125" />
+        <line x1="200" y1="171" x2="225" y2="171" /><polyline points="220,167 226,171 220,175" />
+        <line x1="200" y1="221" x2="225" y2="221" /><polyline points="220,217 226,221 220,225" />
+      </g>
+
+      <!-- Backside Power Delivery Network (BSPDN) -->
+      <rect x="100" y="280" width="400" height="24" rx="4" fill="#854d0e" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="300" y="296" fill="#fef08a" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">BACKSIDE POWER DELIVERY (BSPDN)</text>
+    </svg>
+  `,
+
+  sub_thz: () => `
+    <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="thzBg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#080e1c" />
+          <stop offset="100%" stop-color="#1e1b4b" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="340" fill="url(#thzBg)" />
+
+      <!-- Sub-THz High-Frequency Wave Packets -->
+      <path d="M 60 170 Q 90 120 120 170 T 180 170 T 240 170 T 300 170 T 360 170 T 420 170 T 480 170 T 540 170" fill="none" stroke="#a855f7" stroke-width="3" />
+      <path d="M 60 170 Q 75 140 90 170 T 120 170 T 150 170 T 180 170 T 210 170 T 240 170 T 270 170 T 300 170 T 330 170 T 360 170 T 390 170 T 420 170 T 450 170 T 480 170 T 510 170 T 540 170" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8" />
+
+      <!-- Horn Antenna Emitter -->
+      <polygon points="60,110 140,140 140,200 60,230" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+      
+      <!-- Lens Array -->
+      <ellipse cx="280" cy="170" rx="15" ry="70" fill="rgba(56, 189, 248, 0.25)" stroke="#38bdf8" stroke-width="2" />
+
+      <!-- Eye Diagram Metric Overlay -->
+      <g transform="translate(380, 50)">
+        <rect width="180" height="90" rx="6" fill="rgba(15,23,42,0.9)" stroke="#a855f7" stroke-width="1.5" />
+        <!-- Eye pattern curves -->
+        <path d="M 20 45 Q 65 15 110 45 Q 155 75 160 45" fill="none" stroke="#00f0ff" stroke-width="2" />
+        <path d="M 20 45 Q 65 75 110 45 Q 155 15 160 45" fill="none" stroke="#ec4899" stroke-width="2" />
+        <text x="90" y="80" fill="#c084fc" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">> 100 Gbps 300 GHz</text>
+      </g>
+    </svg>
+  `
+};
+
+/**
+ * Interactive Circuit Board Canvas Animation
+ * Renders glowing PCB circuit traces, microprocessor IC nodes, and pulsing electron packets
+ */
+(function() {
+  const canvas = document.getElementById('circuit-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  let nodes = [];
+  let traces = [];
+  let pulses = [];
+  let mouse = { x: -1000, y: -1000, radius: 150 };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initCircuit();
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  window.addEventListener('mouseleave', () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+  });
+
+  class Node {
+    constructor(x, y, type = 'normal') {
+      this.x = x;
+      this.y = y;
+      this.type = type; // 'normal', 'chip', 'via'
+      this.radius = type === 'chip' ? 6 : type === 'via' ? 3 : 2;
+      this.color = type === 'chip' ? '#00f0ff' : type === 'via' ? '#a855f7' : '#334155';
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+
+      if (this.type === 'chip') {
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+    }
+  }
+
+  class Trace {
+    constructor(startNode, endNode, color = 'rgba(30, 41, 59, 0.4)') {
+      this.start = startNode;
+      this.end = endNode;
+      this.color = color;
+      this.width = 1.5;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.moveTo(this.start.x, this.start.y);
+
+      // PCB 45-degree or 90-degree trace routing
+      const midX = this.end.x;
+      const midY = this.start.y;
+      ctx.lineTo(midX, midY);
+      ctx.lineTo(this.end.x, this.end.y);
+
+      // Distance to mouse for interactive glow
+      const dist = Math.hypot((this.start.x + this.end.x) / 2 - mouse.x, (this.start.y + this.end.y) / 2 - mouse.y);
+      if (dist < mouse.radius) {
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.6)';
+        ctx.lineWidth = 2;
+        ctx.shadowColor = '#00f0ff';
+        ctx.shadowBlur = 8;
+      } else {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = this.width;
+        ctx.shadowBlur = 0;
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  class Pulse {
+    constructor(trace) {
+      this.trace = trace;
+      this.progress = 0;
+      this.speed = 0.005 + Math.random() * 0.01;
+      const colors = ['#00f0ff', '#a855f7', '#f59e0b', '#10b981', '#ec4899'];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.size = 2.5;
+    }
+
+    update() {
+      this.progress += this.speed;
+      if (this.progress > 1) {
+        this.progress = 0;
+      }
+    }
+
+    draw() {
+      const p = this.progress;
+      let px, py;
+      const midX = this.trace.end.x;
+      const midY = this.trace.start.y;
+
+      if (p < 0.5) {
+        // traveling along horizontal trace
+        const subP = p / 0.5;
+        px = this.trace.start.x + (midX - this.trace.start.x) * subP;
+        py = this.trace.start.y;
+      } else {
+        // traveling along vertical trace
+        const subP = (p - 0.5) / 0.5;
+        px = midX;
+        py = midY + (this.trace.end.y - midY) * subP;
+      }
+
+      ctx.beginPath();
+      ctx.arc(px, py, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.shadowColor = this.color;
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  function initCircuit() {
+    nodes = [];
+    traces = [];
+    pulses = [];
+
+    const gridSize = 80;
+    const cols = Math.ceil(width / gridSize);
+    const rows = Math.ceil(height / gridSize);
+
+    // Create sparse grid nodes
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        if (Math.random() > 0.45) {
+          const x = i * gridSize + (Math.random() * 30 - 15);
+          const y = j * gridSize + (Math.random() * 30 - 15);
+          const type = Math.random() > 0.85 ? 'chip' : Math.random() > 0.5 ? 'via' : 'normal';
+          nodes.push(new Node(x, y, type));
+        }
+      }
+    }
+
+    // Connect adjacent nodes
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+        if (d < gridSize * 1.6 && Math.random() > 0.4) {
+          const trace = new Trace(nodes[i], nodes[j]);
+          traces.push(trace);
+          if (Math.random() > 0.65) {
+            pulses.push(new Pulse(trace));
+          }
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let trace of traces) {
+      trace.draw();
+    }
+
+    for (let node of nodes) {
+      node.draw();
+    }
+
+    for (let pulse of pulses) {
+      pulse.update();
+      pulse.draw();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  animate();
+})();
+
+/**
+ * ECE Daily News Application Controller
+ * Handles live rendering, bilingual mode, audio reader (TTS), search, filters,
+ * bookmarks, 5PM IST countdown timer, and interactive modals.
+ */
+
+let allArticles = [];
+let currentFilter = 'all';
+let currentLanguage = 'en'; // 'en' or 'ta'
+let searchQuery = '';
+let savedArticles = JSON.parse(localStorage.getItem('ece_saved_news') || '[]');
+let speechSynth = window.speechSynthesis;
+let currentUtterance = null;
+let currentPlayingId = null;
+
+document.addEventListener('DOMContentLoaded', async () => {
+  initCountdownTimer();
+  await loadNewsData();
+  setupEventListeners();
+});
+
+async function loadNewsData() {
+  try {
+    let data = window.INITIAL_NEWS_DATA || null;
+
+    // Attempt live fetch if running on http/https or local server
+    try {
+      const res = await fetch('data/news.json?t=' + Date.now());
+      if (res.ok) {
+        const fetchedData = await res.json();
+        if (fetchedData && fetchedData.articles && fetchedData.articles.length > 0) {
+          data = fetchedData;
+        }
+      }
+    } catch (netErr) {
+      // Ignore network/CORS error on file:// and gracefully use window.INITIAL_NEWS_DATA
+    }
+
+    if (!data) throw new Error('Failed to load news data');
+    
+    allArticles = data.articles || [];
+    
+    // Update headers and metadata
+    document.getElementById('edition-title').textContent = data.edition || 'Daily Edition';
+    document.getElementById('header-date-en').textContent = data.formatted_date || '';
+    document.getElementById('header-date-ta').textContent = data.tamil_date || '';
+    document.getElementById('total-articles-count').textContent = allArticles.length;
+    
+    renderArticles();
+  } catch (err) {
+    console.error('Error loading news:', err);
+    document.getElementById('articles-grid').innerHTML = `
+      <div class="col-span-full py-16 text-center text-slate-400">
+        <p class="text-xl mb-4 text-red-400">⚠️ Unable to load latest news data.</p>
+        <button onclick="loadNewsData()" class="px-5 py-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium">Retry</button>
+      </div>
+    `;
+  }
+}
+
+function initCountdownTimer() {
+  function updateClock() {
+    const now = new Date();
+    
+    // IST is UTC + 5:30
+    const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const istTime = new Date(utcMs + (5.5 * 3600000));
+    
+    // Target 5:00 PM (17:00:00) IST today
+    let targetIST = new Date(istTime);
+    targetIST.setHours(17, 0, 0, 0);
+    
+    if (istTime >= targetIST) {
+      // If already past 5pm today, target is tomorrow 5pm IST
+      targetIST.setDate(targetIST.getDate() + 1);
+    }
+    
+    const diffMs = targetIST - istTime;
+    const hours = Math.floor(diffMs / (1000 * 60 * 60));
+    const mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diffMs % (1000 * 60)) / 1000);
+    
+    const timerEl = document.getElementById('ist-countdown-timer');
+    if (timerEl) {
+      timerEl.textContent = `${String(hours).padStart(2, '0')}h ${String(mins).padStart(2, '0')}m ${String(secs).padStart(2, '0')}s`;
+    }
+  }
+  
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+function setupEventListeners() {
+  // Global Language Switcher
+  const langToggleBtn = document.getElementById('lang-toggle-btn');
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      currentLanguage = currentLanguage === 'en' ? 'ta' : 'en';
+      langToggleBtn.innerHTML = currentLanguage === 'en' 
+        ? `<span class="text-xs font-mono bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30">ENG</span> <span class="text-xs opacity-60">தமிழ்</span>`
+        : `<span class="text-xs opacity-60">ENG</span> <span class="text-xs font-mono bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30">தமிழ்</span>`;
+      renderArticles();
+    });
+  }
+
+  // Search input
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderArticles();
+    });
+  }
+
+  // Filter buttons
+  const filterButtons = document.querySelectorAll('.filter-tab-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50');
+        b.classList.add('text-slate-400', 'border-slate-800');
+      });
+      btn.classList.add('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50');
+      btn.classList.remove('text-slate-400', 'border-slate-800');
+      
+      currentFilter = btn.dataset.filter;
+      renderArticles();
+    });
+  });
+
+  // Modal Close
+  const modalOverlay = document.getElementById('story-modal');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+  }
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+}
+
+function renderArticles() {
+  const grid = document.getElementById('articles-grid');
+  if (!grid) return;
+
+  let filtered = allArticles.filter(item => {
+    // Filter matching
+    if (currentFilter === 'saved') {
+      return savedArticles.includes(item.id);
+    }
+    if (currentFilter === 'tamil_only') {
+      // Show all with Tamil priority
+      return true;
+    }
+    if (currentFilter !== 'all' && item.category !== currentFilter) {
+      return false;
+    }
+    return true;
+  });
+
+  // Search matching
+  if (searchQuery) {
+    filtered = filtered.filter(item => {
+      const matchText = (
+        (item.title || '') + ' ' +
+        (item.title_tamil || '') + ' ' +
+        (item.summary || '') + ' ' +
+        (item.summary_tamil || '') + ' ' +
+        (item.tags || []).join(' ') + ' ' +
+        (item.category_label || '')
+      ).toLowerCase();
+      return matchText.includes(searchQuery);
+    });
+  }
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `
+      <div class="col-span-full py-20 text-center">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 text-2xl">
+          🔍
+        </div>
+        <h3 class="text-xl font-bold text-slate-200 mb-2">No ECE Articles Found</h3>
+        <p class="text-slate-400 text-sm max-w-md mx-auto">Try clearing your search query or selecting a different geographical filter tab.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(item => createArticleCard(item)).join('');
+}
+
+function createArticleCard(item) {
+  const isTamil = currentLanguage === 'ta' || currentFilter === 'tamil_only';
+  const title = isTamil ? (item.title_tamil || item.title) : item.title;
+  const summary = isTamil ? (item.summary_tamil || item.summary) : item.summary;
+  const categoryLabel = isTamil ? (item.category_tamil || item.category_label) : item.category_label;
+  const isSaved = savedArticles.includes(item.id);
+  const isPlaying = currentPlayingId === item.id;
+
+  // Category Accent Badges
+  const badgeClasses = {
+    emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+    cyan: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
+    amber: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+    purple: 'bg-purple-500/10 text-purple-400 border-purple-500/30'
+  }[item.category_badge_color] || 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30';
+
+  // SVG Artwork Render
+  let artworkHtml = '';
+  if (window.ECEIllustrations && window.ECEIllustrations[item.illustration_type]) {
+    artworkHtml = window.ECEIllustrations[item.illustration_type]();
+  } else {
+    artworkHtml = `<img src="${item.image_url}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />`;
+  }
+
+  return `
+    <article class="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-slate-800/80 relative">
+      <!-- Media Header with Colorful Illustration -->
+      <div class="relative h-56 w-full overflow-hidden bg-slate-950">
+        ${artworkHtml}
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+        
+        <!-- Category & Read Time Badges -->
+        <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border backdrop-blur-md ${badgeClasses}">
+            ${categoryLabel}
+          </span>
+          <span class="px-2 py-1 rounded-full text-xs font-mono bg-slate-900/80 text-slate-300 border border-slate-700/80 backdrop-blur-md">
+            ${item.read_time}
+          </span>
+        </div>
+
+        <!-- Per-Card Language Switch & Bookmark -->
+        <div class="absolute top-3 right-3 flex items-center gap-1.5">
+          <button onclick="toggleCardLanguage('${item.id}', event)" class="p-1.5 rounded-lg bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-cyan-400 text-xs font-mono" title="Toggle English/Tamil">
+            ${isTamil ? 'ENG' : 'தமிழ்'}
+          </button>
+          <button onclick="toggleBookmark('${item.id}', event)" class="p-1.5 rounded-lg bg-slate-900/80 border border-slate-700 ${isSaved ? 'text-amber-400' : 'text-slate-400 hover:text-amber-300'}" title="Save article">
+            ${isSaved ? '★' : '☆'}
+          </button>
+        </div>
+
+        <!-- Timestamp Pill -->
+        <div class="absolute bottom-3 left-3">
+          <span class="text-xs font-mono text-cyan-300/80 bg-slate-900/90 px-2 py-0.5 rounded border border-cyan-900/50">
+            🕒 ${item.timestamp}
+          </span>
+        </div>
+      </div>
+
+      <!-- Content Body -->
+      <div class="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <!-- Title -->
+          <h2 class="text-lg font-bold text-slate-100 hover:text-cyan-400 transition-colors leading-snug mb-2 cursor-pointer ${isTamil ? 'tamil-text font-semibold' : ''}" onclick="openStoryModal('${item.id}')">
+            ${title}
+          </h2>
+
+          <!-- Summary -->
+          <p class="text-sm text-slate-400 line-clamp-3 mb-4 leading-relaxed ${isTamil ? 'tamil-text' : ''}">
+            ${summary}
+          </p>
+        </div>
+
+        <div>
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            ${(item.tags || []).map(tag => `
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60">
+                #${tag}
+              </span>
+            `).join('')}
+          </div>
+
+          <!-- Action Footer: Listen Aloud & Read Deep Dive -->
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <button onclick="speakArticle('${item.id}', event)" class="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border transition-all ${isPlaying ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500' : 'bg-slate-800/60 text-slate-300 border-slate-700 hover:border-cyan-500/50 hover:text-cyan-400'}">
+                ${isPlaying ? `
+                  <span class="flex items-center h-4">
+                    <span class="audio-bar"></span><span class="audio-bar"></span><span class="audio-bar"></span>
+                  </span>
+                  <span>Pause</span>
+                ` : `
+                  <span>🔊 Listen</span>
+                `}
+              </button>
+
+              <button onclick="shareArticle('${item.id}', event)" class="p-1.5 rounded-lg border bg-slate-800/60 text-slate-400 hover:text-emerald-400 border-slate-700 hover:border-emerald-500/40 text-xs transition-colors" title="Share with friends">
+                📤
+              </button>
+            </div>
+
+            <button onclick="openStoryModal('${item.id}')" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              <span>Deep Dive</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function toggleCardLanguage(id, e) {
+  if (e) e.stopPropagation();
+  const card = allArticles.find(a => a.id === id);
+  if (!card) return;
+  card._forceLang = card._forceLang === 'ta' ? 'en' : 'ta';
+  renderArticles();
+}
+
+function toggleBookmark(id, e) {
+  if (e) e.stopPropagation();
+  const idx = savedArticles.indexOf(id);
+  if (idx > -1) {
+    savedArticles.splice(idx, 1);
+  } else {
+    savedArticles.push(id);
+  }
+  localStorage.setItem('ece_saved_news', JSON.stringify(savedArticles));
+  renderArticles();
+}
+
+function speakArticle(id, e) {
+  if (e) e.stopPropagation();
+  const article = allArticles.find(a => a.id === id);
+  if (!article) return;
+
+  if (speechSynth.speaking && currentPlayingId === id) {
+    speechSynth.cancel();
+    currentPlayingId = null;
+    renderArticles();
+    return;
+  }
+
+  speechSynth.cancel();
+  currentPlayingId = id;
+
+  const isTamil = currentLanguage === 'ta';
+  const textToRead = isTamil 
+    ? `${article.title_tamil}. ${article.summary_tamil}`
+    : `${article.title}. ${article.summary}`;
+
+  currentUtterance = new SpeechSynthesisUtterance(textToRead);
+  currentUtterance.rate = 0.95;
+  currentUtterance.pitch = 1.0;
+
+  // Attempt to select optimal language voice
+  const voices = speechSynth.getVoices();
+  if (isTamil) {
+    const taVoice = voices.find(v => v.lang.startsWith('ta'));
+    if (taVoice) currentUtterance.voice = taVoice;
+  } else {
+    const enVoice = voices.find(v => v.lang.startsWith('en-IN') || v.lang.startsWith('en-US'));
+    if (enVoice) currentUtterance.voice = enVoice;
+  }
+
+  currentUtterance.onend = () => {
+    currentPlayingId = null;
+    renderArticles();
+  };
+
+  currentUtterance.onerror = () => {
+    currentPlayingId = null;
+    renderArticles();
+  };
+
+  speechSynth.speak(currentUtterance);
+  renderArticles();
+}
+
+function openStoryModal(id) {
+  const article = allArticles.find(a => a.id === id);
+  if (!article) return;
+
+  const isTamil = currentLanguage === 'ta';
+  const title = isTamil ? (article.title_tamil || article.title) : article.title;
+  const summary = isTamil ? (article.summary_tamil || article.summary) : article.summary;
+  const highlights = isTamil ? (article.key_highlights_tamil || article.key_highlights) : article.key_highlights;
+  
+  const modal = document.getElementById('story-modal');
+  const modalContent = document.getElementById('modal-body');
+
+  let illustrationSvg = '';
+  if (window.ECEIllustrations && window.ECEIllustrations[article.illustration_type]) {
+    illustrationSvg = window.ECEIllustrations[article.illustration_type]();
+  }
+
+  modalContent.innerHTML = `
+    <!-- Top Visual Banner -->
+    <div class="h-64 sm:h-72 w-full overflow-hidden rounded-xl bg-slate-950 mb-6 relative border border-slate-800">
+      ${illustrationSvg || `<img src="${article.image_url}" class="w-full h-full object-cover" />`}
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+      <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 backdrop-blur-md">
+          ${article.category_label}
+        </span>
+        <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded-md border border-slate-700">
+          🕒 ${article.timestamp}
+        </span>
+      </div>
+    </div>
+
+    <!-- Article Headings -->
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mb-4 leading-tight ${isTamil ? 'tamil-text' : ''}">
+      ${title}
+    </h2>
+
+    <!-- Summary Box -->
+    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 mb-6 text-slate-300 leading-relaxed ${isTamil ? 'tamil-text' : ''}">
+      ${summary}
+    </div>
+
+    <!-- Key Technical Highlights -->
+    <div class="mb-6">
+      <h3 class="text-base font-bold text-cyan-400 mb-3 flex items-center gap-2">
+        <span>⚡</span>
+        <span>Key Engineering Highlights & Takeaways</span>
+      </h3>
+      <ul class="space-y-2.5">
+        ${(highlights || []).map(hl => `
+          <li class="flex items-start gap-2.5 text-sm text-slate-300 bg-slate-900/40 p-3 rounded-lg border border-slate-800/80 ${isTamil ? 'tamil-text' : ''}">
+            <span class="text-cyan-400 font-bold">✔</span>
+            <span>${hl}</span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <!-- Metadata & Citations -->
+    <div class="pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+      <div>
+        <span class="text-slate-500">Source:</span> <span class="text-slate-300 font-semibold">${article.source}</span>
+      </div>
+      <div>
+        <span class="text-slate-500">By:</span> <span class="text-slate-300">${article.author}</span>
+      </div>
+    </div>
+  `;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeModal() {
+  const modal = document.getElementById('story-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+// ----------------------------------------------------
+// Share & Phone Functionality
+// ----------------------------------------------------
+
+function getShareableUrl() {
+  if (window.location.protocol.startsWith('http') && !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+    return window.location.href;
+  }
+  // Permanent Netlify URL
+  return 'https://daily-ece-news.netlify.app';
+}
+
+function openShareModal() {
+  const modal = document.getElementById('share-modal');
+  const qrContainer = document.getElementById('qrcode-container');
+  const urlInput = document.getElementById('share-url-input');
+  const whatsappBtn = document.getElementById('whatsapp-share-btn');
+
+  const shareUrl = getShareableUrl();
+  urlInput.value = shareUrl;
+
+  const whatsappText = encodeURIComponent(`⚡ Check out today's ECE Daily News (Semiconductors, 6G, IIT Madras, India Mission):\n${shareUrl}`);
+  whatsappBtn.href = `https://api.whatsapp.com/send?text=${whatsappText}`;
+
+  // Generate QR Code
+  qrContainer.innerHTML = '';
+  if (window.QRCode) {
+    new QRCode(qrContainer, {
+      text: shareUrl,
+      width: 120,
+      height: 120,
+      colorDark: '#080c14',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  } else {
+    qrContainer.innerHTML = '<div class="text-[10px] text-slate-800 p-2 font-mono">Scan URL</div>';
+  }
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeShareModal() {
+  const modal = document.getElementById('share-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+function copyShareUrl() {
+  const urlInput = document.getElementById('share-url-input');
+  urlInput.select();
+  navigator.clipboard.writeText(urlInput.value).then(() => {
+    alert('URL copied to clipboard! Send it to your friends.');
+  });
+}
+
+function triggerWebShare() {
+  const shareUrl = getShareableUrl();
+  if (navigator.share) {
+    navigator.share({
+      title: 'ECE Daily News • Worldwide, India, Chennai',
+      text: 'Stay updated with the latest in Semiconductors, 6G, VLSI, and ECE innovations!',
+      url: shareUrl
+    }).catch(err => console.log('Share dismissed', err));
+  } else {
+    copyShareUrl();
+  }
+}
+
+function shareArticle(id, e) {
+  if (e) e.stopPropagation();
+  const article = allArticles.find(a => a.id === id);
+  if (!article) return;
+
+  const shareUrl = getShareableUrl();
+  const shareText = `⚡ ECE News: ${article.title}\n\n${article.summary}\n\nRead more: ${shareUrl}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: article.title,
+      text: article.summary,
+      url: shareUrl
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(shareText).then(() => {
+      alert(`Copied "${article.title.substring(0, 40)}..." to clipboard! You can paste and send it to your friends.`);
+    });
+  }
+}
+
+  </script>
 </body>
 </html>
