@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 ECE Daily News Automated Multi-Edition Aggregator & Generator
-Runs daily at 5:00 PM IST to fetch, rotate, format, bundle, and deploy
+Runs daily at 5:00 AM IST to fetch, rotate, format, bundle, and deploy
 ECE news across Worldwide, India, Tamil Nadu, and Chennai with bilingual (English & Tamil) content
 and 100% verified, topic-matched engineering photography.
 """
@@ -786,12 +786,12 @@ def update_daily_edition():
     print(f"Execution Time: {now.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
 
-    # Calculate next scheduled 5:00 PM IST
-    today_5pm = now.replace(hour=17, minute=0, second=0, microsecond=0)
-    if now < today_5pm:
-        next_update = today_5pm
+    # Calculate next scheduled 5:00 AM IST
+    today_5am = now.replace(hour=5, minute=0, second=0, microsecond=0)
+    if now < today_5am:
+        next_update = today_5am
     else:
-        next_update = today_5pm + datetime.timedelta(days=1)
+        next_update = today_5am + datetime.timedelta(days=1)
 
     tamil_days = {
         "Monday": "திங்கட்கிழமை", "Tuesday": "செவ்வாய்க்கிழமை", "Wednesday": "புதன்கிழமை",
@@ -824,7 +824,7 @@ def update_daily_edition():
         "formatted_date": now.strftime("%A, %d %B %Y"),
         "tamil_date": f"{tamil_day}, {now.day} {tamil_month} {now.year}",
         "next_scheduled_update": next_update.isoformat(),
-        "update_time_ist": "5:00 PM IST",
+        "update_time_ist": "5:00 AM IST",
         "edition": f"Vol. {now.year} • Issue {day_of_year}",
         "stats": {
             "total_articles": len(articles),

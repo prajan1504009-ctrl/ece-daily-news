@@ -142,12 +142,12 @@ function initCountdownTimer() {
     const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
     const istTime = new Date(utcMs + (5.5 * 3600000));
     
-    // Target 5:00 PM (17:00:00) IST today
+    // Target 5:00 AM (05:00:00) IST today
     let targetIST = new Date(istTime);
-    targetIST.setHours(17, 0, 0, 0);
+    targetIST.setHours(5, 0, 0, 0);
     
     if (istTime >= targetIST) {
-      // If already past 5pm today, target is tomorrow 5pm IST
+      // If already past 5am today, target is tomorrow 5am IST
       targetIST.setDate(targetIST.getDate() + 1);
     }
     

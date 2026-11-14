@@ -261,7 +261,7 @@ body {
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <div class="text-[11px]">
               <span class="text-slate-400">Next Daily Update:</span>
-              <span class="text-cyan-300 font-bold ml-1">5:00 PM IST</span>
+              <span class="text-cyan-300 font-bold ml-1">5:00 AM IST</span>
             </div>
           </div>
           <div class="text-[11px] font-mono bg-slate-950 px-2.5 py-1 rounded border border-cyan-900/50 text-cyan-400" id="ist-countdown-timer">
@@ -470,7 +470,7 @@ body {
     <footer class="border-t border-slate-900 bg-slate-950/90 py-8 px-4 text-center text-xs text-slate-500 mt-12 no-print">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <span class="font-bold text-slate-400">ECE Daily Chronicle</span> • Automated Daily Intelligence at <span class="text-cyan-400 font-semibold">5:00 PM IST</span>
+          <span class="font-bold text-slate-400">ECE Daily Chronicle</span> • Automated Daily Intelligence at <span class="text-cyan-400 font-semibold">5:00 AM IST</span>
         </div>
         <div class="tamil-text text-slate-400">
           சென்னை • தமிழ்நாடு • இந்தியா • சர்வதேசம்
@@ -487,11 +487,11 @@ body {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
 window.INITIAL_NEWS_DATA = {
-  "last_updated": "2026-11-14T09:39:55.048848",
+  "last_updated": "2026-11-14T15:06:32.354369",
   "formatted_date": "Saturday, 14 November 2026",
   "tamil_date": "சனிக்கிழமை, 14 நவம்பர் 2026",
-  "next_scheduled_update": "2026-11-14T17:00:00",
-  "update_time_ist": "5:00 PM IST",
+  "next_scheduled_update": "2026-11-15T05:00:00",
+  "update_time_ist": "5:00 AM IST",
   "edition": "Vol. 2026 • Issue 318",
   "stats": {
     "total_articles": 8,
@@ -535,7 +535,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "IIT Madras Telecom & RF Research Division",
       "author": "Prof. V. Kamakoti & RF Systems Group",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 09:24 IST"
+      "timestamp": "2026-11-14 14:51 IST"
     },
     {
       "id": "ece-chn-102",
@@ -571,7 +571,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Anna University Dept. of ECE Research Bulletin",
       "author": "Dr. S. Meenakshi, Microelectronics Division",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 08:54 IST"
+      "timestamp": "2026-11-14 14:21 IST"
     },
     {
       "id": "ece-tn-101",
@@ -607,7 +607,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Tamil Nadu Guidance Bureau & EMS Monitor",
       "author": "Industrial Electronics Bureau",
       "read_time": "4 min read",
-      "timestamp": "2026-11-14 08:09 IST"
+      "timestamp": "2026-11-14 13:36 IST"
     },
     {
       "id": "ece-tn-102",
@@ -643,7 +643,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "State Semiconductor Directorate, Chennai",
       "author": "Policy & Technology Bureau",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 07:09 IST"
+      "timestamp": "2026-11-14 12:36 IST"
     },
     {
       "id": "ece-ind-101",
@@ -679,7 +679,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "India Semiconductor Mission (ISM) & Tata Communications",
       "author": "National Industrial Bureau, New Delhi",
       "read_time": "4 min read",
-      "timestamp": "2026-11-14 06:09 IST"
+      "timestamp": "2026-11-14 11:36 IST"
     },
     {
       "id": "ece-ind-102",
@@ -715,7 +715,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Department of Telecommunications (DoT) Press Dispatch",
       "author": "Defense Communications Bureau",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 05:09 IST"
+      "timestamp": "2026-11-14 10:36 IST"
     },
     {
       "id": "ece-ww-101",
@@ -751,7 +751,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Intel Foundry Technical Symposium & Microprocessor Report",
       "author": "Dr. Ann Kelleher, Technology Development",
       "read_time": "4 min read",
-      "timestamp": "2026-11-14 04:09 IST"
+      "timestamp": "2026-11-14 09:36 IST"
     },
     {
       "id": "ece-ww-102",
@@ -787,7 +787,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Semiconductor Engineering Review & ASML Veldhoven",
       "author": "Optics & Lithography Working Group",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 03:09 IST"
+      "timestamp": "2026-11-14 08:36 IST"
     }
   ]
 };
@@ -1526,12 +1526,12 @@ function initCountdownTimer() {
     const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
     const istTime = new Date(utcMs + (5.5 * 3600000));
     
-    // Target 5:00 PM (17:00:00) IST today
+    // Target 5:00 AM (05:00:00) IST today
     let targetIST = new Date(istTime);
-    targetIST.setHours(17, 0, 0, 0);
+    targetIST.setHours(5, 0, 0, 0);
     
     if (istTime >= targetIST) {
-      // If already past 5pm today, target is tomorrow 5pm IST
+      // If already past 5am today, target is tomorrow 5am IST
       targetIST.setDate(targetIST.getDate() + 1);
     }
     

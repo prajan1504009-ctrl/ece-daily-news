@@ -1,9 +1,9 @@
 @echo off
-REM ECE Daily News 5:00 PM IST Automated Updater & Netlify Deployer
+REM ECE Daily News 5:00 AM IST Automated Updater & Netlify Deployer
 cd /d "C:\Users\wolfy\.gemini\antigravity\scratch\ece-daily-news"
 
 echo ============================================================ >> "data\update_log.txt"
-echo Running ECE Daily News 5:00 PM IST Scheduled Update >> "data\update_log.txt"
+echo Running ECE Daily News 5:00 AM IST Scheduled Update >> "data\update_log.txt"
 echo Execution Time: %DATE% %TIME% >> "data\update_log.txt"
 echo ============================================================ >> "data\update_log.txt"
 
