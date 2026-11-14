@@ -1,5 +1,5 @@
 window.INITIAL_NEWS_DATA = {
-  "last_updated": "2026-11-14T15:06:32.354369",
+  "last_updated": "2026-11-14T16:58:09.182681",
   "formatted_date": "Saturday, 14 November 2026",
   "tamil_date": "சனிக்கிழமை, 14 நவம்பர் 2026",
   "next_scheduled_update": "2026-11-15T05:00:00",
@@ -47,7 +47,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "IIT Madras Telecom & RF Research Division",
       "author": "Prof. V. Kamakoti & RF Systems Group",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 14:51 IST"
+      "timestamp": "2026-11-14 16:43 IST"
     },
     {
       "id": "ece-chn-102",
@@ -83,7 +83,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Anna University Dept. of ECE Research Bulletin",
       "author": "Dr. S. Meenakshi, Microelectronics Division",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 14:21 IST"
+      "timestamp": "2026-11-14 16:13 IST"
     },
     {
       "id": "ece-tn-101",
@@ -119,7 +119,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Tamil Nadu Guidance Bureau & EMS Monitor",
       "author": "Industrial Electronics Bureau",
       "read_time": "4 min read",
-      "timestamp": "2026-11-14 13:36 IST"
+      "timestamp": "2026-11-14 15:28 IST"
     },
     {
       "id": "ece-tn-102",
@@ -155,7 +155,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "State Semiconductor Directorate, Chennai",
       "author": "Policy & Technology Bureau",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 12:36 IST"
+      "timestamp": "2026-11-14 14:28 IST"
     },
     {
       "id": "ece-ind-101",
@@ -191,7 +191,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "India Semiconductor Mission (ISM) & Tata Communications",
       "author": "National Industrial Bureau, New Delhi",
       "read_time": "4 min read",
-      "timestamp": "2026-11-14 11:36 IST"
+      "timestamp": "2026-11-14 13:28 IST"
     },
     {
       "id": "ece-ind-102",
@@ -227,7 +227,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Department of Telecommunications (DoT) Press Dispatch",
       "author": "Defense Communications Bureau",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 10:36 IST"
+      "timestamp": "2026-11-14 12:28 IST"
     },
     {
       "id": "ece-ww-101",
@@ -263,7 +263,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Intel Foundry Technical Symposium & Microprocessor Report",
       "author": "Dr. Ann Kelleher, Technology Development",
       "read_time": "4 min read",
-      "timestamp": "2026-11-14 09:36 IST"
+      "timestamp": "2026-11-14 11:28 IST"
     },
     {
       "id": "ece-ww-102",
@@ -299,7 +299,7 @@ window.INITIAL_NEWS_DATA = {
       "source": "Semiconductor Engineering Review & ASML Veldhoven",
       "author": "Optics & Lithography Working Group",
       "read_time": "3 min read",
-      "timestamp": "2026-11-14 08:36 IST"
+      "timestamp": "2026-11-14 10:28 IST"
     }
   ]
 };
