@@ -2,7 +2,7 @@
  * Colorful Vector Illustration Generators for ECE Domains
  * Renders high-fidelity, vibrant SVG artwork for semiconductors, 6G, photonics, and quantum hardware.
  */
-const ECEIllustrations = {
+window.ECEIllustrations = {
   photonics: () => `
     <svg viewBox="0 0 600 340" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -394,3 +394,4 @@ const ECEIllustrations = {
     </svg>
   `
 };
+var ECEIllustrations = window.ECEIllustrations;

@@ -7,6 +7,8 @@
 let allArticles = [];
 let currentFilter = 'all';
 let currentLanguage = 'en'; // 'en' or 'ta'
+let currentVisualMode = localStorage.getItem('ece_visual_mode') || 'photos'; // 'photos' or 'art'
+let cardVisualOverrides = {}; // per-card toggle override
 let searchQuery = '';
 let savedArticles = JSON.parse(localStorage.getItem('ece_saved_news') || '[]');
 let speechSynth = window.speechSynthesis;
@@ -15,9 +17,83 @@ let currentPlayingId = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
   initCountdownTimer();
+  updateVisualModeButtonUI();
   await loadNewsData();
   setupEventListeners();
 });
+
+function getIllustrationSvg(type) {
+  const ill = (typeof window !== 'undefined' && window.ECEIllustrations) 
+    ? window.ECEIllustrations 
+    : (typeof ECEIllustrations !== 'undefined' ? ECEIllustrations : null);
+  if (ill && typeof ill[type] === 'function') {
+    return ill[type]();
+  }
+  return '';
+}
+
+function getCardMediaHtml(item) {
+  const cardMode = cardVisualOverrides[item.id] || currentVisualMode;
+  const svg = getIllustrationSvg(item.illustration_type);
+  
+  if (cardMode === 'art' && svg) {
+    return `<div class="w-full h-full relative group/art transition-opacity duration-300">${svg}</div>`;
+  } else {
+    const fallbackAttr = svg ? `onerror="this.onerror=null; this.parentElement.innerHTML=\`${svg.replace(/`/g, '\\`')}\`;"` : '';
+    const imgUrl = item.image_url || 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80';
+    return `
+      <div class="w-full h-full relative overflow-hidden bg-slate-900">
+        <img src="${imgUrl}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" ${fallbackAttr} />
+      </div>
+    `;
+  }
+}
+
+function toggleVisualMode() {
+  currentVisualMode = currentVisualMode === 'photos' ? 'art' : 'photos';
+  localStorage.setItem('ece_visual_mode', currentVisualMode);
+  cardVisualOverrides = {};
+  updateVisualModeButtonUI();
+  renderArticles();
+}
+
+function updateVisualModeButtonUI() {
+  const icon = document.getElementById('visual-mode-icon');
+  const label = document.getElementById('visual-mode-label');
+  if (icon && label) {
+    if (currentVisualMode === 'photos') {
+      icon.textContent = '📷';
+      label.textContent = 'Photos';
+    } else {
+      icon.textContent = '🎨';
+      label.textContent = 'Vector Art';
+    }
+  }
+}
+
+function toggleCardVisual(itemId, event) {
+  if (event) event.stopPropagation();
+  const currentCardMode = cardVisualOverrides[itemId] || currentVisualMode;
+  cardVisualOverrides[itemId] = currentCardMode === 'photos' ? 'art' : 'photos';
+  renderArticles();
+}
+
+function toggleModalVisual(itemId, event) {
+  if (event) event.stopPropagation();
+  toggleCardVisual(itemId);
+  const article = allArticles.find(a => a.id === itemId);
+  if (article) {
+    const container = document.getElementById('modal-media-container');
+    if (container) {
+      container.innerHTML = getCardMediaHtml(article);
+    }
+    const btn = document.getElementById('modal-visual-btn');
+    if (btn) {
+      const mode = cardVisualOverrides[article.id] || currentVisualMode;
+      btn.textContent = mode === 'photos' ? '🎨 Show Vector Art' : '📷 Show Real Photo';
+    }
+  }
+}
 
 async function loadNewsData() {
   try {
@@ -207,24 +283,20 @@ function createArticleCard(item) {
     purple: 'bg-purple-500/10 text-purple-400 border-purple-500/30'
   }[item.category_badge_color] || 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30';
 
-  // SVG Artwork Render
-  let artworkHtml = '';
-  if (window.ECEIllustrations && window.ECEIllustrations[item.illustration_type]) {
-    artworkHtml = window.ECEIllustrations[item.illustration_type]();
-  } else {
-    artworkHtml = `<img src="${item.image_url}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />`;
-  }
+  // Render Media Header (Photo or SVG Illustration based on user preference)
+  const mediaHtml = getCardMediaHtml(item);
+  const cardVisualMode = cardVisualOverrides[item.id] || currentVisualMode;
 
   return `
     <article class="glass-panel glass-panel-hover rounded-2xl overflow-hidden flex flex-col group border border-slate-800/80 relative">
-      <!-- Media Header with Colorful Illustration -->
+      <!-- Media Header with Realistic Photo or Colorful Vector Art -->
       <div class="relative h-56 w-full overflow-hidden bg-slate-950">
-        ${artworkHtml}
+        ${mediaHtml}
         
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 pointer-events-none"></div>
         
         <!-- Category & Read Time Badges -->
-        <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+        <div class="absolute top-3 left-3 flex flex-wrap gap-2 pointer-events-none">
           <span class="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border backdrop-blur-md ${badgeClasses}">
             ${categoryLabel}
           </span>
@@ -233,12 +305,15 @@ function createArticleCard(item) {
           </span>
         </div>
 
-        <!-- Per-Card Language Switch & Bookmark -->
-        <div class="absolute top-3 right-3 flex items-center gap-1.5">
-          <button onclick="toggleCardLanguage('${item.id}', event)" class="p-1.5 rounded-lg bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-cyan-400 text-xs font-mono" title="Toggle English/Tamil">
+        <!-- Per-Card Controls: Visual Toggle, Language Switch, Bookmark -->
+        <div class="absolute top-3 right-3 flex items-center gap-1.5 z-10">
+          <button onclick="toggleCardVisual('${item.id}', event)" class="px-2 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-xs font-mono backdrop-blur-md transition-all shadow-sm flex items-center gap-1" title="Toggle between Realistic Photo and Vector Illustration">
+            <span>${cardVisualMode === 'photos' ? '🎨 Art' : '📷 Photo'}</span>
+          </button>
+          <button onclick="toggleCardLanguage('${item.id}', event)" class="p-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-xs font-mono backdrop-blur-md transition-all shadow-sm" title="Toggle English/Tamil">
             ${isTamil ? 'ENG' : 'தமிழ்'}
           </button>
-          <button onclick="toggleBookmark('${item.id}', event)" class="p-1.5 rounded-lg bg-slate-900/80 border border-slate-700 ${isSaved ? 'text-amber-400' : 'text-slate-400 hover:text-amber-300'}" title="Save article">
+          <button onclick="toggleBookmark('${item.id}', event)" class="p-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-xs backdrop-blur-md transition-all shadow-sm ${isSaved ? 'text-amber-400 border-amber-500/40' : 'text-slate-400 hover:text-amber-300'}" title="Save article">
             ${isSaved ? '★' : '☆'}
           </button>
         </div>
@@ -384,18 +459,22 @@ function openStoryModal(id) {
   
   const modal = document.getElementById('story-modal');
   const modalContent = document.getElementById('modal-body');
-
-  let illustrationSvg = '';
-  if (window.ECEIllustrations && window.ECEIllustrations[article.illustration_type]) {
-    illustrationSvg = window.ECEIllustrations[article.illustration_type]();
-  }
+  const activeMode = cardVisualOverrides[article.id] || currentVisualMode;
 
   modalContent.innerHTML = `
     <!-- Top Visual Banner -->
     <div class="h-64 sm:h-72 w-full overflow-hidden rounded-xl bg-slate-950 mb-6 relative border border-slate-800">
-      ${illustrationSvg || `<img src="${article.image_url}" class="w-full h-full object-cover" />`}
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-      <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+      <div id="modal-media-container" class="w-full h-full">
+        ${getCardMediaHtml(article)}
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent pointer-events-none"></div>
+      
+      <!-- Toggle button inside Modal -->
+      <button id="modal-visual-btn" onclick="toggleModalVisual('${article.id}', event)" class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-xs text-slate-300 hover:text-cyan-300 font-mono shadow-md backdrop-blur-md transition-all">
+        ${activeMode === 'photos' ? '🎨 Show Vector Art' : '📷 Show Real Photo'}
+      </button>
+
+      <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
         <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 backdrop-blur-md">
           ${article.category_label}
         </span>

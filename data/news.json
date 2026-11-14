@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-11-12T18:46:43.641875",
-  "formatted_date": "Thursday, 12 November 2026",
-  "tamil_date": "வியாழக்கிழமை, 12 நவம்பர் 2026",
-  "next_scheduled_update": "2026-11-13T17:00:00",
+  "last_updated": "2026-11-14T09:39:55.048848",
+  "formatted_date": "Saturday, 14 November 2026",
+  "tamil_date": "சனிக்கிழமை, 14 நவம்பர் 2026",
+  "next_scheduled_update": "2026-11-14T17:00:00",
   "update_time_ist": "5:00 PM IST",
-  "edition": "Vol. 2026 • Issue 316",
+  "edition": "Vol. 2026 • Issue 318",
   "stats": {
     "total_articles": 8,
     "worldwide_count": 2,
@@ -23,7 +23,6 @@
       "title_tamil": "ஐஐடி மெட்ராஸ் ECE துறை: உள்நாட்டு RFIC சிப் மற்றும் 6G சப்-டெராஹெர்ட்ஸ் சோதனை தளம் தொடக்கம்!",
       "summary": "The Department of Electrical Engineering at IIT Madras has inaugurated an end-to-end 6G sub-THz wireless testbed operating at 140 GHz to 220 GHz. Powered by indigenous Radio Frequency Integrated Circuits (RFICs) designed by IITM faculty and incubated startups, the platform achieved ultra-low-latency 80 Gbps wireless beamforming over campus links.",
       "summary_tamil": "ஐஐடி மெட்ராஸ் எலக்ட்ரானிக்ஸ் துறை 140 GHz முதல் 220 GHz வரையிலான அதிநவீன 6G வயர்லெஸ் சோதனை மையத்தை அமைத்துள்ளது. இதில் உள்நாட்டிலேயே வடிவமைக்கப்பட்ட RFIC சில்லுகள் மூலம் வினாடிக்கு 80 Gbps வேகத்தில் கம்பியில்லா தரவு பரிமாற்றம் சாதிக்கப்பட்டுள்ளது.",
-      "timestamp": "2026-11-12 16:45 IST",
       "tags": [
         "6G Wireless",
         "IIT Madras",
@@ -31,7 +30,7 @@
         "Sub-THz",
         "Telecom Hardware"
       ],
-      "image_url": "https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=1200&q=80",
+      "image_url": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80",
       "illustration_type": "sub_thz",
       "key_highlights": [
         "Indigenous BiCMOS RF transceiver operating across D-band (130-175 GHz) with phased array antennas",
@@ -47,7 +46,8 @@
       ],
       "source": "IIT Madras Telecom & RF Research Division",
       "author": "Prof. V. Kamakoti & RF Systems Group",
-      "read_time": "3 min read"
+      "read_time": "3 min read",
+      "timestamp": "2026-11-14 09:24 IST"
     },
     {
       "id": "ece-chn-102",
@@ -59,7 +59,6 @@
       "title_tamil": "அண்ணா பல்கலைக்கழகம் CEG: மின்சார வாகன பேட்டரிகளுக்கான அதிநவீன MEMS சென்சார் சிப் கண்டுபிடிப்பு!",
       "summary": "ECE researchers at the College of Engineering, Guindy (CEG), Anna University, have patented an integrated micro-electro-mechanical systems (MEMS) sensor array that monitors localized thermal impedance and lithium-dendrite growth inside electric vehicle battery packs, preventing thermal runaway in real time.",
       "summary_tamil": "அண்ணா பல்கலைக்கழக கிண்டி பொறியியல் கல்லூரி (CEG) ECE ஆராய்ச்சியாளர்கள் மின்சார வாகன பேட்டரிகளின் வெப்பநிலையை முன்கூட்டியே கணித்து தீ விபத்துகளைத் தடுக்கும் நுண்ணிய MEMS சென்சார் சிப்பை கண்டுபிடித்து காப்புரிமை பெற்றுள்ளனர்.",
-      "timestamp": "2026-11-12 15:30 IST",
       "tags": [
         "MEMS Sensors",
         "Anna University CEG",
@@ -67,7 +66,7 @@
         "Embedded Systems",
         "CleanTech"
       ],
-      "image_url": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+      "image_url": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
       "illustration_type": "cleanroom",
       "key_highlights": [
         "Operates under 50 microwatts power budget using ambient thermal energy scavenging",
@@ -83,7 +82,8 @@
       ],
       "source": "Anna University Dept. of ECE Research Bulletin",
       "author": "Dr. S. Meenakshi, Microelectronics Division",
-      "read_time": "3 min read"
+      "read_time": "3 min read",
+      "timestamp": "2026-11-14 08:54 IST"
     },
     {
       "id": "ece-tn-101",
@@ -95,7 +95,6 @@
       "title_tamil": "பாக்ஸ்கான் & பாரத் FIH: ஓசூர்-ஸ்ரீபெரும்புதூரில் அதிநவீன டெலிகாம் எலக்ட்ரானிக்ஸ் தயாரிப்பு விரிவாக்கம்!",
       "summary": "Expanding Tamil Nadu's hardware leadership, Foxconn subsidiary Bharat FIH has deployed 14 high-precision Surface Mount Technology (SMT) automated lines in Hosur and Sriperumbudur, dedicated to assembling 5G enterprise routers, satellite user terminals, and high-frequency RF printed circuit board assemblies (PCBAs).",
       "summary_tamil": "தமிழ்நாட்டின் மின்னணு உற்பத்தியை அடுத்த கட்டத்திற்கு கொண்டு செல்லும் வகையில், பாக்ஸ்கான் நிறுவனம் ஓசூர் மற்றும் ஸ்ரீபெரும்புதூரில் 14 தானியங்கி SMT உற்பத்தி வரிகளை அமைத்து, 5G ரூட்டர்கள் மற்றும் செயற்கைக்கோள் தகவல் தொடர்பு சாதனங்களை தயாரிக்கத் தொடங்கியுள்ளது.",
-      "timestamp": "2026-11-12 14:15 IST",
       "tags": [
         "Electronics Manufacturing",
         "Hosur Hub",
@@ -103,7 +102,7 @@
         "PCBA",
         "Tamil Nadu EMS"
       ],
-      "image_url": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
+      "image_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
       "illustration_type": "telecom",
       "key_highlights": [
         "Supports ultra-fine 01005 passives and 0.3mm micro-BGA semiconductor placement accuracy",
@@ -119,7 +118,8 @@
       ],
       "source": "Tamil Nadu Guidance Bureau & EMS Monitor",
       "author": "Industrial Electronics Bureau",
-      "read_time": "4 min read"
+      "read_time": "4 min read",
+      "timestamp": "2026-11-14 08:09 IST"
     },
     {
       "id": "ece-tn-102",
@@ -131,7 +131,6 @@
       "title_tamil": "திருச்சி-தஞ்சை தடத்தில் ₹180 கோடியில் கூட்டு குறைக்கடத்தி (GaN/GaAs) ஆராய்ச்சி மையம் ஒப்புதல்!",
       "summary": "Under the Tamil Nadu Semiconductor Mission 2030, the State Cabinet has cleared a ₹180-crore compound semiconductor incubation foundry near NIT Trichy. The facility will fabricate Gallium Nitride (GaN) and Gallium Arsenide (GaAs) monolithic microwave integrated circuits (MMICs) for defense radars and 5G power amplifiers.",
       "summary_tamil": "தமிழக அரசின் குறைக்கடத்தி மிஷன் கீழ், திருச்சி NIT அருகே ₹180 கோடியில் காலியம் நைட்ரைடு (GaN) மற்றும் காலியம் ஆர்சனைடு (GaAs) சிப் தயாரிக்கும் சிறப்பு ஆராய்ச்சி மையத்திற்கு தமிழக அமைச்சரவை ஒப்புதல் வழங்கியுள்ளது.",
-      "timestamp": "2026-11-12 13:00 IST",
       "tags": [
         "Compound Semiconductors",
         "GaN MMIC",
@@ -139,7 +138,7 @@
         "Defense Radar",
         "Tamil Nadu"
       ],
-      "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+      "image_url": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80",
       "illustration_type": "chip",
       "key_highlights": [
         "Focus on high-breakdown voltage GaN-on-SiC devices for 5G base station RF power stages",
@@ -155,7 +154,8 @@
       ],
       "source": "State Semiconductor Directorate, Chennai",
       "author": "Policy & Technology Bureau",
-      "read_time": "3 min read"
+      "read_time": "3 min read",
+      "timestamp": "2026-11-14 07:09 IST"
     },
     {
       "id": "ece-ind-101",
@@ -167,7 +167,6 @@
       "title_tamil": "டாடா எலக்ட்ரானிக்ஸ் & இன்டெல் கூட்டு: டோலேரா 300 மிமீ மெகா ஃபேப் கட்டுமானத்தில் புதிய மைல்கல்!",
       "summary": "Tata Electronics has announced a strategic semiconductor technical collaboration exploring advanced packaging paradigms and ecosystem sourcing alongside Intel. Meanwhile, civil construction of India's flagship ₹91,000-crore 300mm pure-play foundry in Dholera, Gujarat, entered its cleanroom mechanical fit-out phase with PSMC.",
       "summary_tamil": "டாடா எலக்ட்ரானிக்ஸ் நிறுவனம் இன்டெல் நிறுவனத்துடன் மேம்பட்ட சிப் பேக்கேஜிங் தொழில்நுட்ப கூட்டணிக்கான பேச்சுவார்த்தையை முன்னெடுத்துள்ளது. அதே சமயம் குஜராத்தின் டோலேராவில் அமையும் ₹91,000 கோடி மதிப்பிலான இந்தியாவின் முதல் 300 மிமீ மெகா ஃபேப் க்ளீன்ரூம் கட்டுமானப் பணிகள் இறுதிக்கட்டத்தை எட்டியுள்ளன.",
-      "timestamp": "2026-11-12 11:30 IST",
       "tags": [
         "Tata Electronics",
         "Intel Alliance",
@@ -191,7 +190,8 @@
       ],
       "source": "India Semiconductor Mission (ISM) & Tata Communications",
       "author": "National Industrial Bureau, New Delhi",
-      "read_time": "4 min read"
+      "read_time": "4 min read",
+      "timestamp": "2026-11-14 06:09 IST"
     },
     {
       "id": "ece-ind-102",
@@ -203,7 +203,6 @@
       "title_tamil": "மத்திய அரசு & C-DoT சாதனை: நாட்டின் பாதுகாப்பிற்கு 100% உள்நாட்டு 5G SA கோர் மற்றும் O-RAN மென்பொருள்!",
       "summary": "The Centre for Development of Telematics (C-DoT) has deployed India's first fully indigenous 5G Standalone (SA) Core and Open-RAN network software stack across critical border communication hubs. The hardware-agnostic platform eliminates reliance on foreign proprietary telecom stacks.",
       "summary_tamil": "மத்திய தொலைத்தொடர்பு ஆராய்ச்சி அமைப்பான சி-டாட் (C-DoT), முழுக்க முழுக்க இந்தியாவில் உருவாக்கப்பட்ட 5G ஸ்டாண்ட்அலோன் நெட்வொர்க் கட்டமைப்பை ராணுவ எல்லை பாதுகாப்பு தொலைத்தொடர்பில் வெற்றிகரமாக இணைத்துள்ளது.",
-      "timestamp": "2026-11-12 10:15 IST",
       "tags": [
         "C-DoT",
         "Indigenous 5G",
@@ -227,7 +226,8 @@
       ],
       "source": "Department of Telecommunications (DoT) Press Dispatch",
       "author": "Defense Communications Bureau",
-      "read_time": "3 min read"
+      "read_time": "3 min read",
+      "timestamp": "2026-11-14 05:09 IST"
     },
     {
       "id": "ece-ww-101",
@@ -239,7 +239,6 @@
       "title_tamil": "இன்டெல் 18A (Intel 18A) நானோ சிப் வெற்றி: ரிப்பன்பெட் & பவர்வியா தொழில்நுட்பத்தில் Panther Lake இயக்கம்!",
       "summary": "Intel Corporation has confirmed that Panther Lake, its lead client processor family fabricated on the cutting-edge Intel 18A (sub-2nm class) process node, has booted Windows and passed full silicon system power-on validation. Featuring RibbonFET Gate-All-Around transistors and PowerVia backside power routing, yield metrics are tracking ahead of expectations.",
       "summary_tamil": "இன்டெல் நிறுவனம் தனது 18A (2 நானோமீட்டருக்கும் குறைவான) தயாரிப்பு நோடில் உருவாக்கப்பட்ட Panther Lake AI செயலியை வெற்றிகரமாக இயக்கி சோதித்துள்ளது. இதில் உள்ள RibbonFET மற்றும் சிப்பின் பின்புறம் மின்சாரம் வழங்கும் PowerVia தொழில்நுட்பம் பெரும் செயல்திறன் முன்னேற்றத்தை தந்துள்ளது.",
-      "timestamp": "2026-11-12 09:30 IST",
       "tags": [
         "Intel 18A",
         "RibbonFET",
@@ -263,7 +262,8 @@
       ],
       "source": "Intel Foundry Technical Symposium & Microprocessor Report",
       "author": "Dr. Ann Kelleher, Technology Development",
-      "read_time": "4 min read"
+      "read_time": "4 min read",
+      "timestamp": "2026-11-14 04:09 IST"
     },
     {
       "id": "ece-ww-102",
@@ -275,7 +275,6 @@
       "title_tamil": "ASML நிறுவனம் சாதனை: 1.4 நானோமீட்டர் சிப் தயாரிப்பிற்கான 'ஹை-NA EUV' லேசர் கருவி விநியோகம்!",
       "summary": "Semiconductor lithography giant ASML has completed delivery of its commercial High-NA (Numerical Aperture 0.55) extreme ultraviolet scanner system, the TWINSCAN EXE:5200. Enabling sub-8nm pitch single-exposure printing, the revolutionary optics eliminate quadruple patterning, charting the path toward 14-Angstrom (1.4nm) and 10-Angstrom silicon chips.",
       "summary_tamil": "நெதர்லாந்தின் ASML நிறுவனம் அடுத்த தலைமுறை 1.4 நானோமீட்டர் (14Å) சில்லுகளை அச்சிடும் திறன் கொண்ட உலகின் மிகச்சக்திவாய்ந்த ஹை-NA EUV லேசர் லித்தோகிராபி கருவியை (TWINSCAN EXE:5200) முன்னணி குறைக்கடத்தி ஆலைகளுக்கு விநியோகித்துள்ளது.",
-      "timestamp": "2026-11-12 08:15 IST",
       "tags": [
         "ASML High-NA EUV",
         "1.4nm Angstrom Era",
@@ -283,7 +282,7 @@
         "Semiconductor Tools",
         "VLSI"
       ],
-      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+      "image_url": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1200&q=80",
       "illustration_type": "photonics",
       "key_highlights": [
         "Numerical aperture increased from 0.33 to 0.55 using anamorphic Zeiss optical mirrors",
@@ -299,7 +298,8 @@
       ],
       "source": "Semiconductor Engineering Review & ASML Veldhoven",
       "author": "Optics & Lithography Working Group",
-      "read_time": "3 min read"
+      "read_time": "3 min read",
+      "timestamp": "2026-11-14 03:09 IST"
     }
   ]
 }

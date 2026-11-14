@@ -94,8 +94,14 @@
           </div>
         </div>
 
-        <!-- Controls: Language Toggle, Print & Refresh -->
+        <!-- Controls: Visual Mode, Language Toggle, Print & Refresh -->
         <div class="flex items-center gap-2.5">
+          <!-- Visual Mode Switcher (Photos vs Vector Art) -->
+          <button id="visual-mode-btn" onclick="toggleVisualMode()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500/50 transition-all text-xs font-medium no-print" title="Switch between Realistic Photos and Vector Art">
+            <span id="visual-mode-icon">📷</span>
+            <span id="visual-mode-label" class="hidden sm:inline">Photos</span>
+          </button>
+
           <!-- Bilingual Switcher Button -->
           <button id="lang-toggle-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-500/50 transition-all text-xs font-medium" title="Switch English / தமிழ்">
             <span class="text-xs font-mono bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/30">ENG</span>
