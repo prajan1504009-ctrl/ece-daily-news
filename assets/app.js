@@ -350,9 +350,9 @@ function createArticleCard(item) {
             `).join('')}
           </div>
 
-          <!-- Action Footer: Listen Aloud & Read Deep Dive -->
+          <!-- Action Footer: Listen Aloud, Google Search & Read Deep Dive -->
           <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5 sm:gap-2">
               <button onclick="speakArticle('${item.id}', event)" class="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border transition-all ${isPlaying ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500' : 'bg-slate-800/60 text-slate-300 border-slate-700 hover:border-cyan-500/50 hover:text-cyan-400'}">
                 ${isPlaying ? `
                   <span class="flex items-center h-4">
@@ -363,6 +363,18 @@ function createArticleCard(item) {
                   <span>🔊 Listen</span>
                 `}
               </button>
+
+              <!-- Live Google Search Link -->
+              <a href="https://www.google.com/search?q=${encodeURIComponent(item.title)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border bg-slate-800/60 hover:bg-slate-700 text-slate-300 hover:text-cyan-300 border-slate-700 hover:border-cyan-500/50 text-xs font-medium transition-colors shadow-sm" title="Open live news search in Google (New Tab)">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span class="hidden sm:inline">Google</span>
+                <span class="text-[10px] opacity-70">↗</span>
+              </a>
 
               <button onclick="shareArticle('${item.id}', event)" class="p-1.5 rounded-lg border bg-slate-800/60 text-slate-400 hover:text-emerald-400 border-slate-700 hover:border-emerald-500/40 text-xs transition-colors" title="Share with friends">
                 📤
@@ -448,6 +460,60 @@ function speakArticle(id, e) {
   renderArticles();
 }
 
+// ----------------------------------------------------
+// Google Search & Live News Helpers
+// ----------------------------------------------------
+
+function openGoogleSearch(query) {
+  const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function openGoogleNews(query) {
+  const url = `https://news.google.com/search?q=${encodeURIComponent(query)}&hl=en-IN&gl=IN&ceid=IN:en`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function openGoogleScholar(query) {
+  const url = `https://scholar.google.com/scholar?q=${encodeURIComponent(query)}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function executeCustomGoogleSearch(event) {
+  if (event) event.preventDefault();
+  const input = document.getElementById('custom-google-input');
+  if (input && input.value.trim()) {
+    openGoogleSearch(input.value.trim());
+  }
+}
+
+function setModalTab(tab) {
+  const deepdiveTabBtn = document.getElementById('tab-btn-deepdive');
+  const googleTabBtn = document.getElementById('tab-btn-google');
+  const deepdivePane = document.getElementById('tab-pane-deepdive');
+  const googlePane = document.getElementById('tab-pane-google');
+
+  if (tab === 'deepdive') {
+    if (deepdiveTabBtn) {
+      deepdiveTabBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold border transition-all bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-sm flex items-center gap-1.5';
+    }
+    if (googleTabBtn) {
+      googleTabBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-1.5';
+    }
+    if (deepdivePane) deepdivePane.classList.remove('hidden');
+    if (googlePane) googlePane.classList.add('hidden');
+  } else {
+    if (googleTabBtn) {
+      googleTabBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold border transition-all bg-blue-500/20 text-blue-300 border-blue-500/50 shadow-sm flex items-center gap-1.5';
+    }
+    if (deepdiveTabBtn) {
+      deepdiveTabBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-1.5';
+    }
+    if (deepdivePane) deepdivePane.classList.add('hidden');
+    if (googlePane) googlePane.classList.remove('hidden');
+  }
+}
+
 function openStoryModal(id) {
   const article = allArticles.find(a => a.id === id);
   if (!article) return;
@@ -460,17 +526,19 @@ function openStoryModal(id) {
   const modal = document.getElementById('story-modal');
   const modalContent = document.getElementById('modal-body');
   const activeMode = cardVisualOverrides[article.id] || currentVisualMode;
+  const escapedTitle = article.title.replace(/'/g, "\\'");
+  const primaryTag = (article.tags && article.tags[0]) ? article.tags[0] : 'ECE';
 
   modalContent.innerHTML = `
     <!-- Top Visual Banner -->
-    <div class="h-64 sm:h-72 w-full overflow-hidden rounded-xl bg-slate-950 mb-6 relative border border-slate-800">
+    <div class="h-60 sm:h-72 w-full overflow-hidden rounded-xl bg-slate-950 mb-5 relative border border-slate-800">
       <div id="modal-media-container" class="w-full h-full">
         ${getCardMediaHtml(article)}
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent pointer-events-none"></div>
       
-      <!-- Toggle button inside Modal -->
-      <button id="modal-visual-btn" onclick="toggleModalVisual('${article.id}', event)" class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-xs text-slate-300 hover:text-cyan-300 font-mono shadow-md backdrop-blur-md transition-all">
+      <!-- Visual Mode Toggle button inside Banner -->
+      <button id="modal-visual-btn" onclick="toggleModalVisual('${article.id}', event)" class="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-xs text-slate-300 hover:text-cyan-300 font-mono shadow-md backdrop-blur-md transition-all">
         ${activeMode === 'photos' ? '🎨 Show Vector Art' : '📷 Show Real Photo'}
       </button>
 
@@ -485,38 +553,169 @@ function openStoryModal(id) {
     </div>
 
     <!-- Article Headings -->
-    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mb-4 leading-tight ${isTamil ? 'tamil-text' : ''}">
+    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 mb-4 leading-snug ${isTamil ? 'tamil-text' : ''}">
       ${title}
     </h2>
 
-    <!-- Summary Box -->
-    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 mb-6 text-slate-300 leading-relaxed ${isTamil ? 'tamil-text' : ''}">
-      ${summary}
-    </div>
-
-    <!-- Key Technical Highlights -->
-    <div class="mb-6">
-      <h3 class="text-base font-bold text-cyan-400 mb-3 flex items-center gap-2">
-        <span>⚡</span>
-        <span>Key Engineering Highlights & Takeaways</span>
-      </h3>
-      <ul class="space-y-2.5">
-        ${(highlights || []).map(hl => `
-          <li class="flex items-start gap-2.5 text-sm text-slate-300 bg-slate-900/40 p-3 rounded-lg border border-slate-800/80 ${isTamil ? 'tamil-text' : ''}">
-            <span class="text-cyan-400 font-bold">✔</span>
-            <span>${hl}</span>
-          </li>
-        `).join('')}
-      </ul>
-    </div>
-
-    <!-- Metadata & Citations -->
-    <div class="pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
-      <div>
-        <span class="text-slate-500">Source:</span> <span class="text-slate-300 font-semibold">${article.source}</span>
+    <!-- Interactive Navigation Tabs: Analysis vs Open Live in Google -->
+    <div class="flex flex-wrap items-center justify-between gap-2 p-1.5 bg-slate-900/90 rounded-2xl border border-slate-800 mb-5">
+      <div class="flex items-center gap-1.5">
+        <button id="tab-btn-deepdive" onclick="setModalTab('deepdive')" class="px-3.5 py-2 rounded-xl text-xs font-bold border transition-all bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-sm flex items-center gap-1.5">
+          <span>📖 Engineering Analysis</span>
+        </button>
+        <button id="tab-btn-google" onclick="setModalTab('google')" class="px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+          </svg>
+          <span>Open Live in Google</span>
+          <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-mono">Live Web ↗</span>
+        </button>
       </div>
+
+      <!-- Instant 1-Click Launch Button in Top Bar -->
+      <a href="https://www.google.com/search?q=${encodeURIComponent(article.title)}" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/40 text-xs font-semibold transition-all shadow-sm">
+        <span>Launch Google Search</span>
+        <span class="text-[11px]">↗</span>
+      </a>
+    </div>
+
+    <!-- TAB PANE 1: Engineering Analysis -->
+    <div id="tab-pane-deepdive" class="space-y-5">
+      <!-- Summary Box -->
+      <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 leading-relaxed ${isTamil ? 'tamil-text' : ''}">
+        ${summary}
+      </div>
+
+      <!-- Key Technical Highlights -->
       <div>
-        <span class="text-slate-500">By:</span> <span class="text-slate-300">${article.author}</span>
+        <h3 class="text-sm font-bold text-cyan-400 mb-3 flex items-center gap-2">
+          <span>⚡</span>
+          <span>Key Engineering Highlights & Hardware Parameters</span>
+        </h3>
+        <ul class="space-y-2">
+          ${(highlights || []).map(hl => `
+            <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300 bg-slate-900/40 p-3 rounded-lg border border-slate-800/80 ${isTamil ? 'tamil-text' : ''}">
+              <span class="text-cyan-400 font-bold">✔</span>
+              <span>${hl}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+
+      <!-- Metadata & Citations -->
+      <div class="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 font-mono">
+        <div>
+          <span class="text-slate-500">Source:</span> <span class="text-slate-300 font-semibold">${article.source}</span>
+        </div>
+        <div>
+          <span class="text-slate-500">By:</span> <span class="text-slate-300">${article.author}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB PANE 2: Open Live in Google -->
+    <div id="tab-pane-google" class="hidden space-y-4">
+      <!-- Google Hero Card -->
+      <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-slate-950 border border-slate-700/80 relative overflow-hidden">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-xl shadow-md">
+            <svg class="w-6 h-6" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-100 flex items-center gap-2">
+              <span>Open Live News in Google</span>
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">Google Integration</span>
+            </h3>
+            <p class="text-xs text-slate-400">Launch live web coverage, real-time news articles, research papers, and press releases in a new tab.</p>
+          </div>
+        </div>
+
+        <!-- 3 Primary Google Destination Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
+          <!-- 1. Google Web Search -->
+          <a href="https://www.google.com/search?q=${encodeURIComponent(article.title)}" target="_blank" rel="noopener noreferrer" class="flex flex-col p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/60 transition-all group shadow-sm">
+            <div class="flex items-center justify-between w-full mb-1">
+              <span class="text-xs font-bold text-blue-400 flex items-center gap-1.5">
+                <span>🌐</span> Google Web
+              </span>
+              <span class="text-xs text-slate-400 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-transform">↗</span>
+            </div>
+            <span class="text-[11px] text-slate-400 leading-snug">Full web coverage, company websites & tech forums</span>
+          </a>
+
+          <!-- 2. Google News Feed -->
+          <a href="https://news.google.com/search?q=${encodeURIComponent(article.title)}&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" class="flex flex-col p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-emerald-500/60 transition-all group shadow-sm">
+            <div class="flex items-center justify-between w-full mb-1">
+              <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+                <span>📰</span> Google News
+              </span>
+              <span class="text-xs text-slate-400 group-hover:text-emerald-300 group-hover:translate-x-0.5 transition-transform">↗</span>
+            </div>
+            <span class="text-[11px] text-slate-400 leading-snug">Live news wires, breaking updates & press feeds</span>
+          </a>
+
+          <!-- 3. Google Scholar -->
+          <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(article.title)}" target="_blank" rel="noopener noreferrer" class="flex flex-col p-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-amber-500/60 transition-all group shadow-sm">
+            <div class="flex items-center justify-between w-full mb-1">
+              <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                <span>🎓</span> Google Scholar
+              </span>
+              <span class="text-xs text-slate-400 group-hover:text-amber-300 group-hover:translate-x-0.5 transition-transform">↗</span>
+            </div>
+            <span class="text-[11px] text-slate-400 leading-snug">IEEE journals, academic research & patent filings</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Live Custom Search Bar -->
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+        <label class="block text-xs font-semibold text-slate-300 mb-2">
+          Custom Live Search on Google:
+        </label>
+        <form onsubmit="executeCustomGoogleSearch(event)" class="flex gap-2">
+          <input id="custom-google-input" type="text" value="${article.title} ECE" class="flex-1 bg-slate-950 border border-slate-700/80 rounded-xl px-3.5 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 font-mono shadow-inner" placeholder="Type query to search in Google..." />
+          <button type="submit" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white text-xs font-bold shadow-md flex items-center gap-1.5 whitespace-nowrap transition-all">
+            <span>Search Google</span>
+            <span>↗</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Suggested Live Search Angle Chips -->
+      <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/60">
+        <h4 class="text-xs font-semibold text-slate-400 mb-2.5">
+          Suggested Live Search Angles (Click to open in Google):
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="openGoogleSearch('${escapedTitle}')" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs text-cyan-300 hover:text-cyan-200 font-mono flex items-center gap-1.5 transition-colors">
+            <span>🔎</span>
+            <span>Full Headline Live Search</span>
+            <span class="text-[10px] opacity-60">↗</span>
+          </button>
+          <button onclick="openGoogleSearch('${(article.source || '').replace(/'/g, "\\'")} ${escapedTitle}')" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs text-emerald-300 hover:text-emerald-200 font-mono flex items-center gap-1.5 transition-colors">
+            <span>🏛️</span>
+            <span>${article.source} Press Release</span>
+            <span class="text-[10px] opacity-60">↗</span>
+          </button>
+          <button onclick="openGoogleSearch('${primaryTag} semiconductor hardware specs')" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs text-amber-300 hover:text-amber-200 font-mono flex items-center gap-1.5 transition-colors">
+            <span>⚡</span>
+            <span>${primaryTag} Hardware Specs</span>
+            <span class="text-[10px] opacity-60">↗</span>
+          </button>
+          <button onclick="openGoogleScholar('${primaryTag} IEEE paper research')" class="px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs text-purple-300 hover:text-purple-200 font-mono flex items-center gap-1.5 transition-colors">
+            <span>📄</span>
+            <span>IEEE Research Papers</span>
+            <span class="text-[10px] opacity-60">↗</span>
+          </button>
+        </div>
       </div>
     </div>
   `;
