@@ -1,0 +1,305 @@
+{
+  "last_updated": "2026-11-16T18:04:58.056485",
+  "formatted_date": "Monday, 16 November 2026",
+  "tamil_date": "திங்கட்கிழமை, 16 நவம்பர் 2026",
+  "next_scheduled_update": "2026-11-17T05:00:00",
+  "update_time_ist": "5:00 AM IST",
+  "edition": "Vol. 2026 • Issue 320",
+  "stats": {
+    "total_articles": 8,
+    "worldwide_count": 2,
+    "india_count": 2,
+    "tamilnadu_count": 2,
+    "chennai_count": 2
+  },
+  "articles": [
+    {
+      "id": "ece-chn-301",
+      "category": "chennai",
+      "category_label": "Chennai ECE Spotlight",
+      "category_tamil": "சென்னை ECE செய்திகள்",
+      "category_badge_color": "emerald",
+      "title": "Anna University CEG Optical Computing Lab Fabricates 1.6 Tbps Silicon Photonics Co-Packaged Optics",
+      "title_tamil": "அண்ணா பல்கலைக்கழகம் CEG: வினாடிக்கு 1.6 Tbps வேக சிலிக்கான் போட்டோனிக்ஸ் ஆப்டிகல் சிப் தயாரிப்பு!",
+      "summary": "The Centre for Optical Networking at College of Engineering Guindy (CEG), Anna University, has demonstrated a co-packaged optics (CPO) transceiver chiplet operating at 1.6 Terabits per second. Replacing copper inter-server interconnects with silicon optical waveguides, the design slashes data center energy loss by 65%.",
+      "summary_tamil": "அண்ணா பல்கலைக்கழக கிண்டி பொறியியல் கல்லூரி (CEG) ஒளியியல் நெட்வொர்க்கிங் மையம், வினாடிக்கு 1.6 டெராபிட் வேகத்தில் தகவல்களை கடத்தும் சிலிக்கான் போட்டோனிக்ஸ் சிப்பை தயாரித்துள்ளது. இது செம்பு கம்பிகளுக்கு பதிலாக லேசர் ஒளியைப் பயன்படுத்தி தகவல் மையங்களின் மின்சார விரயத்தை 65% குறைக்கிறது.",
+      "tags": [
+        "Silicon Photonics",
+        "Anna University CEG",
+        "Co-Packaged Optics",
+        "Optical Computing",
+        "High-Speed Transceiver"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "photonics",
+      "key_highlights": [
+        "Integrates indium phosphide micro-disk lasers directly onto CMOS silicon waveguides",
+        "Operates with sub-picojoule per bit (0.8 pJ/bit) ultra-low thermal dissipation",
+        "Addresses memory bandwidth bottlenecks in large AI GPU compute clusters",
+        "Selected for pilot integration at national supercomputing facilities across India"
+      ],
+      "key_highlights_tamil": [
+        "சிஎம்ஓஎஸ் சிலிக்கான் சர்க்யூட்டுகளில் நேரடியாக பொருத்தப்பட்ட இண்டியம் பாஸ்பைட் நுண் லேசர் அமைப்புகள்",
+        "ஒரு பிட் தகவலுக்கு வெறும் 0.8 பைக்கோஜூல் மின்சாரத்தை மட்டுமே பயன்படுத்தும் அதிதிறன்",
+        "மெகா ஏஐ பிராசஸர்களுக்கு இடையே ஏற்படும் தகவல் தேக்கத்திற்கு நிரந்தர தீர்வு",
+        "இந்தியாவின் தேசிய சூப்பர் கம்ப்யூட்டர் மையங்களில் முன்னோடி பயன்பாட்டிற்கு தேர்வு"
+      ],
+      "source": "Anna University Dept. of ECE Photonics Bulletin",
+      "author": "Prof. K. Narayanan & Optical Systems Lab",
+      "read_time": "3 min read",
+      "timestamp": "2026-11-16 17:49 IST"
+    },
+    {
+      "id": "ece-chn-302",
+      "category": "chennai",
+      "category_label": "Chennai ECE Spotlight",
+      "category_tamil": "சென்னை ECE செய்திகள்",
+      "category_badge_color": "emerald",
+      "title": "IIT Madras Incubation Cell Launches Sub-1V Neuromorphic Chip for Ultra-Low Power Wearable Health",
+      "title_tamil": "ஐஐடி மெட்ராஸ் ஸ்டார்ட்அப்: அணிந்து கொள்ளும் மருத்துவ சாதனங்களுக்கான சப்-1V நியோரோமார்ஃபிக் சிப்!",
+      "summary": "An IIT Madras deep-tech fabless startup incubated at Research Park has taped out 'SpikeCore-1', a sub-1V neuromorphic spiking neural network processor. Designed for continuous ECG arrhythmia and neural telemetry monitoring, the ASIC runs continuously for over 18 months on a single coin-cell battery.",
+      "summary_tamil": "ஐஐடி மெட்ராஸ் ஆராய்ச்சி பூங்காவில் உருவான ஸ்டார்ட்அப் நிறுவனம், மூளையின் நரம்பு செல்கள் போல் செயல்படும் 'ஸ்பைக்கோர்-1' என்ற அதிநவீன மருத்துவ சிப்பை உருவாக்கியுள்ளது. இது ஒரு சிறிய பட்டன் பேட்டரியில் தொடர்ந்து 18 மாதங்கள் இயங்கி இதய துடிப்பை கண்காணிக்கும்.",
+      "tags": [
+        "Neuromorphic Computing",
+        "IIT Madras",
+        "Wearable ECE",
+        "Bioelectronics",
+        "Sub-1V ASIC"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "cleanroom",
+      "key_highlights": [
+        "Asynchronous event-driven architecture drawing only 280 nanowatts during idle baseline",
+        "On-chip analog front-end (AFE) filters 50Hz mains power line hum with 92 dB CMRR",
+        "Taped out on 65nm low-leakage process with integrated non-volatile memristive arrays",
+        "Undergoing clinical validation with leading hospital cardiology wings in Chennai"
+      ],
+      "key_highlights_tamil": [
+        "தேவைப்படும்போது மட்டுமே செயல்பட்டு வெறும் 280 நானோவாட் மின்சாரத்தை பயன்படுத்தும் வடிவமைப்பு",
+        "மின்சார இரைச்சலை துடைத்தெறிந்து துல்லியமான இதய துடிப்பு சிக்னல்களை பிரித்தெடுக்கும் வசதி",
+        "நீண்ட ஆயுள் கொண்ட 65nm குறைவான மின்கசிவு தயாரிப்பு நோடில் உற்பத்தி",
+        "சென்னையின் முன்னணி மருத்துவமனைகளின் இதய சிகிச்சை பிரிவுகளில் மருத்துவ பரிசோதனை"
+      ],
+      "source": "IIT Madras Bio-ECE Incubator Dispatch",
+      "author": "Bioelectronics & VLSI Working Group",
+      "read_time": "3 min read",
+      "timestamp": "2026-11-16 17:19 IST"
+    },
+    {
+      "id": "ece-tn-301",
+      "category": "tamilnadu",
+      "category_label": "Tamil Nadu ECE Horizon",
+      "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
+      "category_badge_color": "cyan",
+      "title": "Foxconn Sriperumbudur Deploys 8K Automated Optical Inspection (AOI) for Micro-BGA SMT Lines",
+      "title_tamil": "ஸ்ரீபெரும்புதூர் பாக்ஸ்கான்: மைக்ரோ-BGA சர்க்யூட் போர்டுகளுக்கான 8K ஏஐ தானியங்கி ஆப்டிகல் ஆய்வு தொடக்கம்!",
+      "summary": "Foxconn's mega manufacturing campus in Sriperumbudur has integrated deep-learning 8K Automated Optical Inspection (AOI) machines across its high-density printed circuit board assembly lines. The vision systems inspect solder joint meniscus geometries and tombstoning at sub-5-micron tolerances.",
+      "summary_tamil": "ஸ்ரீபெரும்புதூரில் உள்ள பாக்ஸ்கான் மின்னணு உற்பத்தி வளாகத்தில், சர்க்யூட் போர்டுகளில் உள்ள மைக்ரோ சிப்களின் சாலிடரிங் தரத்தை 5 மைக்ரான் துல்லியத்தில் ஆய்வு செய்யும் 8K ஏஐ கேமரா அமைப்புகள் நிறுவப்பட்டுள்ளன.",
+      "tags": [
+        "Electronics Manufacturing",
+        "Sriperumbudur",
+        "AOI Vision",
+        "SMT Quality",
+        "AI Edge"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "telecom",
+      "key_highlights": [
+        "Inspects up to 120,000 components per hour using multi-angle structured laser line scanning",
+        "Real-time machine learning inference eliminates false defect calls by 94%",
+        "Trained on over 10 million historical solder bridge and voids datasets",
+        "Positions Tamil Nadu as Asia's highest reliability electronics assembly destination"
+      ],
+      "key_highlights_tamil": [
+        "மல்டி-ஆங்கிள் லேசர் ஸ்கேனிங் மூலம் ஒரு மணி நேரத்திற்கு 1.2 லட்சம் உதிரிபாகங்களை பரிசோதிக்கும் திறன்",
+        "செயற்கை நுண்ணறிவு மூலம் தவறான எச்சரிக்கைகளை 94% குறைத்து தயாரிப்பு வேகத்தை அதிகரித்தல்",
+        "1 கோடிக்கும் மேற்பட்ட சர்க்யூட் போர்டு தரவு மாதிரிகளைக் கொண்டு பயிற்றுவிக்கப்பட்ட மென்பொருள்",
+        "மின்னணு தயாரிப்பு தரத்தில் ஆசியாவின் முன்னணி மையமாக தமிழ்நாட்டை உயர்த்தும் முன்னெடுப்பு"
+      ],
+      "source": "Tamil Nadu Electronic Hardware Manufacturers Association",
+      "author": "Industrial Automation & Robotics Desk",
+      "read_time": "3 min read",
+      "timestamp": "2026-11-16 16:34 IST"
+    },
+    {
+      "id": "ece-tn-302",
+      "category": "tamilnadu",
+      "category_label": "Tamil Nadu ECE Horizon",
+      "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
+      "category_badge_color": "cyan",
+      "title": "Coimbatore Hub Inks MoU for ₹350-Crore Silicon Carbide (SiC) Power Inverter Packaging Facility",
+      "title_tamil": "கோயம்புத்தூர்: ₹350 கோடியில் சிலிக்கான் கார்பைடு (SiC) பவர் இன்வெர்ட்டர் உற்பத்தி ஆலை ஒப்பந்தம்!",
+      "summary": "Tamil Nadu Guidance Bureau has formalized an investment pact with a domestic power semiconductor consortium to establish a dedicated Silicon Carbide (SiC) power module assembly and testing foundry in the Coimbatore industrial corridor, serving electric mobility and solar grid converters.",
+      "summary_tamil": "தமிழக வழிகாட்டுதல் வாரியம் கோயம்புத்தூரில் ₹350 கோடி முதலீட்டில் சிலிக்கான் கார்பைடு (SiC) பவர் மாட்யூல்கள் தயாரிக்கும் சிறப்பு ஆலையை அமைக்க ஒப்பந்தம் செய்துள்ளது. இது மின்சார வாகனங்கள் மற்றும் சோலார் இன்வெர்ட்டர்களுக்கான முக்கிய உதிரிபாகங்களை வழங்கும்.",
+      "tags": [
+        "Silicon Carbide",
+        "Coimbatore ECE",
+        "Power Electronics",
+        "Clean Energy",
+        "Wide Bandgap"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "chip",
+      "key_highlights": [
+        "Produces 1200V and 1700V SiC MOSFET modules capable of operating up to 200°C junction temperature",
+        "Reduces power conversion losses by 75% compared to legacy silicon IGBT switches",
+        "Equipped with direct-copper-bonded (DCB) ceramic substrate sintering autoclaves",
+        "Partnership with PSG College of Technology for wide-bandgap hardware design curriculum"
+      ],
+      "key_highlights_tamil": [
+        "200 டிகிரி செல்சியஸ் வெப்பநிலையிலும் இயங்கும் திறன் கொண்ட 1200V மற்றும் 1700V SiC மாட்யூல்கள் தயாரிப்பு",
+        "பழைய சிலிக்கான் ஸ்விட்ச்களை விட மின் விரயத்தை 75% குறைக்கும் அபார ஆற்றல்",
+        "பீங்கான் அடி மூலக்கூறில் செம்பு பூசும் அதிநவீன சின்டரிங் இயந்திர வசதிகள்",
+        "பிஎஸ்ஜி தொழில்நுட்பக் கல்லூரியுடன் இணைந்து கூட்டு குறைக்கடத்தி ஆராய்ச்சி பாடத்திட்டம்"
+      ],
+      "source": "Coimbatore Industrial Electronics Directorate",
+      "author": "Renewable Power Semiconductor Bureau",
+      "read_time": "4 min read",
+      "timestamp": "2026-11-16 15:34 IST"
+    },
+    {
+      "id": "ece-ind-301",
+      "category": "india",
+      "category_label": "India National ECE",
+      "category_tamil": "இந்தியா தேசிய ECE செய்திகள்",
+      "category_badge_color": "amber",
+      "title": "Micron Sanand OSAT Facility Dispatches First Commercial Batch of Made-in-India DDR5 Modules",
+      "title_tamil": "மைக்கரான் சனந்த் ஆலை சாதனை: இந்தியாவில் தயாரான முதல் 'DDR5 ரேம்' சிப் தொகுப்பு சர்வதேச ஏற்றுமதி!",
+      "summary": "Micron Technology's state-of-the-art $2.75-billion semiconductor assembly and test complex in Sanand, Gujarat, has successfully packaged and exported its first commercial production run of DDR5 memory modules and UFS 4.0 flash storage for enterprise servers and AI workstations.",
+      "summary_tamil": "குஜராத்தின் சனந்த் நகரில் உள்ள மைக்கரான் நிறுவனத்தின் $2.75 பில்லியன் மதிப்பிலான குறைக்கடத்தி பேக்கேஜிங் ஆலை, இந்தியாவில் தயாரிக்கப்பட்ட முதல் தலைமுறை DDR5 மெமரி சிப்கள் மற்றும் அதிவேக UFS 4.0 ஸ்டோரேஜ் சிப்களை சர்வதேச சந்தைக்கு வெற்றிகரமாக ஏற்றுமதி செய்துள்ளது.",
+      "tags": [
+        "Micron Sanand",
+        "DDR5 Memory",
+        "Semiconductor India",
+        "OSAT Export",
+        "AI Hardware"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "circuit_flag",
+      "key_highlights": [
+        "Utilizes advanced 3D Through-Silicon-Via (TSV) multi-die vertical memory stacking",
+        "Achieves data transfer speeds of up to 6400 MT/s with built-in On-Die Error Correction (ODECC)",
+        "Creates direct employment for over 5,000 precision electronics test and packaging specialists",
+        "Supplied directly to global hyperscale cloud data centers across the US, Europe, and Asia"
+      ],
+      "key_highlights_tamil": [
+        "சிப்களை ஒன்றன் மேல் ஒன்றாக அடுக்கும் மேம்பட்ட 3D த்ரூ-சிலிக்கான்-வியா (TSV) பேக்கேஜிங் முறை",
+        "பிழைகளை தானாகவே சரிசெய்யும் தொழில்நுட்பத்துடன் வினாடிக்கு 6400 MT வேகத்தில் தரவு பரிமாற்றம்",
+        "5,000க்கும் மேற்பட்ட இந்திய எலக்ட்ரானிக்ஸ் பொறியாளர்கள் மற்றும் ஆய்வாளர்களுக்கு நேரடி வேலைவாய்ப்பு",
+        "அமெரிக்கா, ஐரோப்பிய கிளவுட் டேட்டா சென்டர்களுக்கு நேரடியாக விநியோகிக்கப்படும் இந்திய தயாரிப்பு"
+      ],
+      "source": "India Semiconductor Mission & Micron Global Communications",
+      "author": "Memory Systems & Industrial Policy Desk",
+      "read_time": "4 min read",
+      "timestamp": "2026-11-16 14:34 IST"
+    },
+    {
+      "id": "ece-ind-302",
+      "category": "india",
+      "category_label": "India National ECE",
+      "category_tamil": "இந்தியா தேசிய ECE செய்திகள்",
+      "category_badge_color": "amber",
+      "title": "DRDO Uttam AESA Radar Completes High-Altitude Extreme Climate Trials for Fighter Aircraft",
+      "title_tamil": "டிஆர்டிஓ உத்தம் (Uttam) AESA ரேடார்: இமயமலை உச்சியில் கடும் குளிர்கால சோதனைகள் 100% வெற்றி!",
+      "summary": "The Defence Research and Development Organisation (DRDO) and Electronics and Radar Development Establishment (LRDE) have completed high-altitude flight trials for the indigenous 'Uttam' Active Electronically Scanned Array radar in Ladakh, validating target tracking across 50 simultaneous airborne tracks.",
+      "summary_tamil": "பாதுகாப்பு ஆராய்ச்சி மற்றும் வளர்ச்சி அமைப்பான டிஆர்டிஓ (DRDO), உள்நாட்டிலேயே உருவாக்கிய 'உத்தம்' AESA போர் விமான ரேடாரின் கடும் குளிர்கால சோதனைகளை லடாக் எல்லையில் வெற்றிகரமாக முடித்துள்ளது. இது ஒரே நேரத்தில் 50 எதிரி இலக்குகளை கண்காணிக்கும் ஆற்றல் கொண்டது.",
+      "tags": [
+        "DRDO",
+        "Uttam Radar",
+        "AESA Avionics",
+        "Defense Electronics",
+        "LRDE Bangalore"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "quantum_space",
+      "key_highlights": [
+        "Liquid-cooled array housing over 780 active Gallium Arsenide transmit-receive channels",
+        "Features electronic beam agility preventing radar jamming and electronic countermeasures (ECCM)",
+        "Slated as default standard radar sensor for Tejas Mk1A fighter squadron deliveries",
+        "Developed with 100% domestic software algorithms and digital signal processor architectures"
+      ],
+      "key_highlights_tamil": [
+        "780க்கும் மேற்பட்ட ரேடார் சேனல்களை கொண்ட திரவ குளிரூட்டல் வசதி கொண்ட அதிநவீன கட்டமைப்பு",
+        "எதிரிகளின் ரேடார் ஜாமிங் அலைகளை முறியடிக்கும் மேம்பட்ட மின்னணு பாதுகாப்பு தொழில்நுட்பம் (ECCM)",
+        "இந்திய விமானப்படையின் தேஜஸ் எம்கே1A போர் விமானங்களில் முதன்மை ரேடாராக பொருத்தம்",
+        "100% உள்நாட்டு மென்பொருள் அல்காரிதம்கள் மற்றும் டிஜிட்டல் சிக்னல் பிராசஸர் கொண்டு வடிவமைப்பு"
+      ],
+      "source": "Aeronautical Development Agency & DRDO Press Wing",
+      "author": "Avionics & Radar Systems Working Group",
+      "read_time": "3 min read",
+      "timestamp": "2026-11-16 13:34 IST"
+    },
+    {
+      "id": "ece-ww-301",
+      "category": "worldwide",
+      "category_label": "Worldwide ECE Frontier",
+      "category_tamil": "சர்வதேச ECE செய்திகள்",
+      "category_badge_color": "purple",
+      "title": "Applied Materials Unveils 300mm Atomic Layer Deposition (ALD) Tool for Sub-1nm Gate Oxides",
+      "title_tamil": "அப்ளைடு மெட்டீரியல்ஸ் சாதனை: 1 நானோமீட்டருக்கும் குறைவான சிப்களுக்கான அணு அடுக்கு பூச்சு கருவி அறிமுகம்!",
+      "summary": "Applied Materials has announced the 'Centura AtomicVolt', a 300mm atomic layer deposition (ALD) processing system capable of laying down uniform single-atom oxide layers on 3D nanosheet GAA transistors, eliminating quantum leakage across angstrom-scale semiconductor gates.",
+      "summary_tamil": "உலகப் புகழ்பெற்ற அப்ளைடு மெட்டீரியல்ஸ் நிறுவனம், 1 நானோமீட்டருக்கும் குறைவான அடுத்த தலைமுறை சிப்களில் ஒற்றை அணு அளவில் சீரான மின்காப்பு படலத்தை பூசும் உலகின் மிக நுட்பமான அணு அடுக்கு பூச்சு (ALD) ஃபேப்ரிகேஷன் கருவியை அறிமுகப்படுத்தியுள்ளது.",
+      "tags": [
+        "Applied Materials",
+        "Atomic Layer Deposition",
+        "ALD",
+        "Nanotechnology",
+        "Wafer Fab Tools"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "cleanroom",
+      "key_highlights": [
+        "Achieves layer uniformity with variation under 0.05 angstroms across entire 300mm wafer surface",
+        "Uses novel ruthenium and hafnium metalorganic precursor gases under high vacuum",
+        "Critical enabler for future 10-angstrom (1.0nm) and carbon nanotube gate architectures",
+        "Initial commercial shipments arriving at leading Asian and American foundry pilot fabs"
+      ],
+      "key_highlights_tamil": [
+        "300 மிமீ சிலிக்கான் வேஃபர் முழுவதும் 0.05 ஆங்ஸ்ட்ராமுக்கும் குறைவான அபார சமச்சீர் பூச்சு துல்லியம்",
+        "உயர் வெற்றிட சூழலில் புதிய ரூத்தேனியம் மற்றும் ஹாஃப்னியம் உலோக வாயுக்கள் மூலம் செயல்பாடு",
+        "எதிர்கால 1 நானோமீட்டர் மற்றும் கார்பன் நானோடூப் டிரான்சிஸ்டர் தயாரிப்பிற்கு தவிர்க்க முடியாத கருவி",
+        "சர்வதேச முன்னணி குறைக்கடத்தி ஆலைகளுக்கு முதல் கட்ட வணிக விநியோகம் தொடக்கம்"
+      ],
+      "source": "Semiconductor International Review & Applied Materials",
+      "author": "Materials Science & Wafer Processing Division",
+      "read_time": "4 min read",
+      "timestamp": "2026-11-16 12:34 IST"
+    },
+    {
+      "id": "ece-ww-302",
+      "category": "worldwide",
+      "category_label": "Worldwide ECE Frontier",
+      "category_tamil": "சர்вершена ECE செய்திகள்",
+      "category_badge_color": "purple",
+      "title": "Samsung Foundry Outlines 1.4nm SF1.4 Node Roadmap with Backside Power Network",
+      "title_tamil": "சாம்சங் ஃபவுண்ட்ரி அறிவிப்பு: 1.4 நானோமீட்டர் சிப் தயாரிப்பு மற்றும் பேக்சைடு பவர் திட்டம் வெளியீடு!",
+      "summary": "At the Samsung Foundry Forum, Samsung Electronics disclosed the engineering specifications for its sub-2nm 'SF1.4' process. Incorporating second-generation Multi-Bridge Channel FETs (MBCFETs) and Backside Power Delivery Networks (BSPDN), the architecture promises a 20% IPC boost and 35% smaller die footprint.",
+      "summary_tamil": "சாம்சங் நிறுவனம் தனது எதிர்கால 1.4 நானோமீட்டர் (SF1.4) குறைக்கடத்தி தயாரிப்பு திட்டங்களை அதிகாரப்பூர்வமாக வெளியிட்டுள்ளது. இதில் உள்ள இரண்டாம் தலைமுறை MBCFET மற்றும் பின்புற மின்சார விநியோக தொழில்நுட்பம் சிப்பின் பரப்பளவை 35% குறைக்கும்.",
+      "tags": [
+        "Samsung Foundry",
+        "1.4nm Node",
+        "BSPDN",
+        "MBCFET",
+        "Advanced Silicon"
+      ],
+      "image_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=80",
+      "illustration_type": "gaafet",
+      "key_highlights": [
+        "Backside power grid frees up top metal layers exclusively for low-resistance signal interconnects",
+        "Reduces power-grid IR voltage drop by 18%, enabling higher sustained clock frequencies",
+        "Advanced extreme ultraviolet (EUV) double-patterning optimizing standard cell contact pitches",
+        "Customer silicon prototyping scheduled for early 2028 for generative AI hyperscalers"
+      ],
+      "key_highlights_tamil": [
+        "சிப்பின் பின்புறம் மின்சார வயரிங் செல்வதால், முன்புறம் சிக்னல் கம்பிகள் மட்டும் தடையின்றி இயங்கும் வசதி",
+        "மின்னழுத்த இழப்பை 18% குறைத்து அதிகபட்ச கிளாக் வேகத்தில் தடையின்றி செயல்பட அனுமதித்தல்",
+        "அதிநவீன EUV லேசர் லித்தோகிராபி மூலம் டிரான்சிஸ்டர் இடைவெளிகளை மிகச்சிறியதாக சுருக்குதல்",
+        "2028 தொடக்கத்தில் சர்வதேச செயற்கை நுண்ணறிவு நிறுவனங்களுக்கு மாதிரி சிப்கள் வழங்க திட்டம்"
+      ],
+      "source": "Samsung Electronics Semiconductor Business Bulletin",
+      "author": "Dr. Siyoung Choi, President of Foundry Business",
+      "read_time": "4 min read",
+      "timestamp": "2026-11-16 11:34 IST"
+    }
+  ]
+}
