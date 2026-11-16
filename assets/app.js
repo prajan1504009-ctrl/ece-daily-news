@@ -16,11 +16,44 @@ let currentUtterance = null;
 let currentPlayingId = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initTheme();
   initCountdownTimer();
   updateVisualModeButtonUI();
   await loadNewsData();
   setupEventListeners();
 });
+
+// ----------------------------------------------------
+// Theme Toggle & Persistence (Light / VS Code Dark)
+// ----------------------------------------------------
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'vscode-dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeButtonUI(savedTheme);
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'vscode-dark';
+  const newTheme = currentTheme === 'vscode-dark' ? 'light' : 'vscode-dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeButtonUI(newTheme);
+}
+
+function updateThemeButtonUI(theme) {
+  const icon = document.getElementById('theme-icon');
+  const label = document.getElementById('theme-label');
+  const btn = document.getElementById('theme-toggle-btn');
+  if (theme === 'vscode-dark') {
+    if (icon) icon.textContent = '🌙';
+    if (label) label.textContent = 'Dark';
+    if (btn) btn.title = 'Switch to Light Theme';
+  } else {
+    if (icon) icon.textContent = '☀️';
+    if (label) label.textContent = 'Light';
+    if (btn) btn.title = 'Switch to VS Code Dark Theme';
+  }
+}
 
 function getIllustrationSvg(type) {
   const ill = (typeof window !== 'undefined' && window.ECEIllustrations) 
@@ -167,6 +200,12 @@ function initCountdownTimer() {
 }
 
 function setupEventListeners() {
+  // Theme Toggle Button
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
+
   // Global Language Switcher
   const langToggleBtn = document.getElementById('lang-toggle-btn');
   if (langToggleBtn) {

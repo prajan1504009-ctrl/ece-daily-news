@@ -808,12 +808,20 @@ def update_daily_edition():
     tamil_month = tamil_months.get(now.month, "")
     day_of_year = now.timetuple().tm_yday
 
-    # Select rotating edition based on day of year
-    edition_idx = day_of_year % len(EDITIONS)
-    articles = EDITIONS[edition_idx]
+    # Select rotating 16-article edition (4 Chennai, 4 Tamil Nadu, 4 India, 4 Worldwide)
+    ed_a = EDITIONS[day_of_year % len(EDITIONS)]
+    ed_b = EDITIONS[(day_of_year + 1) % len(EDITIONS)]
+    
+    by_cat = {"chennai": [], "tamilnadu": [], "india": [], "worldwide": []}
+    for a in ed_a + ed_b:
+        cat = a.get("category", "worldwide")
+        if cat in by_cat and len(by_cat[cat]) < 4:
+            by_cat[cat].append(dict(a))
+            
+    articles = by_cat["chennai"] + by_cat["tamilnadu"] + by_cat["india"] + by_cat["worldwide"]
 
     # Stamp each article with dynamic current-edition timestamps
-    time_offsets = [15, 45, 90, 150, 210, 270, 330, 390]
+    time_offsets = [15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420]
     for idx, article in enumerate(articles):
         offset = time_offsets[idx % len(time_offsets)]
         art_time = now - datetime.timedelta(minutes=offset)
