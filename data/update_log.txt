@@ -494,3 +494,34 @@ Internal error during "options.onPostBuild"
     publishOrigin: default
  »   Error: Error while running build
 Finished scheduled update at Mon 11/16/2026 18:05:49.95 
+============================================================ 
+Running ECE Daily News 5:00 AM IST Scheduled Update 
+Execution Time: Tue 11/17/2026  7:26:27.10 
+============================================================ 
+Bundled index.html successfully! Size: 132053 bytes (Tuesday, 17 November 2026)
+ZipArchiveHelper : The process cannot access the file 
+'C:\Users\wolfy\.gemini\antigravity\scratch\ece-daily-news\data\update_log.txt' because it is being used by another 
+process.
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:707 
+char:30
++ ... sArchived = ZipArchiveHelper $subDirFiles.ToArray() $destinationPath  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\wolfy\...\update_log.txt:String) [Write-Error], IOException
+    + FullyQualifiedErrorId : CompressArchiveUnauthorizedAccessError,ZipArchiveHelper
+ 
+New-Object : Exception calling ".ctor" with "1" argument(s): "Stream was not readable."
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:818 
+char:38
++ ...     $srcStream = New-Object System.IO.BinaryReader $currentFileStream
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+ 
+============================================================
+ECE Daily News Aggregator & Multi-Edition Generator
+Execution Time: 2026-11-17 07:26:27
+============================================================
+[SUCCESS] ECE Daily News updated at 2026-11-17T07:26:27.279862 (16 articles)
+Syncing updated edition with GitHub... 
