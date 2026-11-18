@@ -525,3 +525,41 @@ Execution Time: 2026-11-17 07:26:27
 ============================================================
 [SUCCESS] ECE Daily News updated at 2026-11-17T07:26:27.279862 (16 articles)
 Syncing updated edition with GitHub... 
+warning: in the working copy of 'data/update_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 8fa76ae] Auto-update ECE Daily News [scheduled]
+ 5 files changed, 1376 insertions(+), 752 deletions(-)
+ create mode 100644 data/archive/news_2026-11-17.json
+fatal: unable to access 'https://github.com/prajan1504009-ctrl/ece-daily-news.git/': Could not resolve host: github.com
+Deploying new edition to Netlify (daily-ece-news.netlify.app)... 
+Finished scheduled update at Tue 11/17/2026  7:26:52.99 
+============================================================ 
+Running ECE Daily News 5:00 AM IST Scheduled Update 
+Execution Time: Wed 11/18/2026  7:03:07.32 
+============================================================ 
+Bundled index.html successfully! Size: 131830 bytes (Wednesday, 18 November 2026)
+ZipArchiveHelper : The process cannot access the file 
+'C:\Users\wolfy\.gemini\antigravity\scratch\ece-daily-news\data\update_log.txt' because it is being used by another 
+process.
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:707 
+char:30
++ ... sArchived = ZipArchiveHelper $subDirFiles.ToArray() $destinationPath  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\wolfy\...\update_log.txt:String) [Write-Error], IOException
+    + FullyQualifiedErrorId : CompressArchiveUnauthorizedAccessError,ZipArchiveHelper
+ 
+New-Object : Exception calling ".ctor" with "1" argument(s): "Stream was not readable."
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:818 
+char:38
++ ...     $srcStream = New-Object System.IO.BinaryReader $currentFileStream
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+ 
+============================================================
+ECE Daily News Aggregator & Multi-Edition Generator
+Execution Time: 2026-11-18 07:03:07
+============================================================
+[SUCCESS] ECE Daily News updated at 2026-11-18T07:03:07.657498 (16 articles)
+Syncing updated edition with GitHub... 
