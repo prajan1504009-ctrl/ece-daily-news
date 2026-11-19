@@ -602,3 +602,11 @@ Execution Time: 2026-11-19 15:07:49
 ============================================================
 [SUCCESS] ECE Daily News updated at 2026-11-19T15:07:49.853472 (16 articles)
 Syncing updated edition with GitHub... 
+warning: in the working copy of 'data/update_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main d9315b5] Auto-update ECE Daily News [scheduled]
+ 5 files changed, 1378 insertions(+), 746 deletions(-)
+ create mode 100644 data/archive/news_2026-11-19.json
+fatal: unable to access 'https://github.com/prajan1504009-ctrl/ece-daily-news.git/': Could not resolve host: github.com
+Deploying new edition to Netlify (daily-ece-news.netlify.app)... 
+ »   Error: Project not found. Please rerun "netlify link"
+Finished scheduled update at Thu 11/19/2026 15:09:14.53 
