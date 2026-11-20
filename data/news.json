@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-11-19T20:03:09.934215",
-  "formatted_date": "Thursday, 19 November 2026",
-  "tamil_date": "வியாழக்கிழமை, 19 நவம்பர் 2026",
-  "next_scheduled_update": "2026-11-20T05:00:00",
+  "last_updated": "2026-11-20T19:47:35.858517",
+  "formatted_date": "Friday, 20 November 2026",
+  "tamil_date": "வெள்ளிக்கிழமை, 20 நவம்பர் 2026",
+  "next_scheduled_update": "2026-11-21T05:00:00",
   "update_time_ist": "5:00 AM IST",
-  "edition": "Vol. 2026 • Issue 323",
+  "edition": "Vol. 2026 • Issue 324",
   "stats": {
     "total_articles": 16,
     "worldwide_count": 4,
@@ -14,82 +14,6 @@
     "live_count": 6
   },
   "articles": [
-    {
-      "id": "ece-chn-111",
-      "category": "chennai",
-      "category_label": "Chennai ECE Spotlight",
-      "category_tamil": "சென்னை ECE செய்திகள்",
-      "category_badge_color": "emerald",
-      "title": "IIT Madras Nanotechnology Lab Fabricates 2D MoS2 High-Mobility Transistor Array",
-      "title_tamil": "ஐஐடி மெட்ராஸ் நானோ ஆய்வகம்: சிலிக்கானுக்கு மாற்றாக அதிவேக 2D மாலிப்டினம் டிரான்சிஸ்டர் சாதனை!",
-      "summary": "Solid-state device engineers at IIT Madras have synthesized monolayer Molybdenum Disulfide (MoS2) field-effect transistors on 2-inch sapphire wafers, demonstrating electron mobility exceeding 80 cm²/V·s for sub-1nm gate length electronics.",
-      "summary_tamil": "ஐஐடி மெட்ராஸ் நானோ தொழில்நுட்ப விஞ்ஞானிகள், சிலிக்கான் சிப்புகளுக்கு மாற்றாக வினாடிக்கு அபார வேகத்தில் எலக்ட்ரான்களை கடத்தும் 2D மாலிப்டினம் டைசல்பைடு டிரான்சிஸ்டர்களை வெற்றிகரமாக உருவாக்கியுள்ளனர்.",
-      "tags": [
-        "2D Materials",
-        "MoS2 Transistor",
-        "IIT Madras",
-        "Sub-1nm Logic",
-        "Nanotechnology"
-      ],
-      "illustration_type": "cleanroom",
-      "photo_theme": "cleanroom_lithography",
-      "key_highlights": [
-        "Monolayer thickness of just 0.65 nanometers eliminates short-channel leakage current",
-        "High on/off current ratio greater than 10^8 suitable for ultra-dense logic gates",
-        "Low-thermal chemical vapor deposition (CVD) process compatible with back-end-of-line (BEOL) integration",
-        "Published in IEEE Electron Device Letters with peer validation from international labs"
-      ],
-      "key_highlights_tamil": [
-        "வெறும் 0.65 நானோமீட்டர் தடிமன் கொண்ட ஒற்றை அணு அடுக்கு மூலம் மின்சார கசிவை முற்றிலும் தடுத்தல்",
-        "10^8 மடங்கு அதிக ஆன்/ஆஃப் விகிதத்துடன் மிக குறைந்த மின்சாரத்தில் அதிவேக செயல்பாடு",
-        "தற்போதுள்ள சிலிக்கான் சிப் உற்பத்தி ஆலைகளில் எளிதாக இணைக்கும் CVD முறை",
-        "சர்வதேச IEEE எலக்ட்ரான் டிவைஸ் இதழில் வெளியாகி உலகளாவிய விஞ்ஞானிகளின் பாராட்டைப் பெற்றது"
-      ],
-      "source": "IIT Madras Center for Nanotechnology",
-      "author": "Prof. S. Swaminathan, Quantum Devices Lab",
-      "read_time": "4 min read",
-      "google_query": "IIT Madras 2D MoS2 high mobility transistor",
-      "image_url": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 19:48 IST"
-    },
-    {
-      "id": "ece-chn-112",
-      "category": "chennai",
-      "category_label": "Chennai ECE Spotlight",
-      "category_tamil": "சென்னை ECE செய்திகள்",
-      "category_badge_color": "emerald",
-      "title": "Siruseri Hardware Incubator Tests 1200V Gallium Nitride Inverter for Electric Heavy Vehicles",
-      "title_tamil": "சிறுசேரி ஹார்டுவேர் இன்குபேட்டர்: மின்சார பேருந்துகளுக்கான 1200V காலியம் நைட்ரைடு பவர் இன்வெர்ட்டர்!",
-      "summary": "Deep-tech power electronics startup GaNPower Technologies at Siruseri SIPCOT has unveiled a liquid-cooled 1200V Gallium Nitride (GaN-on-Si) power inverter prototype achieving 99.2% power conversion efficiency for 350 kW heavy electric buses.",
-      "summary_tamil": "சிறுசேரி சிப்காட் வளாகத்தில் உள்ள பவர் எலக்ட்ரானிக்ஸ் நிறுவனம், மின்சார பேருந்துகளின் பேட்டரி ஆயுளை கணிசமாக அதிகரிக்கும் 99.2% திறன் கொண்ட 1200V காலியம் நைட்ரைடு இன்வெர்ட்டரை வெற்றிகரமாக சோதித்துள்ளது.",
-      "tags": [
-        "Power Electronics",
-        "GaN Inverter",
-        "Siruseri SIPCOT",
-        "EV Powertrain",
-        "Wide Bandgap"
-      ],
-      "illustration_type": "smt",
-      "photo_theme": "power_ev_grid",
-      "key_highlights": [
-        "Wide-bandgap semiconductor enables 5x higher switching frequencies (200 kHz) reducing inductor size by 60%",
-        "Direct liquid cold-plate packaging maintains junction temperature below 110°C at peak load",
-        "Delivers 99.2% efficiency, reducing battery thermal losses and extending EV range by 14%",
-        "Certified for automotive ISO 26262 ASIL-D functional safety standard"
-      ],
-      "key_highlights_tamil": [
-        "200 kHz அதிவேக சுவிட்ச்சிங் மூலம் இன்வெர்ட்டரின் எடையை 60% குறைக்கும் காலியம் நைட்ரைடு",
-        "அதிவேக லிக்விட் கூலிங் மூலம் கடுமையான வெப்ப சுமையிலும் பாதுகாப்பாக இயங்கும்",
-        "99.2% மின்திறன் மாற்றம் மூலம் பேட்டரி சார்ஜை மிச்சப்படுத்தி வாகன பயண தூரத்தை 14% அதிகரிக்கிறது",
-        "வாகன உற்பத்திக்கான சர்வதேச ISO 26262 ASIL-D பாதுகாப்பு தரச்சான்றிதழ் பெற்றது"
-      ],
-      "source": "SIPCOT Advanced Electronics Incubation Hub",
-      "author": "T. Jayakumar, Chief Power Systems Engineer",
-      "read_time": "3 min read",
-      "google_query": "Siruseri 1200V GaN inverter electric heavy vehicle",
-      "image_url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 19:33 IST"
-    },
     {
       "id": "ece-chn-101",
       "category": "chennai",
@@ -125,8 +49,8 @@
       "author": "Dr. V. Ramakrishnan, Wireless Microelectronics Lab",
       "read_time": "3 min read",
       "google_query": "IIT Madras 6G sub-THz RFIC testbed",
-      "image_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 19:18 IST"
+      "image_url": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 19:32 IST"
     },
     {
       "id": "ece-chn-102",
@@ -163,8 +87,84 @@
       "author": "Dr. S. Meenakshi, Microelectronics Division",
       "read_time": "3 min read",
       "google_query": "Anna University CEG MEMS sensor array EV battery",
-      "image_url": "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 19:03 IST"
+      "image_url": "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 19:17 IST"
+    },
+    {
+      "id": "ece-chn-103",
+      "category": "chennai",
+      "category_label": "Chennai ECE Spotlight",
+      "category_tamil": "சென்னை ECE செய்திகள்",
+      "category_badge_color": "emerald",
+      "title": "IIT Madras Incubation Cell Launches Sub-1V Neuromorphic AI Edge Processor",
+      "title_tamil": "ஐஐடி மெட்ராஸ் ஸ்டார்ட்அப்: 1 வோல்ட்டுக்கும் குறைவான மின்சாரத்தில் இயங்கும் நியுரோமார்பிக் AI பிராசஸர்!",
+      "summary": "Fabless microelectronics startup Neuromorphic Circuits, incubated at IIT Madras Research Park, has taped out 'Veda-Edge-1', an event-driven spiking neural network (SNN) hardware accelerator manufactured on a 28nm FD-SOI node consuming just 18 milliwatts.",
+      "summary_tamil": "ஐஐடி மெட்ராஸ் ரிசர்ச் பார்க்கில் இயங்கும் 'நியுரோமார்பிக் சர்க்யூட்ஸ்' நிறுவனம், வெறும் 18 மில்லிவாட் மின்சாரத்தில் இயங்கக்கூடிய 'வேதா-எட்ஜ்-1' நியூரல் நெட்வொர்க் சிப்பை 28nm தொழில்நுட்பத்தில் வெற்றிகரமாக தயாரித்துள்ளது.",
+      "tags": [
+        "Neuromorphic Computing",
+        "IITM Research Park",
+        "Edge AI",
+        "FD-SOI",
+        "Ultra-Low Power"
+      ],
+      "illustration_type": "ai_cluster",
+      "photo_theme": "semiconductor_silicon_die",
+      "key_highlights": [
+        "Consumes 18mW peak power for 200 frames-per-second computer vision classification",
+        "Eliminates von Neumann memory bottleneck with co-located compute-in-memory architecture",
+        "Designed for drone obstacle avoidance, wearable health sensors, and industrial vibration analysis",
+        "Commercial SDK supports PyTorch and TensorFlow Lite micro-edge deployment"
+      ],
+      "key_highlights_tamil": [
+        "வினாடிக்கு 200 பிரேம்கள் கணினி பார்வைக் கணக்கீட்டுக்கு வெறும் 18mW மின்சாரமே தேவைப்படுகிறது",
+        "நினைவகத்திலிருந்து பிராசஸருக்கு தகவல் பரிமாறும் தாமதத்தை நீக்கும் இன்-மெமரி கம்ப்யூட்டிங்",
+        "ட்ரோன் வழிகாட்டல், அணியக்கூடிய மருத்துவ சாதனங்கள் மற்றும் தொழிற்சாலை பாதுகாப்பிற்கு சிறந்தது",
+        "பைடார்ச் மற்றும் டென்சர்ஃப்ளோ லைட் மாடல்களை எளிதாக இயக்கும் மென்பொருள் வசதி"
+      ],
+      "source": "IIT Madras Incubation Cell & Fabless Alliance",
+      "author": "K. Balachander, Embedded AI Systems Architect",
+      "read_time": "4 min read",
+      "google_query": "IIT Madras neuromorphic AI edge processor Veda",
+      "image_url": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 19:02 IST"
+    },
+    {
+      "id": "ece-chn-104",
+      "category": "chennai",
+      "category_label": "Chennai ECE Spotlight",
+      "category_tamil": "சென்னை ECE செய்திகள்",
+      "category_badge_color": "emerald",
+      "title": "Anna University CEG Optical Computing Lab Fabricates 100Gbps Silicon Photonics Modulator",
+      "title_tamil": "அண்ணா பல்கலைக்கழகம்: வினாடிக்கு 100Gbps வேகத்தில் இயங்கும் சிலிக்கான் ஃபோட்டானிக்ஸ் ஆப்டிகல் சிப்!",
+      "summary": "Researchers at the Department of Electronics and Communication Engineering at CEG Anna University have fabricated an on-chip Mach-Zehnder optical modulator delivering 100 Gbps PAM-4 transmission across telecom C-band wavelengths (1530 nm - 1565 nm).",
+      "summary_tamil": "அண்ணா பல்கலைக்கழக CEG வளாக ECE துறை ஆராய்ச்சியாளர்கள் சிலிக்கான் ஆப்டிகல் தகவல்தொடர்பில் புரட்சியாக வினாடிக்கு 100 Gbps வேகத்தில் ஒளியியல் வழியே தரவுகளை அனுப்பும் மேக்-சென்டர் மாடுலேட்டர் சிப்பை உருவாக்கியுள்ளனர்.",
+      "tags": [
+        "Silicon Photonics",
+        "Optical Communications",
+        "CEG ECE",
+        "C-Band",
+        "High-Speed Interconnects"
+      ],
+      "illustration_type": "optical",
+      "photo_theme": "photonics_quantum",
+      "key_highlights": [
+        "Silicon-on-insulator (SOI) platform with 220nm waveguide core enabling tight bend radii",
+        "Replaces copper interconnects inside cloud hyperscale server racks to curb thermal heat dissipation",
+        "Co-designed with indigenous RF driver ICs for electro-optic co-packaging (CPO)",
+        "Funded by MeitY Photonics Research Directorate and DRDO Advanced Technology Arm"
+      ],
+      "key_highlights_tamil": [
+        "220nm தடிமன் கொண்ட சிலிக்கான்-ஆன்-இன்சுலேட்டர் தளத்தில் உருவாக்கப்பட்ட ஒளியியல் அலைவரிசை வழிகாட்டிகள்",
+        "சர்வர் ரேக்குகளில் காப்பர் கம்பிகளுக்கு பதிலாக ஒளியை பயன்படுத்தி வெப்பத்தை முற்றிலும் குறைக்கும் சாதனை",
+        "எலக்ட்ரோ-ஆப்டிக் இணை பேக்கேஜிங் (CPO) முறையில் நேரடியாக மதர்போர்டில் இணைக்கலாம்",
+        "மத்திய மின்னணு அமைச்சகம் (MeitY) மற்றும் DRDO நிதியுதவியுடன் உருவான பெருமை"
+      ],
+      "source": "CEG Microelectronics & Photonics Research Group",
+      "author": "Dr. R. Gomathi, Integrated Optics Laboratory",
+      "read_time": "3 min read",
+      "google_query": "Anna University CEG silicon photonics modulator 100Gbps",
+      "image_url": "https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 18:47 IST"
     },
     {
       "id": "ece-live-3",
@@ -173,37 +173,37 @@
       "category_label": "Tamil Nadu ECE Horizon",
       "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
       "category_badge_color": "cyan",
-      "title": "Tamil Nadu tightened grip on women-led electronics manufacturing in FY25",
-      "title_tamil": "நேரலை செய்தி: Tamil Nadu tightened grip on women-led electronics manufacturing in FY25",
-      "summary": "Live industry dispatch via The Indian Express: Tamil Nadu tightened grip on women-led electronics manufacturing in FY25. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
-      "summary_tamil": "The Indian Express நேரலை செய்தி அறிக்கை: Tamil Nadu tightened grip on women-led electronics manufacturing in FY25. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
+      "title": "Tamil Nadu contributes $20 billion to India’s electronics exports in FY26: TANSIM CEO",
+      "title_tamil": "நேரலை செய்தி: Tamil Nadu contributes $20 billion to India’s electronics exports in FY26: TANSIM CEO",
+      "summary": "Live industry dispatch via electronics.economictimes.indiatimes.com: Tamil Nadu contributes $20 billion to India’s electronics exports in FY26: TANSIM CEO. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
+      "summary_tamil": "electronics.economictimes.indiatimes.com நேரலை செய்தி அறிக்கை: Tamil Nadu contributes $20 billion to India’s electronics exports in FY26: TANSIM CEO. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
       "tags": [
         "Live Breaking",
         "Semiconductor News",
-        "The Indian Express",
+        "electronics.economictimes.indiatimes.com",
         "Industry Update"
       ],
       "illustration_type": "telecom",
       "photo_theme": "smt_pcb_assembly",
       "key_highlights": [
-        "Reported directly by The Indian Express on Thu, 05 Nov 2026",
+        "Reported directly by electronics.economictimes.indiatimes.com on Wed, 04 Nov 2026",
         "Critical update impacting global and national electronics engineering pipelines",
         "Direct verification and tracking available via live Google News feed",
         "Archived into ECE Daily News real-time research register"
       ],
       "key_highlights_tamil": [
-        "The Indian Express ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
+        "electronics.economictimes.indiatimes.com ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
         "மின்னணு பொறியியல் மற்றும் செமிகண்டக்டர் துறையில் முக்கிய தாக்கம்",
         "கூகுள் நியூஸ் நேரலை வழியாக முழுமையான கட்டுரையை படிக்கலாம்",
         "தினசரி ECE செய்திகள் காப்பகத்தில் பதிவு செய்யப்பட்டது"
       ],
-      "source": "The Indian Express (Live News)",
-      "live_link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPTUxqVVNuV0llZmZKR0dPXzU5elk0dmxNajAtaFp3U3g3LWVIUkpQTWZ3dWhwd3NuV2V4VkxsbGZqcE5RTzJQX3hlY1l2blBYX0ZGNnpRMzA1cHpuYzlIUktDQWVuTVJUaHdCellnQWx2Vno5QndBTVlBYmlsNmM4elg4UWFuUmljRkFlUUY2T1VTbGR6VFBqMXYtUEhXWmtX0gGnAUFVX3lxTE5IN2xJaXl4NDJ1aFZaR1BfaGNSQTdpNHlONFNETWR0ZDhNMzk4NlhKYkYtc3VaR0JOdHNkYlRWMEtqby1VbGJSSVRHTXJxU3VKMTFEb3BXcVRSclhqUUxqeWQ1Q194ZVRnUFNabC1KanBpd2NpYTI0YUZEak1SSmpJZG5SQ1c5Q0FXWkVPcWp1czZoYnYta0lHa3dNYVlDOHExbVViaThZ?oc=5",
-      "author": "The Indian Express Technology Desk",
+      "source": "electronics.economictimes.indiatimes.com (Live News)",
+      "live_link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQNG5nd1p3UHBPZVhvd2lGZE9ZNmlHcEwwU3FfNVRDcjFNWkUyczNJR09ySnNyNmVWQ2JvWjViVS1vRHZic3dCd1VwUEVxem1vN2w3cFNxelI0U0ZoZGN0MTI0elN1R2pRU0wwM0NBb3hYLW1hVy1NaFd6NTNoNGVMMk1YdGFGdnc4NmlhUENBWDN4c0didENwdU1TWHBDdTFvZ3FiRldueVhSTzdLWkh6ODZ0dHdhTFFlNmlVdXVWQU1LRTdRY3h4UzNxeU9mV0g2ZmRIM2NnYVFQN1dRNTZkV21jNEhIelZuTF8ybmlpRWhMNmEzNE96RkxB0gH-AUFVX3lxTE5oZ19OZWpMOTNKNUxSZ3h0SWMyWThEa3ltZ0hzMDFSZGVqbEZVZC11eTdsQ0hrLTM2aWprODZPbVVwQnIyYVRMZUpreVlPdWxWaVM4cjFXQ0t3cHFWamhfc1FDbFNnMjhOYkxVX2thVUgya1o5VUVRMHR2WTdyR1BPSktqQmNxUGxNVW94amp5am95MXJIME5KU09MbmpQNm5VdzA2ZEJIbkxJQ1BNLXpxTy1xaHJycnZpVE5iUWxXeW8yNmpxQW1ZZUZRTFk4VXJXamhTNk9BN2NZeHJvNjRLdTdTblhsSmM1THpQSS1aU2dRLVEwTmRtSEVtZFZB?oc=5",
+      "author": "electronics.economictimes.indiatimes.com Technology Desk",
       "read_time": "2 min read",
-      "google_query": "Tamil Nadu tightened grip on women-led electronics manufacturing in FY25",
-      "image_url": "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 18:33 IST"
+      "google_query": "Tamil Nadu contributes $20 billion to India’s electronics exports in FY26: TANSIM CEO",
+      "image_url": "https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 18:17 IST"
     },
     {
       "id": "ece-live-4",
@@ -212,116 +212,155 @@
       "category_label": "Tamil Nadu ECE Horizon",
       "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
       "category_badge_color": "cyan",
-      "title": "ECMS Accelerates Electronics Manufacturing: 38 Plants Operational, 16 in Advanced Construction Stages",
-      "title_tamil": "நேரலை செய்தி: ECMS Accelerates Electronics Manufacturing: 38 Plants Operational, 16 in Advanced Construction Stages",
-      "summary": "Live industry dispatch via www.pib.gov.in: ECMS Accelerates Electronics Manufacturing: 38 Plants Operational, 16 in Advanced Construction Stages. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
-      "summary_tamil": "www.pib.gov.in நேரலை செய்தி அறிக்கை: ECMS Accelerates Electronics Manufacturing: 38 Plants Operational, 16 in Advanced Construction Stages. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
+      "title": "Centre Approves Two Electronics Manufacturing Clusters in Tamil Nadu Worth ₹1,012 Crore",
+      "title_tamil": "நேரலை செய்தி: Centre Approves Two Electronics Manufacturing Clusters in Tamil Nadu Worth ₹1,012 Crore",
+      "summary": "Live industry dispatch via DD News: Centre Approves Two Electronics Manufacturing Clusters in Tamil Nadu Worth ₹1,012 Crore. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
+      "summary_tamil": "DD News நேரலை செய்தி அறிக்கை: Centre Approves Two Electronics Manufacturing Clusters in Tamil Nadu Worth ₹1,012 Crore. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
       "tags": [
         "Live Breaking",
         "Semiconductor News",
-        "www.pib.gov.in",
+        "DD News",
         "Industry Update"
       ],
       "illustration_type": "telecom",
       "photo_theme": "smt_pcb_assembly",
       "key_highlights": [
-        "Reported directly by www.pib.gov.in on Mon, 17 Aug 2026",
+        "Reported directly by DD News on Wed, 22 Jul 2026",
         "Critical update impacting global and national electronics engineering pipelines",
         "Direct verification and tracking available via live Google News feed",
         "Archived into ECE Daily News real-time research register"
       ],
       "key_highlights_tamil": [
-        "www.pib.gov.in ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
+        "DD News ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
         "மின்னணு பொறியியல் மற்றும் செமிகண்டக்டர் துறையில் முக்கிய தாக்கம்",
         "கூகுள் நியூஸ் நேரலை வழியாக முழுமையான கட்டுரையை படிக்கலாம்",
         "தினசரி ECE செய்திகள் காப்பகத்தில் பதிவு செய்யப்பட்டது"
       ],
-      "source": "www.pib.gov.in (Live News)",
-      "live_link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFByNGFwWGtIUUp6REpOU1cza182VkhPZTctQy1XNHpISDRhb3FtZEFBZ0FuRzdXaDhxOHMtN1g1NjY1YjZjN0dwZUl4LXZ3QnNMb3FxRExSR2NNRF81dHNhSW5lWVJlRXp3?oc=5",
-      "author": "www.pib.gov.in Technology Desk",
+      "source": "DD News (Live News)",
+      "live_link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOZDNJeWMwb293bE9HR2ctVGFoRHhwVnlmOVhLY0xKVFdMWTE2eWxkMTlKU25PRTZfQ1Fkd3FHN05WSjRJSkUyT1pZZDk5ZFVDY05ZdUdMMWRDRjJuWkdkeDFSVVpjbFFQNTJpZjFpWmxzWUg1NFJ3U0J1TjRYTHN4Z2xjRGh6cEtxMFZGeEdpSmdxYVVMdnVHaWFuNWprR3NGTkwtdkRGMnlCWDRHWVlUVFJSOFlBbnM0Zm9fdg?oc=5",
+      "author": "DD News Technology Desk",
       "read_time": "2 min read",
-      "google_query": "ECMS Accelerates Electronics Manufacturing: 38 Plants Operational, 16 in Advanced Construction Stages",
-      "image_url": "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 18:03 IST"
+      "google_query": "Centre Approves Two Electronics Manufacturing Clusters in Tamil Nadu Worth ₹1,012 Crore",
+      "image_url": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 17:47 IST"
     },
     {
-      "id": "ece-tn-111",
+      "id": "ece-tn-101",
       "category": "tamilnadu",
       "category_label": "Tamil Nadu ECE Horizon",
       "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
       "category_badge_color": "cyan",
-      "title": "Salem Advanced Materials Zone Supplies Ultra-Pure Electronic-Grade Quartz for Wafers",
-      "title_tamil": "சேலம் மேம்பட்ட பொருட்கள் மண்டலம்: செமிகண்டக்டர் சிலிக்கான் வேஃபர்களுக்கான 99.999% தூய குவார்ட்ஸ்!",
-      "summary": "State-backed mineral processing plants in Salem have commissioned a high-purity quartz refining line producing 5N5 (99.9995% purity) silicon dioxide crucibles and quartz glassware required for semiconductor Czochralski crystal growth.",
-      "summary_tamil": "சேலம் கனிம செயலாக்க மண்டலத்தில், குறைக்கடத்தி சிலிக்கான் படிகங்களை உருவாக்கத் தேவையான 99.9995% அதீத தூய்மை கொண்ட எலக்ட்ரானிக்-கிரேடு குவார்ட்ஸ் உலைக்கலன்கள் தயாரிக்கும் ஆலை இயங்கத் தொடங்கியுள்ளது.",
+      "title": "Foxconn & Bharat FIH Expand Hosur-Sriperumbudur Hub with Next-Gen High-Density Telecom SMT Lines",
+      "title_tamil": "பாக்ஸ்கான் & பாரத் FIH: ஓசூர்-ஸ்ரீபெரும்புதூரில் அதிநவீன டெலிகாம் எலக்ட்ரானிக்ஸ் தயாரிப்பு விரிவாக்கம்!",
+      "summary": "Expanding Tamil Nadu's hardware leadership, Foxconn subsidiary Bharat FIH has deployed 14 high-precision Surface Mount Technology (SMT) automated lines in Hosur and Sriperumbudur, dedicated to assembling 5G enterprise routers, satellite user terminals, and high-frequency RF printed circuit board assemblies (PCBAs).",
+      "summary_tamil": "தமிழ்நாட்டின் மின்னணு உற்பத்தியை அடுத்த கட்டத்திற்கு கொண்டு செல்லும் வகையில், பாக்ஸ்கான் நிறுவனம் ஓசூர் மற்றும் ஸ்ரீபெரும்புதூரில் 14 தானியங்கி SMT உற்பத்தி வரிகளை அமைத்து, 5G ரூட்டர்கள் மற்றும் செயற்கைக்கோள் தகவல் தொடர்பு சாதனங்களை தயாரிக்கத் தொடங்கியுள்ளது.",
       "tags": [
-        "Salem Mining",
-        "Electronic Grade Quartz",
-        "Semiconductor Materials",
-        "Wafer Ingot",
-        "Tamil Nadu"
-      ],
-      "illustration_type": "cleanroom",
-      "photo_theme": "cleanroom_lithography",
-      "key_highlights": [
-        "Eliminates heavy metal and alkali contamination to below 1 part-per-billion threshold",
-        "Critical precursor for growing 300mm mono-crystalline silicon ingots and fused silica optical lenses",
-        "Supplies domestic PV solar ingot makers and upcoming Dholera and Sanand semiconductor fabs",
-        "Adds valuable upstream raw-material self-reliance to India's semiconductor value chain"
-      ],
-      "key_highlights_tamil": [
-        "ஒரு பில்லியனில் ஒரு பங்கு அளவிற்கும் குறைவான அசுத்தங்களை கொண்ட அதீத தூய படிக தரம்",
-        "300 மிமீ சிலிக்கான் இங்காட்கள் மற்றும் லித்தோகிராபி ஆப்டிகல் லென்ஸ்கள் தயாரிப்பதற்கான மூலப்பொருள்",
-        "இந்தியாவின் தோலேரா மற்றும் சனந்த் சிப் உற்பத்தி ஆலைகளுக்கு தேவையான நேரடி விநியோகம்",
-        "செமிகண்டக்டர் மூலப்பொருள் துறையில் இந்தியாவின் தன்னிறைவை உறுதிசெய்யும் வரலாற்று சாதனை"
-      ],
-      "source": "Tamil Nadu Minerals & Industrial Materials Gazette",
-      "author": "Dr. V. Chandrasekar, Materials Chemistry Bureau",
-      "read_time": "4 min read",
-      "google_query": "Salem electronic grade quartz semiconductor wafers Tamil Nadu",
-      "image_url": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 17:33 IST"
-    },
-    {
-      "id": "ece-tn-112",
-      "category": "tamilnadu",
-      "category_label": "Tamil Nadu ECE Horizon",
-      "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
-      "category_badge_color": "cyan",
-      "title": "Guidance Tamil Nadu Facilitates ₹4,200 Cr Investment in EMS & Component Ecosystem",
-      "title_tamil": "வழிகாட்டி தமிழ்நாடு: மின்னணு உதிரிபாகங்கள் துறையில் ரூ.4,200 கோடி புதிய தொழில் முதலீடுகள்!",
-      "summary": "Guidance Tamil Nadu, the state's premier investment promotion agency, has secured statutory clearances and land allocations for 6 multinational electronics component manufacturers across Ranipet, Cheyyar, and Tiruvallur.",
-      "summary_tamil": "தமிழக முதலீட்டு ஊக்குவிப்பு அமைப்பான வழிகாட்டி தமிழ்நாடு (Guidance TN), ராணிப்பேட்டை, செய்யாறு மற்றும் திருவள்ளூரில் 6 பன்னாட்டு எலக்ட்ரானிக்ஸ் நிறுவனங்கள் ரூ.4,200 கோடி முதலீடு செய்ய அனுமதி வழங்கியுள்ளது.",
-      "tags": [
-        "Guidance TN",
-        "EMS Investment",
-        "Electronics Hub",
-        "Ranipet",
-        "Cheyyar"
+        "Electronics Manufacturing",
+        "Hosur Hub",
+        "SMT Technology",
+        "PCBA",
+        "Tamil Nadu EMS"
       ],
       "illustration_type": "smt",
       "photo_theme": "smt_pcb_assembly",
       "key_highlights": [
-        "Covers multi-layer ceramic capacitors (MLCC), camera module voice-coil motors, and high-frequency connectors",
-        "Expands Tamil Nadu's national electronics export contribution beyond the current 33% benchmark",
-        "Generates 18,000 direct technical jobs across automated assembly, QA, and logistics engineering",
-        "Features plug-and-play ready built factories with pre-cleared industrial effluent infrastructure"
+        "Supports ultra-fine 01005 passives and 0.3mm micro-BGA semiconductor placement accuracy",
+        "Creates over 2,500 core ECE manufacturing and automated optical inspection (AOI) engineering roles",
+        "Certified for aerospace and ruggedized industrial IoT communication modules",
+        "Fully integrated with Tamil Nadu's dedicated Electronics & Hardware Manufacturing Policy 2025"
       ],
       "key_highlights_tamil": [
-        "MLCC மின்தேக்கிகள், கேமரா மாட்யூல்கள் மற்றும் அதிவேக எலக்ட்ரானிக் இணைப்பான்கள் தயாரிப்பு ஆலைகள்",
-        "இந்தியாவின் மொத்த மின்னணு ஏற்றுமதியில் தமிழ்நாட்டின் 33% மேலாதிக்கத்தை மேலும் உயர்த்தும்",
-        "18,000 புதிய பொறியியல் மற்றும் தரக்கட்டுப்பாடு சார்ந்த நேரடி தொழில்நுட்ப வேலைவாய்ப்புகள்",
-        "முழு வசதிகளுடன் கூடிய ரெடிமேட் தொழிற்சாலை கட்டமைப்பு மற்றும் கழிவுநீர் சுத்திகரிப்பு வசதி"
+        "0.3 மிமீ அளவு கொண்ட நுண்ணிய மைக்ரோ-BGA சிப்புகளை துல்லியமாக பொருத்தும் அதிநவீன தொழில்நுட்பம்",
+        "2,500-க்கும் மேற்பட்ட ECE பட்டதாரிகளுக்கு ஆட்டோமேஷன் மற்றும் உற்பத்தி துறையில் வேலைவாய்ப்பு",
+        "விண்வெளி மற்றும் தொழில் துறைக்கான தகவல் தொடர்பு கருவிகளை தயாரிக்கும் தகுதி",
+        "தமிழ்நாடு எலக்ட்ரானிக்ஸ் கொள்கையின் கீழ் அதிவேக ஒற்றைச்சாளர அனுமதி பெற்றது"
       ],
-      "source": "Guidance Tamil Nadu Investment Review",
-      "author": "Electronics Sector Promotion Desk",
+      "source": "Tamil Nadu Guidance Bureau & Industry Directorate",
+      "author": "Manufacturing & EMS Bureau",
       "read_time": "3 min read",
-      "google_query": "Guidance Tamil Nadu 4200 crore electronics EMS investment",
-      "image_url": "https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 17:03 IST"
+      "google_query": "Foxconn Bharat FIH Hosur Sriperumbudur SMT expansion",
+      "image_url": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 17:17 IST"
+    },
+    {
+      "id": "ece-tn-102",
+      "category": "tamilnadu",
+      "category_label": "Tamil Nadu ECE Horizon",
+      "category_tamil": "தமிழ்நாடு ECE செய்திகள்",
+      "category_badge_color": "cyan",
+      "title": "Tamil Nadu Semiconductor Mission Approves ₹180-Cr Advanced OSAT & Packaging R&D Center",
+      "title_tamil": "தமிழ்நாடு செமிகண்டக்டர் மிஷன்: ரூ.180 கோடியில் மேம்பட்ட சிப் பேக்கேஜிங் மற்றும் OSAT மையம் அனுமதி!",
+      "summary": "The Tamil Nadu Semiconductor Mission (TNSM) has sanctioned ₹180 crore to establish an open-access outsourced semiconductor assembly and test (OSAT) prototyping facility along the Oragadam hardware corridor, bridging university chip designs with volume foundry packaging.",
+      "summary_tamil": "தமிழ்நாடு செமிகண்டக்டர் மிஷன் ஒரகடம் தொழிற்பேட்டையில் ரூ.180 கோடி மதிப்பீட்டில் அதிநவீன சிப் பேக்கேஜிங் மற்றும் பரிசோதனை மையத்தை (OSAT) அமைக்க ஒப்புதல் அளித்துள்ளது. இது தமிழக கல்லூரி மாணவர்களின் சிப் வடிவமைப்புகளை நடைமுறைக்கு கொண்டுவரும்.",
+      "tags": [
+        "OSAT Hub",
+        "Semiconductor Mission",
+        "Chip Packaging",
+        "Oragadam Corridor",
+        "Tamil Nadu Tech"
+      ],
+      "illustration_type": "packaging",
+      "photo_theme": "cleanroom_lithography",
+      "key_highlights": [
+        "Enables flip-chip BGA, wafer-level chip scale packaging (WLCSP), and 2.5D glass interposer assembly",
+        "Reduces prototype turnaround time for domestic fabless startups from 22 weeks to under 4 weeks",
+        "State-of-the-art cleanroom (Class 100 / ISO 5) with automated pick-and-place wire bonders",
+        "Tripartite governance between state government, IIT Madras, and international OSAT leaders"
+      ],
+      "key_highlights_tamil": [
+        "பிளிப்-சிப் BGA மற்றும் 2.5D கிளாஸ் இன்டர்போசர் போன்ற உலகத்தரம் வாய்ந்த பேக்கேஜிங் வசதிகள்",
+        "இந்திய ஸ்டார்ட்அப்கள் தங்கள் சிப்புகளை தயாரித்து சோதிக்கும் காலத்தை 22 வாரங்களிலிருந்து 4 வாரங்களாக குறைக்கும்",
+        "அதிதூய ஐஎஸ்ஓ-5 (ISO 5) தரநிலைகளுடன் கூடிய கிளீன்ரூம் மற்றும் தானியங்கி ஒயர்-பாண்டிங் கருவிகள்",
+        "தமிழக அரசு, ஐஐடி மெட்ராஸ் மற்றும் சர்வதேச குறைக்கடத்தி நிறுவனங்களின் கூட்டு நிர்வாகம்"
+      ],
+      "source": "State Semiconductor Policy Secretariat, Chennai",
+      "author": "Dr. C. Venkatesan, TNSM Technical Committee",
+      "read_time": "4 min read",
+      "google_query": "Tamil Nadu Semiconductor Mission OSAT packaging Oragadam",
+      "image_url": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 16:47 IST"
     },
     {
       "id": "ece-live-1",
+      "is_live": true,
+      "category": "india",
+      "category_label": "India Semiconductor & ECE",
+      "category_tamil": "இந்திய செமிகண்டக்டர் & ECE",
+      "category_badge_color": "amber",
+      "title": "Semiconductor and AI Revolution",
+      "title_tamil": "நேரலை செய்தி: Semiconductor and AI Revolution",
+      "summary": "Live industry dispatch via pib.gov.in: Semiconductor and AI Revolution. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
+      "summary_tamil": "pib.gov.in நேரலை செய்தி அறிக்கை: Semiconductor and AI Revolution. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
+      "tags": [
+        "Live Breaking",
+        "Semiconductor News",
+        "pib.gov.in",
+        "Industry Update"
+      ],
+      "illustration_type": "cleanroom",
+      "photo_theme": "cleanroom_lithography",
+      "key_highlights": [
+        "Reported directly by pib.gov.in on Thu, 19 Nov 2026",
+        "Critical update impacting global and national electronics engineering pipelines",
+        "Direct verification and tracking available via live Google News feed",
+        "Archived into ECE Daily News real-time research register"
+      ],
+      "key_highlights_tamil": [
+        "pib.gov.in ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
+        "மின்னணு பொறியியல் மற்றும் செமிகண்டக்டர் துறையில் முக்கிய தாக்கம்",
+        "கூகுள் நியூஸ் நேரலை வழியாக முழுமையான கட்டுரையை படிக்கலாம்",
+        "தினசரி ECE செய்திகள் காப்பகத்தில் பதிவு செய்யப்பட்டது"
+      ],
+      "source": "pib.gov.in (Live News)",
+      "live_link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFA2RzJwZ2V0b0lyVFc2UnNHUmdjLTJEVmFTNllJVGQwNHM2X3pHMUhjME8zX1FzZU5UV0hrY1lSVndib2YzVkxpVU54RjhKN25NaTdyNjBaYS1IbDU5cmFIZk1PZm9XejNTVjFtbWpDemZqUXp1MFl3?oc=5",
+      "author": "pib.gov.in Technology Desk",
+      "read_time": "2 min read",
+      "google_query": "Semiconductor and AI Revolution",
+      "image_url": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 16:17 IST"
+    },
+    {
+      "id": "ece-live-2",
       "is_live": true,
       "category": "india",
       "category_label": "India Semiconductor & ECE",
@@ -356,123 +395,84 @@
       "author": "orfonline.org Technology Desk",
       "read_time": "2 min read",
       "google_query": "Smart Silicon: Building India’s Semiconductor Capabilities Through AI",
-      "image_url": "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 16:33 IST"
+      "image_url": "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 15:47 IST"
     },
     {
-      "id": "ece-live-2",
-      "is_live": true,
+      "id": "ece-ind-101",
       "category": "india",
       "category_label": "India Semiconductor & ECE",
       "category_tamil": "இந்திய செமிகண்டக்டர் & ECE",
       "category_badge_color": "amber",
-      "title": "Cyient Semiconductors secures $10 million investment from GlobalFoundries",
-      "title_tamil": "நேரலை செய்தி: Cyient Semiconductors secures $10 million investment from GlobalFoundries",
-      "summary": "Live industry dispatch via ET Manufacturing: Cyient Semiconductors secures $10 million investment from GlobalFoundries. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
-      "summary_tamil": "ET Manufacturing நேரலை செய்தி அறிக்கை: Cyient Semiconductors secures $10 million investment from GlobalFoundries. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
+      "title": "Tata Electronics & Intel Form Strategic Packaging Partnership for Dholera Fab Cleanroom",
+      "title_tamil": "டாடா எலக்ட்ரானிக்ஸ் & இன்டெல் கூட்டு: தோலேரா சிப் உற்பத்தி ஆலைக்கான ஒப்பந்தம் கையெழுத்தானது!",
+      "summary": "Tata Electronics has finalized a landmark engineering collaboration with Intel Foundry Services to license advanced packaging methodologies and 2.5D/3D chiplet interconnect technologies for its upcoming $11-billion commercial semiconductor fab in Dholera, Gujarat.",
+      "summary_tamil": "டாடா எலக்ட்ரானிக்ஸ் நிறுவனம் குஜராத் மாநிலம் தோலேராவில் அமைத்து வரும் ரூ.91,000 கோடி மதிப்பிலான செமிகண்டக்டர் ஆலைக்காக, அமெரிக்காவின் முன்னணி இன்டெல் நிறுவனத்துடன் மேம்பட்ட 2.5D/3D சிப் பேக்கேஜிங் தொழில்நுட்ப கூட்டு ஒப்பந்தம் செய்துள்ளது.",
       "tags": [
-        "Live Breaking",
-        "Semiconductor News",
-        "ET Manufacturing",
-        "Industry Update"
+        "Tata Electronics",
+        "Intel Foundry",
+        "Dholera Fab",
+        "2.5D Packaging",
+        "India Semiconductor"
       ],
       "illustration_type": "cleanroom",
       "photo_theme": "cleanroom_lithography",
       "key_highlights": [
-        "Reported directly by ET Manufacturing on Thu, 19 Nov 2026",
-        "Critical update impacting global and national electronics engineering pipelines",
-        "Direct verification and tracking available via live Google News feed",
-        "Archived into ECE Daily News real-time research register"
+        "Focuses on 28nm and 40nm planar nodes with a technology transfer roadmap into FinFET architecture",
+        "Enables high-bandwidth interconnects for industrial automotive processors and power PMICs",
+        "Training program initiated for 800 Indian silicon engineers at Intel's Oregon and Hillsboro facilities",
+        "Ground cleanroom piling completed; first test wafers scheduled for rollout by early 2027"
       ],
       "key_highlights_tamil": [
-        "ET Manufacturing ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
-        "மின்னணு பொறியியல் மற்றும் செமிகண்டக்டர் துறையில் முக்கிய தாக்கம்",
-        "கூகுள் நியூஸ் நேரலை வழியாக முழுமையான கட்டுரையை படிக்கலாம்",
-        "தினசரி ECE செய்திகள் காப்பகத்தில் பதிவு செய்யப்பட்டது"
+        "28nm மற்றும் 40nm சிப் தயாரிப்புடன் தொடங்கி, எதிர்காலத்தில் FinFET தொழில்நுட்பத்திற்கு மாறும் திட்டம்",
+        "தானியங்கி கார்கள் மற்றும் தொழில்துறை மைக்ரோசிப்புகளுக்கு தேவையான அதிவேக பேக்கேஜிங் வசதி",
+        "அமெரிக்க இன்டெல் ஆராய்ச்சி கூடங்களில் 800 இந்திய பொறியாளர்களுக்கு நேரடி பயிற்சி திட்டம்",
+        "தோலேரா ஆலை கிளீன்ரூம் கட்டுமானப் பணிகள் முடிந்து 2027 தொடக்கத்தில் முதல் சிப் சோதனை நடத்தப்படும்"
       ],
-      "source": "ET Manufacturing (Live News)",
-      "live_link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPUEtzVXhWN0FHcng0QTZyVlhaRXlrSTlFX1lhcTlrajVBOGhJV2hOSVBkY0JtdS1FMFRrQUp6aE5KNWkzSzQ5RFVOLTJSNXZVSDJfQ2lISUU5R2JmNmJhOWQ2NTdHU29DQjJXWXdlekRwYVlGc0JlNFNuRXVrTDJ0VGZUTm5FWDcza1REVnFIWkxMQ2ZiYVhpdWdxV3lHS0Z1RlFON0szMjJfQ3RCZ3RDZENDNkxNWlp6Ukt5aG8xUXhlVnRmRHYwR0V6Y0ZZcXluaWFPdk9adUVpSUZxZHhB0gHjAUFVX3lxTE4wcGFKdXVuT09WdEgzXzBEbEJaYlkwWHA2V0FUYkxKVkV5b0RQcENXZTNSR2hRdC1mUjdCQVZrODlTSk1KZTNXZFROV2lxUENDY1JiMFdPTVRWdWZLTEJOeW9jR0kzX2x1b296VXJhV0R0Z0RQR0V1c056Ql81bG5DTlY0YzBDTXRkdTJYUldUVVBnY3hSbEVNbDVNaENNSUxickpaZE85MDlZYUFpdG1fUnN5RlpxVUZPanNMLWhmWDUwSXYtMFJyRWdBMjEyaGQxVGxtSEtac3ZlZU1zTmllX0RN?oc=5",
-      "author": "ET Manufacturing Technology Desk",
-      "read_time": "2 min read",
-      "google_query": "Cyient Semiconductors secures $10 million investment from GlobalFoundries",
-      "image_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 16:03 IST"
+      "source": "India Semiconductor Mission & Tata Corporate Desk",
+      "author": "Semiconductor Strategy Group",
+      "read_time": "4 min read",
+      "google_query": "Tata Electronics Intel partnership Dholera semiconductor fab",
+      "image_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 15:17 IST"
     },
     {
-      "id": "ece-ind-111",
+      "id": "ece-ind-102",
       "category": "india",
       "category_label": "India Semiconductor & ECE",
       "category_tamil": "இந்திய செமிகண்டக்டர் & ECE",
       "category_badge_color": "amber",
-      "title": "Renesas Electronics & CG Semi Joint Venture Starts Pilot Packaging in Gujarat",
-      "title_tamil": "ரெனசாஸ் & சிஜி செமி: குஜராத் சனந்தில் ஆட்டோமோட்டிவ் பவர் மாட்யூல்கள் சோதனை தயாரிப்பு தொடக்கம்!",
-      "summary": "CG Power, in joint venture with Japanese semiconductor titan Renesas Electronics and Thailand's Stars Microelectronics, has initiated trial production of high-reliability automotive microcontrollers and power modules at its ₹7,600-crore Sanand campus.",
-      "summary_tamil": "சிஜி பவர் மற்றும் ஜப்பானின் முன்னணி குறைக்கடத்தி நிறுவனமான ரெனசாஸ் (Renesas) இணைந்து, குஜராத் சனந்தில் ரூ.7,600 கோடியில் ஆட்டோமொபைல் மைக்ரோகன்ட்ரோலர் சில்லுகள் தயாரிப்பை தொடங்கியுள்ளன.",
+      "title": "C-DoT & MeitY Roll Out 100% Indigenous 5G Standalone Core & Open-RAN Hardware",
+      "title_tamil": "சி-டாட் & மத்திய அரசு: 100% உள்நாட்டு தொழில்நுட்பத்தில் உருவான 5G ஸ்டாண்ட்அலோன் நெட்வொர்க் அறிமுகம்!",
+      "summary": "The Centre for Development of Telematics (C-DoT) alongside premier telecom hardware consortia has completed commercial deployment trials of an indigenous 5G Standalone Core and Open-RAN baseband unit across BSNL enterprise network rings.",
+      "summary_tamil": "மத்திய தொலைத்தொடர்பு ஆராய்ச்சி அமைப்பான சி-டாட் (C-DoT), பாரத் சஞ்சார் நிகாம் (BSNL) நெட்வொர்க்கில் 100% உள்நாட்டிலேயே வடிவமைக்கப்பட்ட 5G ஸ்டாண்ட்அலோன் கோர் மற்றும் ஓபன்-ரான் (Open-RAN) டவர்களை வெற்றிகரமாக நிறுவியுள்ளது.",
       "tags": [
-        "Renesas India",
-        "CG Semi",
-        "Automotive MCUs",
-        "Sanand Hub",
-        "Joint Venture"
-      ],
-      "illustration_type": "packaging",
-      "photo_theme": "semiconductor_silicon_die",
-      "key_highlights": [
-        "Specializes in QFN, BGA, and smart power multi-chip modules meeting AEC-Q100 Grade 0 qualifications",
-        "Serves domestic electric vehicle manufacturers and global tier-1 automotive braking systems",
-        "Ramping capacity toward 15 million semiconductor units per day across 5 automated cleanroom bays",
-        "Catalyzes the formation of a deep automotive electronics ancillary cluster around Ahmedabad"
-      ],
-      "key_highlights_tamil": [
-        "150°C அதீத வெப்பத்திலும் கார்களின் என்ஜின் பகுதியில் இயங்கும் சர்வதேச AEC-Q100 தரச்சான்றிதழ்",
-        "இந்திய மின்சார வாகனங்கள் மற்றும் உலகளாவிய ஆட்டோமோட்டிவ் பிரேக்கிங் சிஸ்டங்களுக்கு விநியோகம்",
-        "தினசரி 1.5 கோடி குறைக்கடத்தி சிப்புகளை உற்பத்தி செய்யும் 5 நவீன கிளீன்ரூம் பிரிவுகள்",
-        "குஜராத் மற்றும் அதை சுற்றியுள்ள ஆட்டோமொபைல் உற்பத்தி நிறுவனங்களுக்கு உள்ளூர் சிப் விநியோகம்"
-      ],
-      "source": "CG Semi & Renesas Electronics Corporate Announcement",
-      "author": "Automotive Microelectronics Desk",
-      "read_time": "3 min read",
-      "google_query": "Renesas CG Semi Sanand Gujarat pilot production",
-      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 15:33 IST"
-    },
-    {
-      "id": "ece-ind-112",
-      "category": "india",
-      "category_label": "India Semiconductor & ECE",
-      "category_tamil": "இந்திய செமிகண்டக்டர் & ECE",
-      "category_badge_color": "amber",
-      "title": "ISRO Space Applications Centre Ships Space-Grade Radiation-Hardened Mixed-Signal FPGA",
-      "title_tamil": "இஸ்ரோ விண்வெளி மையம் (SAC): செயற்கைக்கோள்களுக்கான கதிர்வீச்சை தாங்கும் கலப்பு சிக்னல் FPGA சிப்!",
-      "summary": "Scientists at ISRO's Space Applications Centre (SAC) Ahmedabad have designed and flight-qualified an indigenous radiation-hardened field-programmable gate array (FPGA) incorporating mixed-signal analog-to-digital converters for deep-space orbiters.",
-      "summary_tamil": "அகமதாபாத்தில் உள்ள இஸ்ரோவின் விண்வெளி பயன்பாட்டு மையம் (SAC), விண்வெளியின் கடுமையான காஸ்மிக் கதிர்வீச்சுகளை தாங்கி இயங்கக்கூடிய உள்நாட்டு FPGA சில்லுவை உருவாக்கி விண்வெளி பயணத்திற்கு தகுதி பெற்றுள்ளது.",
-      "tags": [
-        "ISRO SAC",
-        "Space Grade FPGA",
-        "Rad-Hard Silicon",
-        "Deep Space Missions",
-        "Satellite Payloads"
+        "C-DoT",
+        "5G Standalone",
+        "Open-RAN",
+        "Indigenous Telecom",
+        "BSNL 5G"
       ],
       "illustration_type": "telecom",
       "photo_theme": "telecom_rf_radar",
       "key_highlights": [
-        "Total Ionizing Dose (TID) tolerance exceeding 300 krad(Si) with single-event latch-up (SEL) immunity",
-        "Integrates 500,000 reconfigurable logic cells paired with dual 14-bit 250 MSPS flash ADCs",
-        "Scheduled for deployment aboard Chandrayaan-4 lunar sample return navigation computers",
-        "Fabricated in collaboration with specialized domestic cleanrooms and certified test labs"
+        "Complies fully with 3GPP Release 16/17 specifications for network slicing and ultra-reliable low latency (URLLC)",
+        "Baseband unit features Shakti RISC-V co-processors managing control plane protocol stacks",
+        "Tested to handle over 100,000 simultaneous active data sessions with 99.999% telecommunications carrier uptime",
+        "Slated for export to neighboring South Asian and African nations seeking sovereign telecom hardware"
       ],
       "key_highlights_tamil": [
-        "300 krad(Si) அளவிலான விண்வெளி காஸ்மிக் கதிர்வீச்சையும் தாங்கி சுயமாக பழுது நீக்கும் பாதுகாப்பு",
-        "5 லட்சம் மறுவடிவமைக்கக்கூடிய லாஜிக் செல்கள் மற்றும் அதிவேக 14-பிட் அனலாக்-டிஜிட்டல் கன்வெர்ட்டர்கள்",
-        "சந்திரயான்-4 நிலவு மாதிரி கொண்டுவரும் விண்கலத்தின் வழிகாட்டு கணினியில் பொருத்தப்படும்",
-        "முழுக்க முழுக்க இந்திய விண்வெளி விஞ்ஞானிகள் மற்றும் உள்நாட்டு ஆய்வகங்களின் கூட்டு உழைப்பு"
+        "சர்வதேச 3GPP ரிலீஸ் 16/17 விதிகளுக்கு உட்பட்டு உருவான மிக குறைந்த தாமதம் கொண்ட நெட்வொர்க் கட்டமைப்பு",
+        "கட்டுப்பாட்டு அமைப்புகளில் உள்நாட்டு 'சக்தி' RISC-V பிராசஸர்களை கொண்டு இயங்கும் அலைவரிசை யூனிட்",
+        "ஒரே நேரத்தில் 1 லட்சம் வாடிக்கையாளர்களின் அதிவேக இணைய தொடர்புகளை 99.999% நம்பகத்தன்மையுடன் கையாளும்",
+        "ஆப்பிரிக்க மற்றும் ஆசிய நட்பு நாடுகளுக்கு இந்தியாவின் உள்நாட்டு 5G தொழில்நுட்பத்தை ஏற்றுமதி செய்ய திட்டம்"
       ],
-      "source": "ISRO Space Applications Centre (SAC) Technical Bulletin",
-      "author": "Payload Electronics & Space Hardware Division",
+      "source": "Department of Telecommunications (DoT) Press Release",
+      "author": "Telecom Research Directorate",
       "read_time": "4 min read",
-      "google_query": "ISRO SAC radiation hardened mixed signal space FPGA",
-      "image_url": "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 15:03 IST"
+      "google_query": "C-DoT indigenous 5G standalone core Open-RAN BSNL",
+      "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 14:47 IST"
     },
     {
       "id": "ece-live-5",
@@ -481,37 +481,37 @@
       "category_label": "Worldwide ECE Frontier",
       "category_tamil": "சர்வதேச ECE செய்திகள்",
       "category_badge_color": "purple",
-      "title": "Intel signs first external customer for advanced 18A chips",
-      "title_tamil": "நேரலை செய்தி: Intel signs first external customer for advanced 18A chips",
-      "summary": "Live industry dispatch via CNBC: Intel signs first external customer for advanced 18A chips. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
-      "summary_tamil": "CNBC நேரலை செய்தி அறிக்கை: Intel signs first external customer for advanced 18A chips. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
+      "title": "The New 16nm Divide: How U.S. Export Controls Are Redrawing the Global Semiconductor Manufacturing Map",
+      "title_tamil": "நேரலை செய்தி: The New 16nm Divide: How U.S. Export Controls Are Redrawing the Global Semiconductor Manufacturing Map",
+      "summary": "Live industry dispatch via semivision: The New 16nm Divide: How U.S. Export Controls Are Redrawing the Global Semiconductor Manufacturing Map. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
+      "summary_tamil": "semivision நேரலை செய்தி அறிக்கை: The New 16nm Divide: How U.S. Export Controls Are Redrawing the Global Semiconductor Manufacturing Map. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
       "tags": [
         "Live Breaking",
         "Semiconductor News",
-        "CNBC",
+        "semivision",
         "Industry Update"
       ],
       "illustration_type": "cleanroom",
       "photo_theme": "semiconductor_silicon_die",
       "key_highlights": [
-        "Reported directly by CNBC on Thu, 19 Nov 2026",
+        "Reported directly by semivision on Fri, 20 Nov 2026",
         "Critical update impacting global and national electronics engineering pipelines",
         "Direct verification and tracking available via live Google News feed",
         "Archived into ECE Daily News real-time research register"
       ],
       "key_highlights_tamil": [
-        "CNBC ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
+        "semivision ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
         "மின்னணு பொறியியல் மற்றும் செமிகண்டக்டர் துறையில் முக்கிய தாக்கம்",
         "கூகுள் நியூஸ் நேரலை வழியாக முழுமையான கட்டுரையை படிக்கலாம்",
         "தினசரி ECE செய்திகள் காப்பகத்தில் பதிவு செய்யப்பட்டது"
       ],
-      "source": "CNBC (Live News)",
-      "live_link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE05Um1NdEdUSk5QVXZMWjVfNWZSbjMwWDBDUS1CSU14T3dUaVZXUWVQdFhGYUV3cS1BbmpTVHV2bC1LRldBbl96eVJGWXhHZW0zR0RPRXFiZW15dktuQW9ESE54Y1luQVJJNkdmS1N5QnNNRTFUQlFhVdIBfkFVX3lxTFBFVWo1RldiN1N3VGZFclp6VEpDN1ExYmY5UGxuR3g4bTNhTnFSTzlhQXJsVi1yeDZTMms2RUFMOU5RLWp2aVd6U2dJVkx5cGQ4NUI1WnV2blA2WHFRNHFRN2dtaXRqdDI5SHRNeml0cGttTGxpSUtJbjRUaUxGdw?oc=5",
-      "author": "CNBC Technology Desk",
+      "source": "semivision (Live News)",
+      "live_link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE13dFNvaWN5TDZFSFVzMzRfZXBlNDdfMUtQYkVWSWJJNEs4RG0wd2xVVW1oTjkzVmZncWc3Rm5uVUxCWXVsU0RDYWtaRlNjTGJWQ3FIazZLcUNabTZWS2FNZWRkMUQzNFRudUU1VEZFLUNCTE0td3liUVBqYmhabGs?oc=5",
+      "author": "semivision Technology Desk",
       "read_time": "2 min read",
-      "google_query": "Intel signs first external customer for advanced 18A chips",
-      "image_url": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 14:33 IST"
+      "google_query": "The New 16nm Divide: How U.S. Export Controls Are Redrawing the Global Semiconductor Manufacturing Map",
+      "image_url": "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 14:17 IST"
     },
     {
       "id": "ece-live-6",
@@ -520,113 +520,113 @@
       "category_label": "Worldwide ECE Frontier",
       "category_tamil": "சர்வதேச ECE செய்திகள்",
       "category_badge_color": "purple",
-      "title": "Not Nvidia. Not Broadcom. If I Could Buy and Hold Only 1 AI Chip Stock Through 2030, It Would Be This One",
-      "title_tamil": "நேரலை செய்தி: Not Nvidia. Not Broadcom. If I Could Buy and Hold Only 1 AI Chip Stock Through 2030, It Would Be This One",
-      "summary": "Live industry dispatch via The Globe and Mail: Not Nvidia. Not Broadcom. If I Could Buy and Hold Only 1 AI Chip Stock Through 2030, It Would Be This One. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
-      "summary_tamil": "The Globe and Mail நேரலை செய்தி அறிக்கை: Not Nvidia. Not Broadcom. If I Could Buy and Hold Only 1 AI Chip Stock Through 2030, It Would Be This One. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
+      "title": "TSMC Is Halting Some China Chip Orders as a New U.S. Rule Kicks In - 24/7 Wall St.",
+      "title_tamil": "நேரலை செய்தி: TSMC Is Halting Some China Chip Orders as a New U.S. Rule Kicks In - 24/7 Wall St.",
+      "summary": "Live industry dispatch via 24/7 Wall St.: TSMC Is Halting Some China Chip Orders as a New U.S. Rule Kicks In - 24/7 Wall St.. Real-time coverage on ongoing electronics supply chain shifts, semiconductor manufacturing developments, and hardware research.",
+      "summary_tamil": "24/7 Wall St. நேரலை செய்தி அறிக்கை: TSMC Is Halting Some China Chip Orders as a New U.S. Rule Kicks In - 24/7 Wall St.. மின்னணு உற்பத்தி, செமிகண்டக்டர் தொழில்நுட்பம் மற்றும் வன்பொருள் வடிவமைப்பு குறித்த உடனடி தகவல்.",
       "tags": [
         "Live Breaking",
         "Semiconductor News",
-        "The Globe and Mail",
+        "24/7 Wall St.",
         "Industry Update"
       ],
       "illustration_type": "cleanroom",
       "photo_theme": "semiconductor_silicon_die",
       "key_highlights": [
-        "Reported directly by The Globe and Mail on Thu, 19 Nov 2026",
+        "Reported directly by 24/7 Wall St. on Fri, 20 Nov 2026",
         "Critical update impacting global and national electronics engineering pipelines",
         "Direct verification and tracking available via live Google News feed",
         "Archived into ECE Daily News real-time research register"
       ],
       "key_highlights_tamil": [
-        "The Globe and Mail ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
+        "24/7 Wall St. ஊடகம் மூலம் நேரடியாக உறுதிப்படுத்தப்பட்ட செய்தி",
         "மின்னணு பொறியியல் மற்றும் செமிகண்டக்டர் துறையில் முக்கிய தாக்கம்",
         "கூகுள் நியூஸ் நேரலை வழியாக முழுமையான கட்டுரையை படிக்கலாம்",
         "தினசரி ECE செய்திகள் காப்பகத்தில் பதிவு செய்யப்பட்டது"
       ],
-      "source": "The Globe and Mail (Live News)",
-      "live_link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOSUxpTi1MYzc2b2cxQ2JRWjk2Q0xqdVpickVxYUE3TVRLYU1OaUN4MmxCNFlMcHctc2FJaDA3dTRpYWU2TE5zOHp6SF9wcWllclJQVjZXZDBvSzZCekdBRUR5VzNhUVVHVF9XZTRpRTFnaGVkZFF4cVBhVHAtc1FTT2RHNlVEQW9vQkdzVWlvdDRqU3NKS1RtMFRBSnNENVh0TGpuVXgzX1JPNFpFRC1pYUhCUmEyMkd1akpKekp2WFlIbWhydG9MVlViRFdmVF85WnEzUlJPNnh3dmE0aXVtV1V1b3RJci1Db0Z1ZDlfRHNMMURReHR1REpWMXdQTzNUcFl3djVQbjlPNUlkUVZKeEJaZ2g?oc=5",
-      "author": "The Globe and Mail Technology Desk",
+      "source": "24/7 Wall St. (Live News)",
+      "live_link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQLU5wYVlGTzVOQ214NVN2WWNFaFRSQmFneEFQTGxHYkZzNy1fUFU4MHMtR09YWXVKV3ZqalpBNHFjRVFqaHR5ejU3cGMydVcxN3lidGJrelF3bnNpWHljbkE2anl6UFI0dmNTRXcweXN5b0dRX3o4T093a2YtMmNRRkxoMC1KZFVsVWF4bUcxTkFXSFRVYTNybzFwd25QZ0lDcGJYcG1fTFo5NHRDSXc?oc=5",
+      "author": "24/7 Wall St. Technology Desk",
       "read_time": "2 min read",
-      "google_query": "Not Nvidia. Not Broadcom. If I Could Buy and Hold Only 1 AI Chip Stock Through 2030, It Would Be This One",
-      "image_url": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 14:03 IST"
+      "google_query": "TSMC Is Halting Some China Chip Orders as a New U.S. Rule Kicks In - 24/7 Wall St.",
+      "image_url": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 13:47 IST"
     },
     {
-      "id": "ece-ww-111",
+      "id": "ece-ww-101",
       "category": "worldwide",
       "category_label": "Worldwide ECE Frontier",
       "category_tamil": "சர்வதேச ECE செய்திகள்",
       "category_badge_color": "purple",
-      "title": "Broadcom & Hyperscalers Co-Develop 3.2 Tbps Co-Packaged Optics (CPO) Switch",
-      "title_tamil": "பிராட்காம் சாதனை: 3.2 Tbps அசுர வேகத்தில் ஒளியியல் வழியே தகவல்களை மாற்றும் CPO நெட்வொர்க் சிப்!",
-      "summary": "Broadcom has announced customer deployments of its Bailly 51.2 Tbps Ethernet switch utilizing 3.2 Tbps optical interconnect chiplets co-packaged on the same substrate (Co-Packaged Optics - CPO), drastically curbing power dissipation in massive generative AI clusters.",
-      "summary_tamil": "பிராட்காம் (Broadcom) நிறுவனம், செயற்கை நுண்ணறிவு டேட்டா சென்டர்களில் மின்சார விரயத்தை தடுக்க, ஒரே சிலிக்கான் சப்ஸ்ட்ரேட்டில் லேசர் ஒளியியல் சில்லுகளை நேரடியாக இணைத்து வினாடிக்கு 3.2 Tbps வேகத்தில் இயங்கும் CPO சுவிட்சை உருவாக்கியுள்ளது.",
+      "title": "Intel 18A Node Successfully Powers on Panther Lake with RibbonFET & PowerVia",
+      "title_tamil": "இன்டெல் 18A பிராசஸர் சாதனை: 1.8 நானோமீட்டர் ரிப்பன்பெட் & பவர்வியா சிப் வெற்றிகரமான இயக்கம்!",
+      "summary": "Intel CEO Pat Gelsinger confirmed that Intel's flagship sub-2nm process node, 'Intel 18A', has achieved first silicon power-on and operating system boot for client processor Panther Lake and server silicon Clearwater Forest.",
+      "summary_tamil": "இன்டெல் நிறுவனம் தனது அதிநவீன 1.8 நானோமீட்டர் (18A) தொழில்நுட்பத்தில் உருவான 'பாந்தர் லேக்' பிராசஸரை விண்டோஸ் இயங்குதளத்தில் வெற்றிகரமாக இயக்கி உலகளாவிய சாதனை படைத்துள்ளது.",
       "tags": [
-        "Co-Packaged Optics",
-        "Broadcom CPO",
-        "Optical Interconnects",
-        "Silicon Photonics",
-        "Datacenter AI"
+        "Intel 18A",
+        "RibbonFET",
+        "PowerVia",
+        "Sub-2nm",
+        "Backside Power"
       ],
-      "illustration_type": "optical",
-      "photo_theme": "photonics_quantum",
+      "illustration_type": "gaafet",
+      "photo_theme": "semiconductor_silicon_die",
       "key_highlights": [
-        "Direct fiber attachment to switch ASIC cuts electrical serialization/deserialization (SerDes) power by 70%",
-        "Integrates continuous-wave external laser sources (ELS) for field-replaceable maintenance",
-        "Permits 4x higher compute cluster node density within standard 19-inch data center server racks",
-        "Standardized through the Optical Internetworking Forum (OIF) CPO implementation agreement"
+        "RibbonFET Gate-All-Around (GAA) nanosheets deliver 15% better performance-per-watt over FinFETs",
+        "Industry-first PowerVia backside power delivery decouples power routing from signal interconnects",
+        "Defect density tracking below 0.40 D0, meeting volume production criteria for 2025 rollout",
+        "Major external fabless customers committing design tape-outs for AI acceleration silicon"
       ],
       "key_highlights_tamil": [
-        "ஸ்விட்ச் சிப்பில் நேரடியாக ஃபைபர் ஆப்டிக் கம்பிகளை இணைப்பதன் மூலம் மின்சார செலவை 70% குறைக்கும் சாதனை",
-        "பழுது ஏற்பட்டால் எளிதில் கழற்றி மாற்றக்கூடிய வெளிப்புற லேசர் ஒளி அமைப்புகள் இணைப்பு",
-        "வழக்கமான சர்வர் ரேக்குகளில் 4 மடங்கு அதிக ஜிபியு கணினிகளை இணைக்க இடம் தருகிறது",
-        "சர்வதேச ஒளியியல் நெட்வொர்க் கூட்டமைப்பின் (OIF) உலகத்தர தரநிலைகளுக்கு உட்பட்டு தயாரிப்பு"
+        "FinFET-ஐ விட 15% அதிக மின்திறன் வழங்கும் புதிய ரிப்பன்பெட் கேட்-ஆல்-அரவுண்ட் (GAA) தொழில்நுட்பம்",
+        "மின்சாரத்தை சிப்பின் பின்புறமாக செலுத்தும் உலகின் முதல் பவர்வியா (PowerVia) சாதனை",
+        "தொழிற்சாலை தயாரிப்பு அளவுகோலான 0.40 D0 குறைபாட்டு நிலையை எட்டி வெற்றிகரமான நிலை",
+        "சர்வதேச AI நிறுவனங்கள் தங்கள் அடுத்த தலைமுறை சிப்புகளை தயாரிக்க முன்பதிவு"
       ],
-      "source": "Broadcom Optical Systems & IEEE Photonics Society",
-      "author": "Dr. F. Delveaux, High-Speed Optical Interconnects",
+      "source": "Intel Technology Presentation & IEEE Spectrum",
+      "author": "Advanced Logic Technology Division",
       "read_time": "4 min read",
-      "google_query": "Broadcom Bailly 51.2T co-packaged optics CPO switch",
-      "image_url": "https://images.unsplash.com/photo-1517055729445-fa7d27394b48?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 13:33 IST"
+      "google_query": "Intel 18A Panther Lake RibbonFET PowerVia power on",
+      "image_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 13:17 IST"
     },
     {
-      "id": "ece-ww-112",
+      "id": "ece-ww-102",
       "category": "worldwide",
       "category_label": "Worldwide ECE Frontier",
       "category_tamil": "சர்வதேச ECE செய்திகள்",
       "category_badge_color": "purple",
-      "title": "CEA-Leti Demonstrates Cryogenic CMOS Controller Chip for Silicon Spin Qubits",
-      "title_tamil": "CEA-Leti பிரான்ஸ்: -269°C அதீத குளிரிலும் இயங்கும் குவாண்டம் கணினி மைக்ரோசிப் சாதனை!",
-      "summary": "French research institute CEA-Leti has unveiled a 28nm FD-SOI cryogenic CMOS integrated circuit designed to operate at 4 Kelvin (-269°C) inside dilution refrigerators, generating microwave pulses to control hundreds of silicon quantum dot spin qubits.",
-      "summary_tamil": "பிரான்சின் முன்னணி CEA-Leti ஆராய்ச்சி நிறுவனம், -269°C அதீத உறைபனி குளிரிலும் தடையின்றி இயங்கி நூற்றுக்கணக்கான சிலிக்கான் குவாண்டம் பிட்டுகளை (Qubits) கட்டுப்படுத்தும் உலகின் முதல் கிரையோஜெனிக் CMOS சிப்பை உருவாக்கியுள்ளது.",
+      "title": "ASML Ships Next-Gen High-NA EUV Scanner (0.55 NA TWINSCAN EXE:5000)",
+      "title_tamil": "ஏஎஸ்எம்எல் (ASML): 2 நானோமீட்டருக்கும் குறைவான சிப்புகளை அச்சிடும் ஹை-என்ஏ EUV இயந்திரம் ஏற்றுமதி!",
+      "summary": "Dutch photolithography monopoly ASML has completed delivery and initial cleanroom calibration of its commercial High-NA (0.55 Numerical Aperture) Extreme Ultraviolet lithography system, the TWINSCAN EXE:5000.",
+      "summary_tamil": "நெதர்லாந்தின் ஏஎஸ்எம்எல் (ASML) நிறுவனம், 2nm-க்கும் குறைவான நுண்ணிய சிப் வரிகளை துல்லியமாக அச்சிடக்கூடிய புதிய தலைமுறை ஹை-என்ஏ (High-NA) EUV லேசர் லித்தோகிராபி இயந்திரத்தை வாடிக்கையாளர்களுக்கு வழங்கியுள்ளது.",
       "tags": [
-        "Quantum Computing",
-        "CEA-Leti",
-        "Cryogenic CMOS",
-        "Spin Qubits",
-        "FD-SOI"
+        "ASML High-NA",
+        "EUV Lithography",
+        "EXE:5000",
+        "0.55 NA",
+        "Sub-2nm Fabrication"
       ],
-      "illustration_type": "optical",
-      "photo_theme": "photonics_quantum",
+      "illustration_type": "euv",
+      "photo_theme": "cleanroom_lithography",
       "key_highlights": [
-        "Operates reliably at 4 Kelvin (-269°C) while dissipating under 1.5 milliwatts per quantum qubit channel",
-        "Eliminates thousands of bulky coaxial cables running from room-temperature racks into the cryostat core",
-        "On-chip digital-to-analog converters generate ultra-clean microwave Rabi pulses for single-qubit fidelity >99.9%",
-        "Fabricated on commercial 28nm FD-SOI line, proving scalability for fault-tolerant million-qubit quantum computers"
+        "Enables 8nm critical dimension patterning in a single exposure without cost-prohibitive multi-patterning",
+        "Features anamorphic Zeiss optical mirrors delivering 8x magnification in Y-axis and 4x in X-axis",
+        "Priced at approximately $380 million per unit, weighing over 150 metric tons across 250 crates",
+        "Enables sub-2nm and 1.4nm transistor scaling through the end of the current decade"
       ],
       "key_highlights_tamil": [
-        "-269°C அதீத உறைபனியிலும் வெறும் 1.5 மில்லிவாட் மின்சாரத்தில் அமைதியாக இயங்கும் அற்புதம்",
-        "குவாண்டம் குளிர்சாதன பெட்டிக்குள் செல்லும் ஆயிரக்கணக்கான கனரக கேபிள்களின் தேவையை நீக்குகிறது",
-        "99.9% துல்லியத்துடன் குவாண்டம் சிக்னல்களை உருவாக்கும் உள்நாட்டு டிஜிட்டல்-அனலாக் கன்வெர்ட்டர்கள்",
-        "தற்போதுள்ள 28nm சிப் ஆலைகளிலேயே தயாரிக்க முடிவதால் எதிர்கால குவாண்டம் கம்ப்யூட்டர் புரட்சிக்கு வித்திடுகிறது"
+        "ஒரே ஒரு லேசர் ஒளியில் 8 நானோமீட்டர் அளவுள்ள சர்க்யூட் வரிகளை மிகத் துல்லியமாக வரையும் திறன்",
+        "ஜெர்மனியின் செய்ஸ் (Zeiss) நிறுவனம் பிரத்யேகமாக தயாரித்த பிரம்மாண்ட ஆடிக் கண்ணாடிகள் அமைப்பு",
+        "சுமார் 3,200 கோடி ரூபாய் ($380 Million) மதிப்புள்ள உலகின் மிக நுட்பமான அறிவியல் இயந்திரம்",
+        "2030 வரையிலான உலகின் அனைத்து 2nm மற்றும் 1.4nm மைக்ரோசிப்புகளின் உற்பத்தியை தீர்மானிக்கும்"
       ],
-      "source": "CEA-Leti Quantum Technology Directorate Grenoble",
-      "author": "Cryogenic Microelectronics Laboratory",
+      "source": "ASML Corporate Veldhoven & SEMI Global Press",
+      "author": "Lithography Systems Engineering Directorate",
       "read_time": "4 min read",
-      "google_query": "CEA-Leti cryogenic CMOS controller silicon spin qubits",
-      "image_url": "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80&daily=2026323",
-      "timestamp": "2026-11-19 13:03 IST"
+      "google_query": "ASML High NA EUV scanner TWINSCAN EXE 5000",
+      "image_url": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80&daily=2026324",
+      "timestamp": "2026-11-20 12:47 IST"
     }
   ]
 }
