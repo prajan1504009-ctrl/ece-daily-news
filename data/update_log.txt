@@ -646,3 +646,48 @@ Execution Time: 2026-11-20 19:47:35
 [4/4] Writing news.json, bundling standalone HTML, and updating zip packages...
 [SUCCESS] ECE Daily News updated at 2026-11-20T19:47:35.858517 (16 articles)
 Syncing updated edition with GitHub... 
+warning: in the working copy of 'data/update_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 4e47b82] Auto-update ECE Daily News [scheduled]
+ 5 files changed, 1612 insertions(+), 944 deletions(-)
+ create mode 100644 data/archive/news_2026-11-20.json
+To https://github.com/prajan1504009-ctrl/ece-daily-news.git
+   d81b4ae..4e47b82  main -> main
+Deploying new edition to Netlify (daily-ece-news.netlify.app)... 
+Need to install the following packages:
+netlify@27.20.1
+Ok to proceed? (y) ============================================================ 
+Running ECE Daily News 5:00 AM IST Scheduled Update 
+Execution Time: Sun 11/22/2026  7:19:06.68 
+============================================================ 
+Bundled index.html successfully! Size: 134376 bytes (Sunday, 22 November 2026)
+ZipArchiveHelper : The process cannot access the file 
+'C:\Users\wolfy\.gemini\antigravity\scratch\ece-daily-news\data\update_log.txt' because it is being used by another 
+process.
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:707 
+char:30
++ ... sArchived = ZipArchiveHelper $subDirFiles.ToArray() $destinationPath  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (C:\Users\wolfy\...\update_log.txt:String) [Write-Error], IOException
+    + FullyQualifiedErrorId : CompressArchiveUnauthorizedAccessError,ZipArchiveHelper
+ 
+New-Object : Exception calling ".ctor" with "1" argument(s): "Stream was not readable."
+At 
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\Microsoft.PowerShell.Archive\Microsoft.PowerShell.Archive.psm1:818 
+char:38
++ ...     $srcStream = New-Object System.IO.BinaryReader $currentFileStream
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+    + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+ 
+=================================================================
+ECE Daily News Aggregator & Dynamic Multi-Edition Generator
+Execution Time: 2026-11-22 07:19:07
+=================================================================
+[1/4] Fetching real-time ECE news from Google News RSS feeds...
+      Retrieved 6 live articles.
+[2/4] Assembling balanced 16-article edition across 4 regions...
+[3/4] Running dynamic photo assignment engine (0 repeats, daily shift)...
+[4/4] Writing news.json, bundling standalone HTML, and updating zip packages...
+[SUCCESS] ECE Daily News updated at 2026-11-22T07:19:07.236548 (16 articles)
+Syncing updated edition with GitHub... 
