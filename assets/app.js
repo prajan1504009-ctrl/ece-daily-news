@@ -218,13 +218,59 @@ function setupEventListeners() {
     });
   }
 
-  // Search input
+  // Search input & live clear button
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
+      const clearBtn = document.getElementById('search-clear-btn');
+      if (clearBtn) {
+        if (searchQuery.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
       renderArticles();
     });
+  }
+
+  // Keyboard Shortcuts: Ctrl+K / Cmd+K or '/' to focus search, Esc to clear/blur
+  window.addEventListener('keydown', (e) => {
+    const input = document.getElementById('search-input');
+    if (!input) return;
+
+    const isTyping = document.activeElement && 
+      (['input', 'textarea', 'select'].includes((document.activeElement.tagName || '').toLowerCase()) ||
+       document.activeElement.isContentEditable);
+
+    // Ctrl+K or Cmd+K
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    } 
+    // '/' key when not actively typing in an input
+    else if (e.key === '/' && !isTyping) {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    } 
+    // Esc key to clear or blur
+    else if (e.key === 'Escape' && document.activeElement === input) {
+      if (input.value) {
+        clearSearch();
+      } else {
+        input.blur();
+      }
+    }
+  });
+
+  // OS detection for keyboard badge
+  const kbdPill = document.getElementById('search-kbd-pill');
+  if (kbdPill) {
+    const isMac = typeof navigator !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+    kbdPill.textContent = isMac ? '⌘K' : 'Ctrl+K';
   }
 
   // Filter buttons
@@ -256,6 +302,52 @@ function setupEventListeners() {
   }
 }
 
+// ----------------------------------------------------
+// Search Helpers: Query setting, Clearing & Highlighting
+// ----------------------------------------------------
+function setSearchQuery(query, event) {
+  if (event) event.stopPropagation();
+  const input = document.getElementById('search-input');
+  if (input) {
+    input.value = query;
+    searchQuery = query.toLowerCase().trim();
+    const clearBtn = document.getElementById('search-clear-btn');
+    if (clearBtn) {
+      if (searchQuery.length > 0) clearBtn.classList.remove('hidden');
+      else clearBtn.classList.add('hidden');
+    }
+    input.focus();
+    renderArticles();
+  }
+}
+
+function clearSearch() {
+  const input = document.getElementById('search-input');
+  if (input) {
+    input.value = '';
+    searchQuery = '';
+    const clearBtn = document.getElementById('search-clear-btn');
+    if (clearBtn) clearBtn.classList.add('hidden');
+    input.focus();
+    renderArticles();
+  }
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlightMatch(text, query) {
+  if (!text || !query) return text || '';
+  try {
+    const escaped = escapeRegExp(query);
+    const regex = new RegExp(`(${escaped})`, 'gi');
+    return String(text).replace(regex, '<mark class="search-highlight">$1</mark>');
+  } catch (e) {
+    return text || '';
+  }
+}
+
 function renderArticles() {
   const grid = document.getElementById('articles-grid');
   if (!grid) return;
@@ -275,7 +367,7 @@ function renderArticles() {
     return true;
   });
 
-  // Search matching
+  // Search matching across all relevant technical fields
   if (searchQuery) {
     filtered = filtered.filter(item => {
       const matchText = (
@@ -284,20 +376,69 @@ function renderArticles() {
         (item.summary || '') + ' ' +
         (item.summary_tamil || '') + ' ' +
         (item.tags || []).join(' ') + ' ' +
-        (item.category_label || '')
+        (item.category_label || '') + ' ' +
+        (item.source || '') + ' ' +
+        (item.author || '') + ' ' +
+        (item.key_highlights || []).join(' ') + ' ' +
+        (item.key_highlights_tamil || []).join(' ')
       ).toLowerCase();
       return matchText.includes(searchQuery);
     });
   }
 
+  // Update Live Search Status Bar
+  const statusBar = document.getElementById('search-status-bar');
+  const countEl = document.getElementById('search-result-count');
+  if (statusBar && countEl) {
+    if (searchQuery.length > 0) {
+      statusBar.classList.remove('hidden');
+      statusBar.classList.add('flex');
+      countEl.innerHTML = `Found <strong class="text-cyan-300 font-bold">${filtered.length}</strong> of ${allArticles.length} stories for "<span class="text-slate-200">${searchQuery}</span>"`;
+    } else {
+      statusBar.classList.add('hidden');
+      statusBar.classList.remove('flex');
+    }
+  }
+
   if (filtered.length === 0) {
     grid.innerHTML = `
-      <div class="col-span-full py-20 text-center">
-        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 text-2xl">
+      <div class="col-span-full py-16 px-4 text-center glass-panel rounded-2xl border border-slate-800 my-4 shadow-xl">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-3xl shadow-lg shadow-cyan-500/10">
           🔍
         </div>
-        <h3 class="text-xl font-bold text-slate-200 mb-2">No ECE Articles Found</h3>
-        <p class="text-slate-400 text-sm max-w-md mx-auto">Try clearing your search query or selecting a different geographical filter tab.</p>
+        <h3 class="text-xl font-bold text-slate-100 mb-2">No ECE Articles Matching "${searchQuery}"</h3>
+        <p class="text-slate-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">
+          We couldn't find any articles matching your search query in the current view. Try another keyword, clear the search, or explore live Google news coverage.
+        </p>
+        
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mb-6">
+          <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-md shadow-cyan-600/20 transition-all flex items-center gap-1.5">
+            <span>Clear Search</span>
+            <span>✕</span>
+          </button>
+          <a href="https://news.google.com/search?q=${encodeURIComponent(searchQuery + ' semiconductor electronics')}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span>Search "${searchQuery}" on Google News</span>
+            <span class="text-[10px]">↗</span>
+          </a>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 max-w-lg mx-auto">
+          <p class="text-[11px] font-mono text-slate-500 mb-2">Try searching popular ECE topics:</p>
+          <div class="flex flex-wrap justify-center gap-1.5">
+            <button onclick="setSearchQuery('Intel 18A')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Intel 18A</button>
+            <button onclick="setSearchQuery('6G')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#6G</button>
+            <button onclick="setSearchQuery('MEMS')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#MEMS</button>
+            <button onclick="setSearchQuery('Tata')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Tata</button>
+            <button onclick="setSearchQuery('Foxconn')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Foxconn</button>
+            <button onclick="setSearchQuery('Photonics')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Photonics</button>
+          </div>
+        </div>
       </div>
     `;
     return;
@@ -308,8 +449,10 @@ function renderArticles() {
 
 function createArticleCard(item) {
   const isTamil = currentLanguage === 'ta' || currentFilter === 'tamil_only';
-  const title = isTamil ? (item.title_tamil || item.title) : item.title;
-  const summary = isTamil ? (item.summary_tamil || item.summary) : item.summary;
+  const rawTitle = isTamil ? (item.title_tamil || item.title) : item.title;
+  const rawSummary = isTamil ? (item.summary_tamil || item.summary) : item.summary;
+  const title = highlightMatch(rawTitle, searchQuery);
+  const summary = highlightMatch(rawSummary, searchQuery);
   const categoryLabel = isTamil ? (item.category_tamil || item.category_label) : item.category_label;
   const isSaved = savedArticles.includes(item.id);
   const isPlaying = currentPlayingId === item.id;
@@ -380,13 +523,17 @@ function createArticleCard(item) {
         </div>
 
         <div>
-          <!-- Tags -->
+          <!-- Tags with Click-to-Search -->
           <div class="flex flex-wrap gap-1.5 mb-4">
-            ${(item.tags || []).map(tag => `
-              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60">
-                #${tag}
-              </span>
-            `).join('')}
+            ${(item.tags || []).map(tag => {
+              const isTagMatch = searchQuery && tag.toLowerCase().includes(searchQuery);
+              const tagDisplay = highlightMatch(tag, searchQuery);
+              return `
+                <span onclick="setSearchQuery('${tag.replace(/'/g, "\\'")}', event)" class="cursor-pointer text-[11px] font-mono px-2 py-0.5 rounded transition-all ${isTagMatch ? 'bg-cyan-500/30 text-cyan-200 border border-cyan-400/60 shadow-sm' : 'bg-slate-800/80 text-slate-300 border border-slate-700/60 hover:border-cyan-500/50 hover:text-cyan-300'}" title="Filter by #${tag}">
+                  #${tagDisplay}
+                </span>
+              `;
+            }).join('')}
           </div>
 
           <!-- Action Footer: Listen Aloud, Google Search & Read Deep Dive -->

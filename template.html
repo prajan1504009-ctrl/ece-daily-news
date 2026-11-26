@@ -201,39 +201,101 @@
 
     <!-- Filter & Search Toolbar -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full no-print">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-950/60 p-2.5 rounded-2xl border border-slate-800/90 backdrop-blur-md">
+      <div class="flex flex-col gap-3.5 bg-slate-950/70 p-3.5 sm:p-4 rounded-2xl border border-slate-800/90 backdrop-blur-md shadow-lg shadow-black/20">
         
-        <!-- Category Filter Tabs -->
-        <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
-          <button data-filter="all" class="filter-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 transition-all">
-            All News (அனைத்தும்)
-          </button>
-          <button data-filter="chennai" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-emerald-300 hover:border-emerald-500/40 transition-all">
-            🏛️ Chennai
-          </button>
-          <button data-filter="tamilnadu" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-cyan-300 hover:border-cyan-500/40 transition-all">
-            📍 Tamil Nadu
-          </button>
-          <button data-filter="india" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-amber-300 hover:border-amber-500/40 transition-all">
-            🇮🇳 India
-          </button>
-          <button data-filter="worldwide" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-purple-300 hover:border-purple-500/40 transition-all">
-            🌐 Worldwide
-          </button>
-          <button data-filter="tamil_only" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-cyan-300 hover:border-cyan-500/40 transition-all tamil-text">
-            🔤 தமிழ் மட்டும்
-          </button>
-          <button data-filter="saved" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-amber-300 hover:border-amber-500/40 transition-all">
-            ★ Bookmarks
-          </button>
+        <!-- Top Row: Category Filter Tabs & Live Result Count -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <!-- Category Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-1.5 w-full lg:w-auto">
+            <button data-filter="all" class="filter-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 transition-all">
+              All News (அனைத்தும்)
+            </button>
+            <button data-filter="chennai" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-emerald-300 hover:border-emerald-500/40 transition-all">
+              🏛️ Chennai
+            </button>
+            <button data-filter="tamilnadu" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-cyan-300 hover:border-cyan-500/40 transition-all">
+              📍 Tamil Nadu
+            </button>
+            <button data-filter="india" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-amber-300 hover:border-amber-500/40 transition-all">
+              🇮🇳 India
+            </button>
+            <button data-filter="worldwide" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-purple-300 hover:border-purple-500/40 transition-all">
+              🌐 Worldwide
+            </button>
+            <button data-filter="tamil_only" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-cyan-300 hover:border-cyan-500/40 transition-all tamil-text">
+              🔤 தமிழ் மட்டும்
+            </button>
+            <button data-filter="saved" class="filter-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 border border-slate-800 hover:text-amber-300 hover:border-amber-500/40 transition-all">
+              ★ Bookmarks
+            </button>
+          </div>
+
+          <!-- Live Result Count Status Bar -->
+          <div id="search-status-bar" class="hidden text-xs font-mono text-slate-400 flex items-center gap-2">
+            <span id="search-result-count" class="text-cyan-400 font-semibold">0 stories</span>
+            <button id="clear-search-btn-pill" onclick="clearSearch()" class="text-xs text-rose-400 hover:text-rose-300 underline cursor-pointer">Clear Search ✕</button>
+          </div>
         </div>
 
-        <!-- Search Bar -->
-        <div class="relative w-full md:w-72">
-          <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500 text-xs">
-            🔍
+        <!-- Middle Row: Prominent Modern Search Bar -->
+        <div class="relative w-full">
+          <div class="search-input-wrapper relative flex items-center rounded-xl bg-slate-900 border border-slate-800 transition-all duration-200">
+            <!-- Search Icon -->
+            <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-cyan-400 text-sm">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+
+            <!-- Search Input -->
+            <input type="text" id="search-input" autocomplete="off" spellcheck="false"
+                   placeholder="Search ECE news, topics, tags (e.g. 6G, Intel 18A, MEMS, Foxconn, IITM)..."
+                   class="w-full py-2.5 pr-20 text-xs sm:text-sm bg-transparent text-slate-100 placeholder-slate-500 focus:outline-none">
+
+            <!-- Keyboard Shortcut Badge & Clear Button -->
+            <div class="absolute right-2.5 flex items-center gap-1.5">
+              <button id="search-clear-btn" onclick="clearSearch()" class="hidden p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs transition-colors" title="Clear search">
+                ✕
+              </button>
+              <kbd id="search-kbd-pill" class="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono rounded bg-slate-800/80 text-slate-400 border border-slate-700/80 pointer-events-none shadow-sm">
+                Ctrl+K
+              </kbd>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Quick Trending Search Chips -->
+        <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs text-slate-400">
+          <span class="text-[11px] font-mono text-slate-500 mr-1 flex items-center gap-1">
+            <span>⚡ Trending:</span>
           </span>
-          <input type="text" id="search-input" placeholder="Search Intel 18A, 6G, MEMS, IITM..." class="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+          <button onclick="setSearchQuery('Intel 18A')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            Intel 18A
+          </button>
+          <button onclick="setSearchQuery('6G Sub-THz')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            6G Sub-THz
+          </button>
+          <button onclick="setSearchQuery('MEMS')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            MEMS Sensors
+          </button>
+          <button onclick="setSearchQuery('Tata Dholera')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            Tata Dholera
+          </button>
+          <button onclick="setSearchQuery('Foxconn')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            Foxconn SMT
+          </button>
+          <button onclick="setSearchQuery('Silicon Photonics')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            Silicon Photonics
+          </button>
+          <button onclick="setSearchQuery('Radar')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            Radar & Telecom
+          </button>
+          <button onclick="setSearchQuery('GaN')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            GaN Inverter
+          </button>
+          <button onclick="setSearchQuery('RISC-V')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            RISC-V Shakti
+          </button>
         </div>
 
       </div>
