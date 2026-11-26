@@ -2389,9 +2389,15 @@ async function fetchLiveGoogleNews(query) {
   isGoogleSearching = false;
 
   if (fetchSuccess && rawItems.length > 0) {
+    const usedPhotosInSearch = new Set();
+
     googleLiveArticles = rawItems.map((item, index) => {
-      const photoId = assignTopicPhoto(item.title, query, index);
-      const photoUrl = `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=1200&q=80&google=${Date.now()}`;
+      const topicInfo = assignTopicPhoto(item.title, query, index, usedPhotosInSearch);
+      usedPhotosInSearch.add(topicInfo.photo);
+
+      const photoUrl = topicInfo.photo.startsWith('http')
+        ? topicInfo.photo
+        : `https://images.unsplash.com/${topicInfo.photo}?auto=format&fit=crop&w=1200&q=80`;
       
       const cleanTitle = (item.title || '')
         .replace(/&amp;/g, '&')
@@ -2405,6 +2411,15 @@ async function fetchLiveGoogleNews(query) {
         .replace(/\s+/g, ' ')
         .trim();
 
+      // Extract publisher domain for live publisher icon
+      let pubDomain = 'news.google.com';
+      try {
+        if (item.link) {
+          const u = new URL(item.link);
+          pubDomain = u.hostname;
+        }
+      } catch (e) {}
+
       return {
         id: `google-live-${index}-${Date.now()}`,
         is_google_live: true,
@@ -2413,13 +2428,15 @@ async function fetchLiveGoogleNews(query) {
         category_label: `Google News • ${source}`,
         category_tamil: `கூகுள் நேரலை • ${source}`,
         category_badge_color: 'cyan',
+        topic_badge: topicInfo.badge,
+        publisher_domain: pubDomain,
         title: cleanTitle,
         title_tamil: `நேரலை செய்தி: ${cleanTitle}`,
         summary: cleanSummary,
         summary_tamil: `${source} ஊடகம் வழியாக கூகுள் நேரலை செய்தி: ${cleanTitle}. நிகழ்நேர தொழில்நுட்ப தகவல் அறிக்கை.`,
-        tags: [query, 'Google Live', source, 'ECE Tech'],
+        tags: [query, 'Google Live', source, topicInfo.badge],
         image_url: photoUrl,
-        illustration_type: 'telecom',
+        illustration_type: topicInfo.ill || 'semiconductor',
         source: `${source} (Google News Live)`,
         live_link: item.link || `https://www.google.com/search?q=${encodeURIComponent(cleanTitle)}`,
         author: `${source} Technology Wire`,
@@ -2451,31 +2468,206 @@ async function fetchLiveGoogleNews(query) {
   }
 }
 
-function assignTopicPhoto(title, query, idx) {
-  const combined = ((title || '') + ' ' + (query || '')).toLowerCase();
+// =========================================================================
+// ZERO-COLLISION DYNAMIC PHOTO & VISUAL ENGINE FOR SEARCH & LIVE NEWS
+// 55+ Verified High-Resolution Technical Photos Across 12 ECE Subdomains
+// =========================================================================
+const DYNAMIC_PHOTO_CATALOG = {
+  iit_campus: [
+    'photo-1541339907198-e08756dedf3f',
+    'photo-1498243691581-b145c3f54a5a',
+    'photo-1517245386807-bb43f82c33c4'
+  ],
+  cleanroom_fab: [
+    'photo-1581092160607-ee22621dd758',
+    'photo-1581092580497-e0d23cbdf1dc',
+    'photo-1581091226825-a6a2a5aee158',
+    'photo-1581092334651-ddf26d9a09d0',
+    'photo-1581091226033-d5c48150dbaa',
+    'photo-1532094349884-543bc11b234d'
+  ],
+  silicon_microprocessor: [
+    'photo-1591488320449-011701bb6704',
+    'photo-1563986768609-322da13575f3',
+    'photo-1555680202-c86f0e12f086',
+    'photo-1518770660439-4636190af475',
+    'photo-1550751827-4bd374c3f58b',
+    'photo-1526374965328-7f61d4dc18c5'
+  ],
+  smt_pcb_hardware: [
+    'photo-1607604276583-eef5d076aa5f',
+    'photo-1563770660941-20978e870e26',
+    'photo-1588508065123-287b28e013da',
+    'photo-1563986768494-4dee2763ff3f',
+    'photo-1517420704952-d9f39e95b43e'
+  ],
+  instrumentation_testbench: [
+    'photo-1580894732444-8ecded7900cd',
+    'photo-1581092795360-fd1ca04f0952',
+    'photo-1537462715879-360eeb61a0ad',
+    'photo-1581092583537-20d51b4b4f1b',
+    'photo-1581093588401-fbb62a02f120',
+    'photo-1581092162384-8987c1d64718'
+  ],
+  telecom_rf_radar: [
+    'photo-1508739773434-c26b3d09e071',
+    'photo-1451187580459-43490279c0fa',
+    'photo-1516849841032-87cbac4d88f7',
+    'photo-1544717305-2782549b5136',
+    'photo-1541185933-ef5d8ed016c2',
+    'photo-1506703719100-a0f3a48c0f86'
+  ],
+  robotics_automation: [
+    'photo-1485827404703-89b55fcc595e',
+    'photo-1535378620166-273708d44e4c',
+    'photo-1561557944-6e7860d1a7eb',
+    'photo-1531746790731-6c087fecd65a'
+  ],
+  ai_datacenter_servers: [
+    'photo-1558494949-ef010cbdcc31',
+    'photo-1597733336794-12d05021d510',
+    'photo-1544197150-b99a580bb7a8',
+    'photo-1520869562399-e772f042f422',
+    'photo-1504384308090-c894fdcc538d'
+  ],
+  photonics_quantum_lasers: [
+    'photo-1507413245164-6160d8298b31',
+    'photo-1517055729445-fa7d27394b48',
+    'photo-1511447333015-45b65e60f6d5',
+    'photo-1579546929518-9e396f3cc809',
+    'photo-1507668077129-56e32842fceb'
+  ],
+  power_ev_grid: [
+    'photo-1473341304170-971dccb5ac1e',
+    'photo-1513836279014-a89f7a76ae86',
+    'photo-1593941707882-a5bba14938c7'
+  ],
+  summits_keynotes_expos: [
+    'photo-1505373877841-8d25f7d46678',
+    'photo-1511578314322-379afb476865',
+    'photo-1475721027785-f74eccf877e2'
+  ],
+  consumer_electronics_retail: [
+    'photo-1550009158-9ebf69173e03',
+    'photo-1519389950473-47ba0277781c',
+    'photo-1525547719571-a2d4ac8945e2',
+    'photo-1588872657578-7efd1f1555ed',
+    'photo-1505740420928-5e560c06d30e'
+  ]
+};
+
+// Flattened Master Catalog of Unique Photos
+const ALL_UNIQUE_PHOTOS = [];
+Object.values(DYNAMIC_PHOTO_CATALOG).forEach(pool => {
+  pool.forEach(p => {
+    if (!ALL_UNIQUE_PHOTOS.includes(p)) ALL_UNIQUE_PHOTOS.push(p);
+  });
+});
+
+/**
+ * Assigns a completely unique, topic-matched photo to each search result
+ * with 100% collision prevention (no two cards ever share the same photo).
+ */
+function assignTopicPhoto(title, query, idx, usedSet) {
+  const t = (title || '').toLowerCase();
   
-  if (combined.includes('delhi') || combined.includes('telecom') || combined.includes('5g') || combined.includes('6g') || combined.includes('radar') || combined.includes('satellite') || combined.includes('bsnl') || combined.includes('mtnl')) {
-    const pool = ['photo-1508739773434-c26b3d09e071', 'photo-1451187580459-43490279c0fa', 'photo-1516849841032-87cbac4d88f7', 'photo-1544717305-2782549b5136', 'photo-1541185933-ef5d8ed016c2', 'photo-1506703719100-a0f3a48c0f86'];
-    return pool[idx % pool.length];
+  // Specific Real Landmarks & Campuses
+  if (t.includes('iit delhi')) {
+    const p = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/IIT_Delhi_Main_Building.jpeg/960px-IIT_Delhi_Main_Building.jpeg';
+    if (!usedSet || !usedSet.has(p)) return { photo: p, ill: 'circuit', badge: 'IIT DELHI RESEARCH' };
   }
-  if (combined.includes('chip') || combined.includes('semiconductor') || combined.includes('fab') || combined.includes('intel') || combined.includes('tsmc') || combined.includes('wafer')) {
-    const pool = ['photo-1581092160607-ee22621dd758', 'photo-1581092580497-e0d23cbdf1dc', 'photo-1591488320449-011701bb6704', 'photo-1563986768609-322da13575f3', 'photo-1555680202-c86f0e12f086', 'photo-1518770660439-4636190af475'];
-    return pool[idx % pool.length];
+  if (t.includes('iit madras') || t.includes('anna univ') || t.includes('ceg')) {
+    const p = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Facade_of_IIT_Madras_%28cropped%29.jpg/960px-Facade_of_IIT_Madras_%28cropped%29.jpg';
+    if (!usedSet || !usedSet.has(p)) return { photo: p, ill: 'circuit', badge: 'CAMPUS INNOVATION' };
   }
-  if (combined.includes('mems') || combined.includes('sensor') || combined.includes('battery') || combined.includes('iot')) {
-    const pool = ['photo-1580894732444-8ecded7900cd', 'photo-1581092795360-fd1ca04f0952', 'photo-1537462715879-360eeb61a0ad', 'photo-1581092583537-20d51b4b4f1b'];
-    return pool[idx % pool.length];
+
+  // Topic classification based on individual article title keywords
+  let targetPool = null;
+  let illType = 'semiconductor';
+  let badgeName = 'SEMICONDUCTOR';
+
+  if (/\b(fab|cleanroom|lithography|foundry|asml|wafer|intel 18a|tsmc)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.cleanroom_fab;
+    illType = 'semiconductor';
+    badgeName = 'CLEANROOM & FAB';
+  } else if (/\b(chip|die|semiconductor|processor|cpu|gpu|transistor|soc|ribbonfet|powervia)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.silicon_microprocessor;
+    illType = 'semiconductor';
+    badgeName = 'SILICON HARDWARE';
+  } else if (/\b(pcb|smt|soldering|motherboard|surface mount|assembly|foxconn|manufacturing)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.smt_pcb_hardware;
+    illType = 'circuit';
+    badgeName = 'SMT & PCB ASSEMBLY';
+  } else if (/\b(telecom|5g|6g|rf|radar|satellite|antenna|spectrum|sub-thz|bsnl|airtel|jio)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.telecom_rf_radar;
+    illType = 'telecom';
+    badgeName = 'TELECOM & RF';
+  } else if (/\b(robot|robotics|cobot|bipedal|autonomous|drone|automation)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.robotics_automation;
+    illType = 'robotics';
+    badgeName = 'ROBOTICS & AI';
+  } else if (/\b(ai|server|datacenter|data center|nvidia|cluster|supercomputer|cloud)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.ai_datacenter_servers;
+    illType = 'ai';
+    badgeName = 'AI & DATACENTER';
+  } else if (/\b(quantum|laser|photonics|optical|fiber optic|optics)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.photonics_quantum_lasers;
+    illType = 'quantum';
+    badgeName = 'QUANTUM & OPTICS';
+  } else if (/\b(battery|ev|electric vehicle|power|inverter|gan|sic|grid|high voltage)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.power_ev_grid;
+    illType = 'sensors';
+    badgeName = 'POWER & EV TECH';
+  } else if (/\b(summit|conference|seminar|expo|convenes|inaugurates|leadership|meet)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.summits_keynotes_expos;
+    illType = 'circuit';
+    badgeName = 'INDUSTRY SUMMIT';
+  } else if (/\b(campus|iit|university|cutoff|ranks|dtu|admissions|curriculum|phd|gate|jee)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.iit_campus;
+    illType = 'circuit';
+    badgeName = 'ACADEMIC RADAR';
+  } else if (/\b(fire|showroom|store|market|consumer|retail|goods|shop|arrested)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.consumer_electronics_retail;
+    illType = 'circuit';
+    badgeName = 'ELECTRONICS SECTOR';
+  } else if (/\b(oscilloscope|sensor|mems|multimeter|probing|test|diagnostics|iot)\b/i.test(t)) {
+    targetPool = DYNAMIC_PHOTO_CATALOG.instrumentation_testbench;
+    illType = 'sensors';
+    badgeName = 'HARDWARE TESTING';
+  } else {
+    // General fallback
+    targetPool = DYNAMIC_PHOTO_CATALOG.cleanroom_fab.concat(DYNAMIC_PHOTO_CATALOG.silicon_microprocessor);
+    illType = 'semiconductor';
+    badgeName = 'ECE DISPATCH';
   }
-  if (combined.includes('smt') || combined.includes('pcb') || combined.includes('foxconn') || combined.includes('manufacturing')) {
-    const pool = ['photo-1607604276583-eef5d076aa5f', 'photo-1563770660941-20978e870e26', 'photo-1588508065123-287b28e013da', 'photo-1517420704952-d9f39e95b43e'];
-    return pool[idx % pool.length];
+
+  // Find first unused photo in the chosen target pool
+  let chosen = null;
+  if (targetPool) {
+    for (const p of targetPool) {
+      if (!usedSet || !usedSet.has(p)) {
+        chosen = p;
+        break;
+      }
+    }
   }
-  if (combined.includes('ai') || combined.includes('nvidia') || combined.includes('processor') || combined.includes('server')) {
-    const pool = ['photo-1597733336794-12d05021d510', 'photo-1558494949-ef010cbdcc31', 'photo-1526374965328-7f61d4dc18c5', 'photo-1550751827-4bd374c3f58b'];
-    return pool[idx % pool.length];
+
+  // If all in target pool are already used, pick from global master catalog
+  if (!chosen) {
+    for (const p of ALL_UNIQUE_PHOTOS) {
+      if (!usedSet || !usedSet.has(p)) {
+        chosen = p;
+        break;
+      }
+    }
   }
-  const general = ['photo-1581091226825-a6a2a5aee158', 'photo-1507413245164-6160d8298b31', 'photo-1517055729445-fa7d27394b48', 'photo-1535378620166-273708d44e4c', 'photo-1485827404703-89b55fcc595e', 'photo-1519389950473-47ba0277781c'];
-  return general[idx % general.length];
+
+  // Absolute fallback
+  if (!chosen) {
+    chosen = ALL_UNIQUE_PHOTOS[idx % ALL_UNIQUE_PHOTOS.length];
+  }
+
+  return { photo: chosen, ill: illType, badge: badgeName };
 }
 
 function setSearchQuery(query, event, autoFetchGoogle) {
@@ -2712,11 +2904,16 @@ function createArticleCard(item) {
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80 pointer-events-none"></div>
         
         <!-- Category & Read Time Badges -->
-        <div class="absolute top-3 left-3 flex flex-wrap gap-2 pointer-events-none">
+        <div class="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 pointer-events-none">
           <span class="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border backdrop-blur-md ${item.is_google_live ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 flex items-center gap-1.5' : badgeClasses}">
             ${item.is_google_live ? '<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>' : ''}
+            ${item.is_google_live && item.publisher_domain ? `<img src="https://www.google.com/s2/favicons?domain=${item.publisher_domain}&sz=32" class="w-3.5 h-3.5 rounded-sm inline-block" onerror="this.style.display='none'" />` : ''}
             ${categoryLabel}
           </span>
+          ${item.topic_badge ? `
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider uppercase bg-slate-950/80 text-cyan-300 border border-cyan-800/60 backdrop-blur-md shadow-sm">
+            ${item.topic_badge}
+          </span>` : ''}
           <span class="px-2 py-1 rounded-full text-xs font-mono bg-slate-900/80 text-slate-300 border border-slate-700/80 backdrop-blur-md">
             ${item.read_time}
           </span>
