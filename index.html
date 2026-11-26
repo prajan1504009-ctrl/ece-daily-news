@@ -518,10 +518,35 @@ body {
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full no-print">
       <div class="flex flex-col gap-3.5 bg-slate-950/70 p-3.5 sm:p-4 rounded-2xl border border-slate-800/90 backdrop-blur-md shadow-lg shadow-black/20">
         
-        <!-- Top Row: Category Filter Tabs & Live Result Count -->
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-          <!-- Category Filter Tabs -->
-          <div class="flex flex-wrap items-center gap-1.5 w-full lg:w-auto">
+        <!-- Top Row: Source Toggle (Curated vs Google Live), Category Filter Tabs & Live Result Count -->
+        <div class="flex flex-col gap-2.5">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <!-- Search Source Mode Switcher -->
+            <div class="flex items-center gap-1.5 p-1 bg-slate-900/90 rounded-xl border border-slate-800/80 w-fit">
+              <button id="source-tab-curated" onclick="setSearchSource('curated')" class="search-source-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 transition-all flex items-center gap-1.5 shadow-sm">
+                <span>📰 Daily Edition</span>
+              </button>
+              <button id="source-tab-google" onclick="setSearchSource('google')" class="search-source-tab px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 border border-transparent hover:text-cyan-300 hover:bg-slate-800/60 transition-all flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span>Live Google News</span>
+                <span class="text-[9px] bg-red-500/20 text-red-400 border border-red-500/40 px-1 py-0.2 rounded font-bold uppercase tracking-wider animate-pulse">Live</span>
+              </button>
+            </div>
+
+            <!-- Live Result Count Status Bar -->
+            <div id="search-status-bar" class="hidden text-xs font-mono text-slate-400 flex items-center gap-2">
+              <span id="search-result-count" class="text-cyan-400 font-semibold">0 stories</span>
+              <button id="clear-search-btn-pill" onclick="clearSearch()" class="text-xs text-rose-400 hover:text-rose-300 underline cursor-pointer">Clear Search ✕</button>
+            </div>
+          </div>
+
+          <!-- Category Filter Tabs (Visible in Curated Mode) -->
+          <div id="category-filters-container" class="flex flex-wrap items-center gap-1.5 w-full">
             <button data-filter="all" class="filter-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 transition-all">
               All News (அனைத்தும்)
             </button>
@@ -544,15 +569,9 @@ body {
               ★ Bookmarks
             </button>
           </div>
-
-          <!-- Live Result Count Status Bar -->
-          <div id="search-status-bar" class="hidden text-xs font-mono text-slate-400 flex items-center gap-2">
-            <span id="search-result-count" class="text-cyan-400 font-semibold">0 stories</span>
-            <button id="clear-search-btn-pill" onclick="clearSearch()" class="text-xs text-rose-400 hover:text-rose-300 underline cursor-pointer">Clear Search ✕</button>
-          </div>
         </div>
 
-        <!-- Middle Row: Prominent Modern Search Bar -->
+        <!-- Middle Row: Prominent Modern Search Bar with Direct Google Live Button -->
         <div class="relative w-full">
           <div class="search-input-wrapper relative flex items-center rounded-xl bg-slate-900 border border-slate-800 transition-all duration-200">
             <!-- Search Icon -->
@@ -564,52 +583,68 @@ body {
 
             <!-- Search Input -->
             <input type="text" id="search-input" autocomplete="off" spellcheck="false"
-                   placeholder="Search ECE news, topics, tags (e.g. 6G, Intel 18A, MEMS, Foxconn, IITM)..."
-                   class="w-full py-2.5 pr-20 text-xs sm:text-sm bg-transparent text-slate-100 placeholder-slate-500 focus:outline-none">
+                   placeholder="Type any topic (e.g. 'delhi', 'robotics', '6G', 'TSMC', 'IIT') & press Enter for live Google News..."
+                   class="w-full py-2.5 pr-36 sm:pr-44 text-xs sm:text-sm bg-transparent text-slate-100 placeholder-slate-500 focus:outline-none">
 
-            <!-- Keyboard Shortcut Badge & Clear Button -->
-            <div class="absolute right-2.5 flex items-center gap-1.5">
-              <button id="search-clear-btn" onclick="clearSearch()" class="hidden p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs transition-colors" title="Clear search">
+            <!-- Right Controls: Clear Button, Shortcut Pill & Live Google Sourcing Button -->
+            <div class="absolute right-2 flex items-center gap-1.5">
+              <button id="search-clear-btn" onclick="clearSearch()" class="hidden p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs transition-colors cursor-pointer" title="Clear search">
                 ✕
               </button>
-              <kbd id="search-kbd-pill" class="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono rounded bg-slate-800/80 text-slate-400 border border-slate-700/80 pointer-events-none shadow-sm">
+              <kbd id="search-kbd-pill" class="hidden md:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono rounded bg-slate-800/80 text-slate-400 border border-slate-700/80 pointer-events-none shadow-sm">
                 Ctrl+K
               </kbd>
+              <button id="google-live-search-btn" onclick="triggerGoogleLiveSearch()" class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm shadow-cyan-600/30 transition-all cursor-pointer whitespace-nowrap" title="Source live ECE news directly from Google News">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+                  <path fill="#ffffff" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                <span>Google Live</span>
+                <span class="hidden sm:inline text-[10px] opacity-80">↵</span>
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Bottom Row: Quick Trending Search Chips -->
+        <!-- Google Live Sourcing Progress Indicator -->
+        <div id="google-live-progress" class="hidden items-center justify-between p-3 rounded-xl bg-cyan-950/60 border border-cyan-800/80 text-cyan-300 text-xs font-mono animate-pulse">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3.5 h-3.5 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin inline-block"></span>
+            <span>Sourcing live ECE news directly from Google for "<strong id="google-loading-query" class="text-white"></strong>"...</span>
+          </div>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-cyan-900/60 text-cyan-300 border border-cyan-700/60">Live News Wire</span>
+        </div>
+
+        <!-- Bottom Row: Quick Trending Search Chips (Including Delhi, IIT, Bangalore) -->
         <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs text-slate-400">
           <span class="text-[11px] font-mono text-slate-500 mr-1 flex items-center gap-1">
             <span>⚡ Trending:</span>
           </span>
-          <button onclick="setSearchQuery('Intel 18A')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('Delhi ECE', event, true)" class="search-chip px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-semibold transition-all">
+            📍 Delhi ECE
+          </button>
+          <button onclick="setSearchQuery('Intel 18A', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             Intel 18A
           </button>
-          <button onclick="setSearchQuery('6G Sub-THz')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('6G Sub-THz', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             6G Sub-THz
           </button>
-          <button onclick="setSearchQuery('MEMS')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('MEMS', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             MEMS Sensors
           </button>
-          <button onclick="setSearchQuery('Tata Dholera')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('Tata Dholera', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             Tata Dholera
           </button>
-          <button onclick="setSearchQuery('Foxconn')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('Foxconn', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             Foxconn SMT
           </button>
-          <button onclick="setSearchQuery('Silicon Photonics')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('Silicon Photonics', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             Silicon Photonics
           </button>
-          <button onclick="setSearchQuery('Radar')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
-            Radar & Telecom
+          <button onclick="setSearchQuery('IIT Delhi', event, true)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+            🏛️ IIT Delhi
           </button>
-          <button onclick="setSearchQuery('GaN')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
+          <button onclick="setSearchQuery('GaN Inverter', event)" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
             GaN Inverter
-          </button>
-          <button onclick="setSearchQuery('RISC-V')" class="search-chip px-2.5 py-1 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[11px] font-mono transition-all">
-            RISC-V Shakti
           </button>
         </div>
 
@@ -1933,6 +1968,9 @@ var ECEIllustrations = window.ECEIllustrations;
  */
 
 let allArticles = [];
+let googleLiveArticles = [];
+let activeSearchSource = 'curated'; // 'curated' or 'google'
+let isGoogleSearching = false;
 let currentFilter = 'all';
 let currentLanguage = 'en'; // 'en' or 'ta'
 let currentVisualMode = localStorage.getItem('ece_visual_mode') || 'photos'; // 'photos' or 'art'
@@ -2146,9 +2184,16 @@ function setupEventListeners() {
     });
   }
 
-  // Search input & live clear button
+  // Search input & Enter key listener for instant Google live sourcing
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        triggerGoogleLiveSearch();
+      }
+    });
+
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value.toLowerCase().trim();
       const clearBtn = document.getElementById('search-clear-btn');
@@ -2158,6 +2203,11 @@ function setupEventListeners() {
         } else {
           clearBtn.classList.add('hidden');
         }
+      }
+      // If we are currently in Google Live mode, clearing the query resets back to curated
+      if (!searchQuery && activeSearchSource === 'google') {
+        activeSearchSource = 'curated';
+        updateSourceTabUI();
       }
       renderArticles();
     });
@@ -2213,6 +2263,11 @@ function setupEventListeners() {
       btn.classList.remove('text-slate-400', 'border-slate-800');
       
       currentFilter = btn.dataset.filter;
+      // If user clicks a filter, switch back to curated mode
+      if (activeSearchSource === 'google') {
+        activeSearchSource = 'curated';
+        updateSourceTabUI();
+      }
       renderArticles();
     });
   });
@@ -2231,9 +2286,199 @@ function setupEventListeners() {
 }
 
 // ----------------------------------------------------
-// Search Helpers: Query setting, Clearing & Highlighting
+// Google Live Sourcing & Search Helpers
 // ----------------------------------------------------
-function setSearchQuery(query, event) {
+function setSearchSource(source) {
+  activeSearchSource = source;
+  updateSourceTabUI();
+  if (source === 'google') {
+    const input = document.getElementById('search-input');
+    const query = input ? input.value.trim() : '';
+    if (query) {
+      triggerGoogleLiveSearch(query);
+    } else {
+      triggerGoogleLiveSearch('delhi electronics');
+    }
+  } else {
+    renderArticles();
+  }
+}
+
+function updateSourceTabUI() {
+  const curatedTab = document.getElementById('source-tab-curated');
+  const googleTab = document.getElementById('source-tab-google');
+  const catContainer = document.getElementById('category-filters-container');
+
+  if (activeSearchSource === 'google') {
+    if (googleTab) {
+      googleTab.classList.add('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-sm');
+      googleTab.classList.remove('text-slate-400', 'border-transparent');
+    }
+    if (curatedTab) {
+      curatedTab.classList.remove('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-sm');
+      curatedTab.classList.add('text-slate-400', 'border-transparent');
+    }
+    if (catContainer) catContainer.classList.add('opacity-40', 'pointer-events-none');
+  } else {
+    if (curatedTab) {
+      curatedTab.classList.add('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-sm');
+      curatedTab.classList.remove('text-slate-400', 'border-transparent');
+    }
+    if (googleTab) {
+      googleTab.classList.remove('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/50', 'shadow-sm');
+      googleTab.classList.add('text-slate-400', 'border-transparent');
+    }
+    if (catContainer) catContainer.classList.remove('opacity-40', 'pointer-events-none');
+  }
+}
+
+async function triggerGoogleLiveSearch(customQuery) {
+  const input = document.getElementById('search-input');
+  const query = customQuery || (input ? input.value.trim() : '');
+  if (!query) {
+    if (input) input.focus();
+    return;
+  }
+  await fetchLiveGoogleNews(query);
+}
+
+async function fetchLiveGoogleNews(query) {
+  const progressEl = document.getElementById('google-live-progress');
+  const queryLabel = document.getElementById('google-loading-query');
+  if (progressEl) {
+    if (queryLabel) queryLabel.textContent = query;
+    progressEl.classList.remove('hidden');
+    progressEl.classList.add('flex');
+  }
+
+  isGoogleSearching = true;
+
+  // Potential endpoints:
+  // 1. Same-origin Netlify Function (when hosted on Netlify)
+  // 2. Production Netlify Endpoint (when running offline file:/// on Desktop)
+  // 3. Fallback: api.rss2json.com
+  const endpoints = [
+    `/.netlify/functions/google-news?q=${encodeURIComponent(query)}`,
+    `https://daily-ece-news.netlify.app/.netlify/functions/google-news?q=${encodeURIComponent(query)}`,
+    `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(`https://news.google.com/rss/search?q=${encodeURIComponent(query + ' (ECE OR semiconductor OR electronics OR telecom OR engineering)')}&hl=en-IN&gl=IN&ceid=IN:en`)}`
+  ];
+
+  let rawItems = [];
+  let fetchSuccess = false;
+
+  for (const url of endpoints) {
+    try {
+      const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.items && json.items.length > 0) {
+          rawItems = json.items;
+          fetchSuccess = true;
+          break;
+        }
+      }
+    } catch (e) {
+      // try next candidate
+    }
+  }
+
+  if (progressEl) {
+    progressEl.classList.add('hidden');
+    progressEl.classList.remove('flex');
+  }
+  isGoogleSearching = false;
+
+  if (fetchSuccess && rawItems.length > 0) {
+    googleLiveArticles = rawItems.map((item, index) => {
+      const photoId = assignTopicPhoto(item.title, query, index);
+      const photoUrl = `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=1200&q=80&google=${Date.now()}`;
+      
+      const cleanTitle = (item.title || '')
+        .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>');
+      const source = item.source || item.author || 'Google News';
+      const cleanSummary = (item.summary || item.description || `Live verified dispatch via ${source}: ${cleanTitle}. Reported directly from Google News real-time index.`)
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      return {
+        id: `google-live-${index}-${Date.now()}`,
+        is_google_live: true,
+        is_live: true,
+        category: 'google_live',
+        category_label: `Google News • ${source}`,
+        category_tamil: `கூகுள் நேரலை • ${source}`,
+        category_badge_color: 'cyan',
+        title: cleanTitle,
+        title_tamil: `நேரலை செய்தி: ${cleanTitle}`,
+        summary: cleanSummary,
+        summary_tamil: `${source} ஊடகம் வழியாக கூகுள் நேரலை செய்தி: ${cleanTitle}. நிகழ்நேர தொழில்நுட்ப தகவல் அறிக்கை.`,
+        tags: [query, 'Google Live', source, 'ECE Tech'],
+        image_url: photoUrl,
+        illustration_type: 'telecom',
+        source: `${source} (Google News Live)`,
+        live_link: item.link || `https://www.google.com/search?q=${encodeURIComponent(cleanTitle)}`,
+        author: `${source} Technology Wire`,
+        read_time: '2 min read',
+        timestamp: item.pubDate ? new Date(item.pubDate).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' }) + ' IST' : 'Just Now (Live)',
+        key_highlights: [
+          `Sourced live from Google News wire matching query "${query}"`,
+          `Reported by ${source} on ${item.pubDate ? String(item.pubDate).substring(0, 16) : 'today'}`,
+          `Click "Source ↗" to view full publisher dispatch live on ${source}`,
+          `Indexed in ECE Daily News real-time search wire`
+        ],
+        key_highlights_tamil: [
+          `"${query}" தேடலுக்கான கூகுள் நேரலை செய்தி அறிக்கை`,
+          `${source} ஊடகம் மூலம் உறுதிப்படுத்தப்பட்ட தொழில்நுட்ப தகவல்`,
+          `முழுமையான தகவலை படிக்க "Source ↗" பொத்தானை அழுத்தவும்`,
+          `ECE நேரலை செய்தி பட்டியலில் இணைக்கப்பட்டுள்ளது`
+        ]
+      };
+    });
+
+    activeSearchSource = 'google';
+    updateSourceTabUI();
+    renderArticles();
+  } else {
+    googleLiveArticles = [];
+    activeSearchSource = 'google';
+    updateSourceTabUI();
+    renderArticles();
+  }
+}
+
+function assignTopicPhoto(title, query, idx) {
+  const combined = ((title || '') + ' ' + (query || '')).toLowerCase();
+  
+  if (combined.includes('delhi') || combined.includes('telecom') || combined.includes('5g') || combined.includes('6g') || combined.includes('radar') || combined.includes('satellite') || combined.includes('bsnl') || combined.includes('mtnl')) {
+    const pool = ['photo-1508739773434-c26b3d09e071', 'photo-1451187580459-43490279c0fa', 'photo-1516849841032-87cbac4d88f7', 'photo-1544717305-2782549b5136', 'photo-1541185933-ef5d8ed016c2', 'photo-1506703719100-a0f3a48c0f86'];
+    return pool[idx % pool.length];
+  }
+  if (combined.includes('chip') || combined.includes('semiconductor') || combined.includes('fab') || combined.includes('intel') || combined.includes('tsmc') || combined.includes('wafer')) {
+    const pool = ['photo-1581092160607-ee22621dd758', 'photo-1581092580497-e0d23cbdf1dc', 'photo-1591488320449-011701bb6704', 'photo-1563986768609-322da13575f3', 'photo-1555680202-c86f0e12f086', 'photo-1518770660439-4636190af475'];
+    return pool[idx % pool.length];
+  }
+  if (combined.includes('mems') || combined.includes('sensor') || combined.includes('battery') || combined.includes('iot')) {
+    const pool = ['photo-1580894732444-8ecded7900cd', 'photo-1581092795360-fd1ca04f0952', 'photo-1537462715879-360eeb61a0ad', 'photo-1581092583537-20d51b4b4f1b'];
+    return pool[idx % pool.length];
+  }
+  if (combined.includes('smt') || combined.includes('pcb') || combined.includes('foxconn') || combined.includes('manufacturing')) {
+    const pool = ['photo-1607604276583-eef5d076aa5f', 'photo-1563770660941-20978e870e26', 'photo-1588508065123-287b28e013da', 'photo-1517420704952-d9f39e95b43e'];
+    return pool[idx % pool.length];
+  }
+  if (combined.includes('ai') || combined.includes('nvidia') || combined.includes('processor') || combined.includes('server')) {
+    const pool = ['photo-1597733336794-12d05021d510', 'photo-1558494949-ef010cbdcc31', 'photo-1526374965328-7f61d4dc18c5', 'photo-1550751827-4bd374c3f58b'];
+    return pool[idx % pool.length];
+  }
+  const general = ['photo-1581091226825-a6a2a5aee158', 'photo-1507413245164-6160d8298b31', 'photo-1517055729445-fa7d27394b48', 'photo-1535378620166-273708d44e4c', 'photo-1485827404703-89b55fcc595e', 'photo-1519389950473-47ba0277781c'];
+  return general[idx % general.length];
+}
+
+function setSearchQuery(query, event, autoFetchGoogle) {
   if (event) event.stopPropagation();
   const input = document.getElementById('search-input');
   if (input) {
@@ -2245,7 +2490,13 @@ function setSearchQuery(query, event) {
       else clearBtn.classList.add('hidden');
     }
     input.focus();
-    renderArticles();
+    if (autoFetchGoogle) {
+      triggerGoogleLiveSearch(query);
+    } else {
+      activeSearchSource = 'curated';
+      updateSourceTabUI();
+      renderArticles();
+    }
   }
 }
 
@@ -2256,6 +2507,8 @@ function clearSearch() {
     searchQuery = '';
     const clearBtn = document.getElementById('search-clear-btn');
     if (clearBtn) clearBtn.classList.add('hidden');
+    activeSearchSource = 'curated';
+    updateSourceTabUI();
     input.focus();
     renderArticles();
   }
@@ -2280,13 +2533,59 @@ function renderArticles() {
   const grid = document.getElementById('articles-grid');
   if (!grid) return;
 
+  // 1. If in Google Live Mode, render live Google News articles
+  if (activeSearchSource === 'google') {
+    if (googleLiveArticles.length === 0) {
+      grid.innerHTML = `
+        <div class="col-span-full py-16 px-4 text-center glass-panel rounded-2xl border border-slate-800 my-4 shadow-xl">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-3xl shadow-lg shadow-cyan-500/10">
+            🌐
+          </div>
+          <h3 class="text-xl font-bold text-slate-100 mb-2">No Live Google News Found for "${searchQuery}"</h3>
+          <p class="text-slate-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">
+            Google News did not return any recent articles for this exact search. Try another keyword or switch back to the curated daily edition.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-2.5">
+            <button onclick="setSearchSource('curated')" class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-md transition-all">
+              Switch to Daily Edition
+            </button>
+            <button onclick="triggerGoogleLiveSearch('delhi electronics')" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-all">
+              Try "Delhi Electronics"
+            </button>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    const bannerHtml = `
+      <div class="col-span-full flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-cyan-950/40 border border-cyan-800/60 mb-2">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+          <div class="text-xs">
+            <span class="text-slate-300">Showing</span>
+            <strong class="text-cyan-300 font-bold ml-1">${googleLiveArticles.length} live articles</strong>
+            <span class="text-slate-400">directly sourced from Google News for</span>
+            <span class="text-white font-semibold underline decoration-cyan-400">"${searchQuery || 'Live ECE'}"</span>
+          </div>
+        </div>
+        <button onclick="setSearchSource('curated')" class="text-xs text-cyan-400 hover:text-cyan-300 underline font-medium cursor-pointer self-start sm:self-auto">
+          ← Back to Daily Edition
+        </button>
+      </div>
+    `;
+
+    grid.innerHTML = bannerHtml + googleLiveArticles.map(item => createArticleCard(item)).join('');
+    return;
+  }
+
+  // 2. Curated Edition Filtering
   let filtered = allArticles.filter(item => {
     // Filter matching
     if (currentFilter === 'saved') {
       return savedArticles.includes(item.id);
     }
     if (currentFilter === 'tamil_only') {
-      // Show all with Tamil priority
       return true;
     }
     if (currentFilter !== 'all' && item.category !== currentFilter) {
@@ -2334,37 +2633,30 @@ function renderArticles() {
         <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-3xl shadow-lg shadow-cyan-500/10">
           🔍
         </div>
-        <h3 class="text-xl font-bold text-slate-100 mb-2">No ECE Articles Matching "${searchQuery}"</h3>
+        <h3 class="text-xl font-bold text-slate-100 mb-2">No Curated Articles for "${searchQuery}"</h3>
         <p class="text-slate-400 text-sm max-w-md mx-auto mb-6 leading-relaxed">
-          We couldn't find any articles matching your search query in the current view. Try another keyword, clear the search, or explore live Google news coverage.
+          Would you like to source live real-time ECE news for <strong>"${searchQuery}"</strong> directly from Google News?
         </p>
         
         <div class="flex flex-wrap items-center justify-center gap-2.5 mb-6">
-          <button onclick="clearSearch()" class="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-md shadow-cyan-600/20 transition-all flex items-center gap-1.5">
-            <span>Clear Search</span>
-            <span>✕</span>
+          <button onclick="triggerGoogleLiveSearch()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold shadow-lg shadow-cyan-600/30 transition-all flex items-center gap-2">
+            <span>🌐 Source "${searchQuery}" Live on Google News</span>
+            <span>↵</span>
           </button>
-          <a href="https://news.google.com/search?q=${encodeURIComponent(searchQuery + ' semiconductor electronics')}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
-              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
-              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
-              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
-            </svg>
-            <span>Search "${searchQuery}" on Google News</span>
-            <span class="text-[10px]">↗</span>
-          </a>
+          <button onclick="clearSearch()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-semibold transition-all">
+            Clear Search ✕
+          </button>
         </div>
 
         <div class="pt-4 border-t border-slate-800/80 max-w-lg mx-auto">
-          <p class="text-[11px] font-mono text-slate-500 mb-2">Try searching popular ECE topics:</p>
+          <p class="text-[11px] font-mono text-slate-500 mb-2">Try popular ECE locations & topics:</p>
           <div class="flex flex-wrap justify-center gap-1.5">
-            <button onclick="setSearchQuery('Intel 18A')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Intel 18A</button>
-            <button onclick="setSearchQuery('6G')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#6G</button>
-            <button onclick="setSearchQuery('MEMS')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#MEMS</button>
-            <button onclick="setSearchQuery('Tata')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Tata</button>
-            <button onclick="setSearchQuery('Foxconn')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Foxconn</button>
-            <button onclick="setSearchQuery('Photonics')" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Photonics</button>
+            <button onclick="setSearchQuery('Delhi ECE', event, true)" class="px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-xs font-mono border border-cyan-500/30">#Delhi ECE</button>
+            <button onclick="setSearchQuery('IIT Delhi', event, true)" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#IIT Delhi</button>
+            <button onclick="setSearchQuery('Intel 18A', event)" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Intel 18A</button>
+            <button onclick="setSearchQuery('6G', event)" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#6G</button>
+            <button onclick="setSearchQuery('MEMS', event)" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#MEMS</button>
+            <button onclick="setSearchQuery('Tata', event)" class="px-2.5 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs font-mono border border-slate-700/80">#Tata</button>
           </div>
         </div>
       </div>
@@ -2372,7 +2664,21 @@ function renderArticles() {
     return;
   }
 
-  grid.innerHTML = filtered.map(item => createArticleCard(item)).join('');
+  // In Curated mode with active query, offer direct Google Live search prompt
+  const livePromptHtml = searchQuery ? `
+    <div class="col-span-full p-3 rounded-2xl bg-cyan-950/30 border border-cyan-800/40 flex items-center justify-between text-xs mb-2">
+      <div class="flex items-center gap-2">
+        <span class="text-cyan-400">🌐</span>
+        <span class="text-slate-300">Want live web dispatches for <strong>"${searchQuery}"</strong>?</span>
+      </div>
+      <button onclick="triggerGoogleLiveSearch()" class="px-3 py-1.5 rounded-lg bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-300 border border-cyan-500/40 font-semibold flex items-center gap-1.5 transition-all cursor-pointer">
+        <span>Source "${searchQuery}" on Google Live</span>
+        <span class="text-[10px]">↗</span>
+      </button>
+    </div>
+  ` : '';
+
+  grid.innerHTML = livePromptHtml + filtered.map(item => createArticleCard(item)).join('');
 }
 
 function createArticleCard(item) {
@@ -2407,7 +2713,8 @@ function createArticleCard(item) {
         
         <!-- Category & Read Time Badges -->
         <div class="absolute top-3 left-3 flex flex-wrap gap-2 pointer-events-none">
-          <span class="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border backdrop-blur-md ${badgeClasses}">
+          <span class="px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border backdrop-blur-md ${item.is_google_live ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 flex items-center gap-1.5' : badgeClasses}">
+            ${item.is_google_live ? '<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>' : ''}
             ${categoryLabel}
           </span>
           <span class="px-2 py-1 rounded-full text-xs font-mono bg-slate-900/80 text-slate-300 border border-slate-700/80 backdrop-blur-md">
