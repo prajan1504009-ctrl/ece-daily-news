@@ -1981,6 +1981,21 @@ let speechSynth = window.speechSynthesis;
 let currentUtterance = null;
 let currentPlayingId = null;
 
+/**
+ * Universal Article Finder: Resolves article by ID across both
+ * curated daily news and real-time live Google News search results.
+ */
+function findArticleById(id) {
+  if (!id) return null;
+  const inCurated = allArticles.find(a => a.id === id);
+  if (inCurated) return inCurated;
+  if (typeof googleLiveArticles !== 'undefined' && Array.isArray(googleLiveArticles)) {
+    const inGoogle = googleLiveArticles.find(a => a.id === id);
+    if (inGoogle) return inGoogle;
+  }
+  return null;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initCountdownTimer();
@@ -2080,7 +2095,7 @@ function toggleCardVisual(itemId, event) {
 function toggleModalVisual(itemId, event) {
   if (event) event.stopPropagation();
   toggleCardVisual(itemId);
-  const article = allArticles.find(a => a.id === itemId);
+  const article = findArticleById(itemId);
   if (article) {
     const container = document.getElementById('modal-media-container');
     if (container) {
@@ -3012,7 +3027,7 @@ function createArticleCard(item) {
 
 function toggleCardLanguage(id, e) {
   if (e) e.stopPropagation();
-  const card = allArticles.find(a => a.id === id);
+  const card = findArticleById(id);
   if (!card) return;
   card._forceLang = card._forceLang === 'ta' ? 'en' : 'ta';
   renderArticles();
@@ -3032,7 +3047,7 @@ function toggleBookmark(id, e) {
 
 function speakArticle(id, e) {
   if (e) e.stopPropagation();
-  const article = allArticles.find(a => a.id === id);
+  const article = findArticleById(id);
   if (!article) return;
 
   if (speechSynth.speaking && currentPlayingId === id) {
@@ -3133,7 +3148,7 @@ function setModalTab(tab) {
 }
 
 function openStoryModal(id) {
-  const article = allArticles.find(a => a.id === id);
+  const article = findArticleById(id);
   if (!article) return;
 
   const isTamil = currentLanguage === 'ta';
@@ -3161,7 +3176,8 @@ function openStoryModal(id) {
       </button>
 
       <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 backdrop-blur-md">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 backdrop-blur-md flex items-center gap-1.5">
+          ${article.is_google_live ? '<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>' : ''}
           ${article.category_label}
         </span>
         <span class="text-xs font-mono text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded-md border border-slate-700">
@@ -3194,14 +3210,36 @@ function openStoryModal(id) {
       </div>
 
       <!-- Instant 1-Click Launch Button in Top Bar -->
-      <a href="https://www.google.com/search?q=${encodeURIComponent(article.title)}" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/40 text-xs font-semibold transition-all shadow-sm">
-        <span>Launch Google Search</span>
+      <a href="${article.live_link || `https://www.google.com/search?q=${encodeURIComponent(article.title)}`}" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/40 text-xs font-semibold transition-all shadow-sm">
+        <span>${article.is_google_live ? 'Open Publisher Wire' : 'Launch Google Search'}</span>
         <span class="text-[11px]">↗</span>
       </a>
     </div>
 
     <!-- TAB PANE 1: Engineering Analysis -->
     <div id="tab-pane-deepdive" class="space-y-5">
+      ${article.live_link ? `
+      <!-- Live Web Publisher Callout -->
+      <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-950/80 via-slate-900 to-blue-950/80 border border-cyan-500/40 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md">
+        <div class="flex items-center gap-3 text-left">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl flex-shrink-0">
+            ${article.publisher_domain ? `<img src="https://www.google.com/s2/favicons?domain=${article.publisher_domain}&sz=32" class="w-5 h-5 rounded-sm" onerror="this.src=''; this.parentElement.textContent='🌐'" />` : '🌐'}
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slate-100 flex items-center gap-1.5">
+              <span>Original Live Story on ${article.source}</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Live Wire</span>
+            </div>
+            <div class="text-[11px] text-slate-400">Direct publisher dispatch indexed via Google News real-time wire</div>
+          </div>
+        </div>
+        <a href="${article.live_link}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-1.5 transition-all whitespace-nowrap cursor-pointer">
+          <span>Read Full Article on ${article.source}</span>
+          <span>↗</span>
+        </a>
+      </div>
+      ` : ''}
+
       <!-- Summary Box -->
       <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 leading-relaxed ${isTamil ? 'tamil-text' : ''}">
         ${summary}
@@ -3424,7 +3462,7 @@ function triggerWebShare() {
 
 function shareArticle(id, e) {
   if (e) e.stopPropagation();
-  const article = allArticles.find(a => a.id === id);
+  const article = findArticleById(id);
   if (!article) return;
 
   const shareUrl = getShareableUrl();
