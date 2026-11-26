@@ -1,28 +1,20 @@
 const https = require('https');
 
-exports.handler = async function (event, context) {
-  // Handle CORS preflight
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      },
-      body: ''
-    };
-  }
+function decodeEntities(str) {
+  if (!str) return '';
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec));
+}
 
-  const rawQuery = (event.queryStringParameters && event.queryStringParameters.q)
-    ? event.queryStringParameters.q.trim()
-    : 'electronics semiconductor';
-
-  // Build targeted ECE query for Google News RSS
-  const eceQuery = `${rawQuery} (ECE OR electronics OR semiconductor OR telecom OR hardware OR engineering)`;
-  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(eceQuery)}&hl=en-IN&gl=IN&ceid=IN:en`;
-
-  return new Promise((resolve) => {
+function fetchGoogleRss(query) {
+  return new Promise((resolve, reject) => {
+    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-IN&gl=IN&ceid=IN:en`;
     const req = https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } }, (res) => {
       let rawData = '';
       res.on('data', chunk => rawData += chunk);
@@ -42,14 +34,18 @@ exports.handler = async function (event, context) {
             const descMatch = itemXml.match(/<description>([\s\S]*?)<\/description>/i);
 
             let rawTitle = titleMatch ? titleMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, '$1').trim() : '';
-            let source = sourceMatch ? sourceMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, '$1').trim() : 'Google News';
+            let rawSource = sourceMatch ? sourceMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, '$1').trim() : 'Google News';
+            let source = decodeEntities(rawSource);
+
             let title = rawTitle.replace(new RegExp(`\\s*-\\s*${source}\\s*$`, 'i'), '').trim();
             if (!title) title = rawTitle;
+            title = decodeEntities(title);
 
             let link = linkMatch ? linkMatch[1].trim() : '';
             let pubDate = pubDateMatch ? pubDateMatch[1].trim() : '';
             let rawDesc = descMatch ? descMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, '$1').trim() : '';
             let summary = rawDesc.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+            summary = decodeEntities(summary);
             if (summary.length > 280) summary = summary.substring(0, 277) + '...';
 
             if (title) {
@@ -58,53 +54,79 @@ exports.handler = async function (event, context) {
                 source,
                 link,
                 pubDate,
-                summary: summary || `Live dispatch via ${source}: ${title}. Direct coverage sourced live from Google News.`,
-                query: rawQuery
+                summary: summary || `Live dispatch via ${source}: ${title}. Direct coverage sourced live from Google News.`
               });
             }
           }
-
-          resolve({
-            statusCode: 200,
-            headers: {
-              'Content-Type': 'application/json; charset=utf-8',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Methods': 'GET, OPTIONS',
-              'Access-Control-Allow-Headers': 'Content-Type',
-              'Cache-Control': 'public, max-age=180'
-            },
-            body: JSON.stringify({
-              status: 'ok',
-              query: rawQuery,
-              count: items.length,
-              items
-            })
-          });
-        } catch (parseErr) {
-          resolve({
-            statusCode: 500,
-            headers: { 'Access-Control-Allow-Origin': '*' },
-            body: JSON.stringify({ status: 'error', message: parseErr.message })
-          });
+          resolve(items);
+        } catch (e) {
+          reject(e);
         }
       });
     });
 
-    req.on('error', (err) => {
-      resolve({
-        statusCode: 502,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ status: 'error', message: err.message })
-      });
-    });
-
+    req.on('error', reject);
     req.setTimeout(8000, () => {
-      req.abort();
-      resolve({
-        statusCode: 504,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ status: 'error', message: 'Google News request timed out' })
-      });
+      req.destroy();
+      reject(new Error('Timeout fetching from Google News RSS'));
     });
   });
+}
+
+exports.handler = async function (event, context) {
+  // Handle CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      },
+      body: ''
+    };
+  }
+
+  const rawQuery = (event.queryStringParameters && event.queryStringParameters.q)
+    ? event.queryStringParameters.q.trim()
+    : 'electronics semiconductor';
+
+  const isTechWord = /\b(ece|electronics|semiconductor|chip|hardware|telecom|5g|6g|robot|robotics|ai|antenna|sensor|mems|battery|satellite|iit|cleanroom|lithography|transistor|inverter)\b/i.test(rawQuery);
+
+  let searchQueries = [];
+  if (isTechWord) {
+    searchQueries = [rawQuery, `${rawQuery} ECE`];
+  } else {
+    searchQueries = [`${rawQuery} electronics`, `${rawQuery} ECE`, rawQuery];
+  }
+
+  let finalItems = [];
+  for (const q of searchQueries) {
+    try {
+      const items = await fetchGoogleRss(q);
+      if (items && items.length > 0) {
+        finalItems = items;
+        break;
+      }
+    } catch (err) {
+      console.warn(`Query ${q} failed:`, err.message);
+    }
+  }
+
+  return {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Cache-Control': 'public, max-age=180'
+    },
+    body: JSON.stringify({
+      status: 'ok',
+      query: rawQuery,
+      count: finalItems.length,
+      items: finalItems
+    })
+  };
 };
